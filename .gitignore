@@ -1,0 +1,34 @@
+server.py
+builder.html
+start.command
+__pycache__/
+*.pyc
+.DS_Store
+.builder-config.json
+
+# 원본 이미지 제외 — _web/ 에 최적화된 버전만 커밋
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+*.webp
+*.gif
+*.avif
+*.tif
+*.tiff
+*.TIF
+*.TIFF
+*.mp4
+*.mov
+*.avi
+*.psd
+*.ai
+*.pdf
+
+# _web/ 과 fonts/ 는 커밋
+!_web/
+!_web/**
+!fonts/
+!fonts/**

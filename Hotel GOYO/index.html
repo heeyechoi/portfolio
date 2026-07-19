@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Heeye Choi</title>
+  <style>
+    @font-face {
+      font-family: 'SuisseIntl';
+      src: url('file:///Users/heeye/Downloads/font/SuisseIntlTrial-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'SuisseIntl';
+      src: url('file:///Users/heeye/Downloads/font/SuisseIntlTrial-SemiBold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'SuisseIntl', "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ════════════════════════════════
+       LANDING — horizontal marquee
+    ════════════════════════════════ */
+    .landing {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .landing-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 28px 40px;
+    }
+
+    .landing-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .landing-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .landing-nav a {
+      font-size: 11px;
+      color: #888;
+      transition: color 0.15s;
+    }
+
+    .landing-nav a:hover { color: #1a1a1a; }
+
+    /* marquee wrapper */
+    .marquee-outer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* scrolling track */
+    .marquee-track {
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      padding: 0 48px 40px;
+      gap: 0;
+      will-change: transform;
+      animation: marquee-scroll 72s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── individual marquee item ── */
+    .m-item {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-right: var(--mr, 10px);
+      cursor: pointer;
+    }
+
+    .m-item:hover .m-img { opacity: 0.8; }
+    .m-item:hover .m-ph  { opacity: 0.8; }
+
+    .m-img {
+      display: block;
+      height: var(--h, 55vh);
+      width: auto;
+      max-width: 50vw;
+      object-fit: cover;
+      transition: opacity 0.22s;
+    }
+
+    .m-ph {
+      background: #e6e6e6;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      width: var(--w, 28vw);
+      height: var(--h, 55vh);
+      transition: opacity 0.22s;
+    }
+
+    .m-ph::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 30px,
+        rgba(0,0,0,0.038) 30px,
+        rgba(0,0,0,0.038) 31px
+      );
+    }
+
+    .m-label {
+      margin-top: 10px;
+      font-size: 10px;
+      color: #bbb;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .m-label .m-num { color: #d0d0d0; margin-right: 6px; }
+
+    .landing-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 40px;
+      font-size: 10px;
+      color: #bbb;
+      letter-spacing: 0.06em;
+      z-index: 10;
+    }
+
+    /* ─── Site header ─── */
+    .site-header {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      column-gap: 48px;
+      padding: 32px 48px;
+      border-bottom: 1px solid #e0e0e0;
+      align-items: center;
+    }
+
+    .site-name  { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
+    .site-desc  { color: #888; }
+    .site-contact { color: #888; }
+
+    /* ─── Project index ─── */
+    .index {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      column-gap: 48px;
+      padding: 48px 48px 64px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .index-label {
+      font-size: 10px;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .index-list { list-style: none; }
+
+    .index-list li {
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      column-gap: 16px;
+      padding: 9px 0;
+      border-top: 1px solid #e8e8e8;
+      align-items: baseline;
+    }
+
+    .index-list li:last-child { border-bottom: 1px solid #e8e8e8; }
+    .index-list a { display: contents; }
+    .index-list a:hover .idx-title { color: #888; }
+
+    .idx-num   { color: #bbb; font-size: 10px; }
+    .idx-title { font-weight: 600; transition: color 0.15s; }
+    .idx-type  { color: #aaa; font-size: 10px; }
+
+    /* ─── Project section ─── */
+    .project {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      column-gap: 48px;
+      padding: 56px 48px 96px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .project-info { align-self: start; }
+
+    .project-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+    }
+
+    .project-meta { margin-bottom: 24px; }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      margin-bottom: 1px;
+    }
+
+    .meta-key { color: #aaa; }
+
+    /* Korean + English text */
+    .project-text-ko {
+      font-style: normal;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .project-tagline {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .project-text-ko + .project-tagline {
+      margin-top: 0;
+    }
+
+    .project-body-ko {
+      color: #444;
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    .project-body {
+      color: #888;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .project-number { color: #bbb; font-size: 10px; }
+
+    /* ─── Image grid ─── */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      align-content: start;
+    }
+
+    .image-item         { display: flex; flex-direction: column; }
+    .image-item.col-2   { grid-column: span 2; }
+    .image-item.col-3   { grid-column: span 3; }
+
+    /* single-column images: smaller with right whitespace */
+    .image-item:not(.col-2):not(.col-3) img {
+      width: 86%;
+    }
+
+    .image-item img {
+      height: auto;
+      display: block;
+      background: #f0f0f0;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .image-item img:hover { opacity: 0.85; }
+
+    /* col-2 and col-3 fill their cell */
+    .image-item.col-2 img,
+    .image-item.col-3 img {
+      width: 100%;
+    }
+
+    /* Placeholder */
+    .ph {
+      background: #eeeeee;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ph::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 28px,
+        rgba(0,0,0,0.045) 28px,
+        rgba(0,0,0,0.045) 29px
+      );
+    }
+
+    .ph-4x3  { aspect-ratio: 4 / 3; }
+    .ph-3x4  { aspect-ratio: 3 / 4; }
+    .ph-16x9 { aspect-ratio: 16 / 9; }
+
+    .caption {
+      margin-top: 7px;
+      font-size: 10px;
+      color: #aaa;
+      line-height: 1.45;
+    }
+
+    .caption .n {
+      display: inline;
+      color: #ccc;
+      margin-right: 6px;
+    }
+
+    /* ════════════════════════════════
+       LIGHTBOX
+    ════════════════════════════════ */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lightbox.open { display: flex; }
+
+    .lb-inner {
+      position: relative;
+      max-width: 88vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #lb-img {
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lb-caption-text {
+      margin-top: 14px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 20px 28px;
+      transition: color 0.15s;
+      line-height: 1;
+      z-index: 1001;
+      font-family: inherit;
+    }
+
+    .lb-btn:hover { color: #fff; }
+    #lb-prev { left: 0; }
+    #lb-next { right: 0; }
+
+    #lb-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.15s;
+      z-index: 1001;
+      letter-spacing: 0.06em;
+      font-family: inherit;
+    }
+
+    #lb-close:hover { color: #fff; }
+
+    #lb-counter {
+      position: fixed;
+      top: 28px;
+      left: 48px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     LANDING — horizontal marquee
+════════════════════════════════ -->
+<section class="landing">
+
+  <div class="landing-header">
+    <span class="landing-name">Heeye Choi</span>
+    <nav class="landing-nav">
+      <a href="#work">Work</a>
+      <a href="mailto:choiheeye6@gmail.com">Contact</a>
+    </nav>
+  </div>
+
+  <div class="marquee-outer">
+    <div class="marquee-track">
+
+      <!-- ── Set A ── -->
+      <div class="m-item" style="--mr: 10px;" onclick="location.href='#goyo'">
+        <img src="goyo-12.png" class="m-img" alt="Hotel GOYO">
+      </div>
+      <div class="m-item" style="--mr: 64px;" onclick="location.href='#goyo'">
+        <img src="goyo-04.png" class="m-img" alt="Hotel GOYO">
+        <div class="m-label"><span class="m-num">001</span>Hotel GOYO</div>
+      </div>
+
+      <div class="m-item" style="--mr: 10px;">
+        <div class="m-ph"></div>
+      </div>
+      <div class="m-item" style="--mr: 64px;">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">002</span>—</div>
+      </div>
+
+      <div class="m-item" style="--mr: 10px;">
+        <div class="m-ph"></div>
+      </div>
+      <div class="m-item" style="--mr: 80px;">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">003</span>—</div>
+      </div>
+
+      <!-- ── Set B (duplicate for seamless loop) ── -->
+      <div class="m-item" style="--mr: 10px;" onclick="location.href='#goyo'">
+        <img src="goyo-12.png" class="m-img" alt="Hotel GOYO">
+      </div>
+      <div class="m-item" style="--mr: 64px;" onclick="location.href='#goyo'">
+        <img src="goyo-04.png" class="m-img" alt="Hotel GOYO">
+        <div class="m-label"><span class="m-num">001</span>Hotel GOYO</div>
+      </div>
+
+      <div class="m-item" style="--mr: 10px;">
+        <div class="m-ph"></div>
+      </div>
+      <div class="m-item" style="--mr: 64px;">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">002</span>—</div>
+      </div>
+
+      <div class="m-item" style="--mr: 10px;">
+        <div class="m-ph"></div>
+      </div>
+      <div class="m-item" style="--mr: 80px;">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">003</span>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="landing-hint">Scroll to explore ↓</div>
+
+</section>
+
+<!-- ─── SITE HEADER ─── -->
+<header class="site-header" id="work">
+  <div class="site-name">Heeye Choi</div>
+  <div class="site-desc">Brand &amp; Graphic Designer</div>
+  <div class="site-contact">choiheeye6@gmail.com</div>
+</header>
+
+<!-- ─── PROJECT INDEX ─── -->
+<nav class="index">
+  <div class="index-label">Projects</div>
+  <ul class="index-list">
+    <li>
+      <a href="#goyo">
+        <span class="idx-num">001</span>
+        <span class="idx-title">Hotel GOYO</span>
+        <span class="idx-type">Brand Identity</span>
+      </a>
+    </li>
+    <li>
+      <a href="#project-02">
+        <span class="idx-num">002</span>
+        <span class="idx-title">—</span>
+        <span class="idx-type">—</span>
+      </a>
+    </li>
+    <li>
+      <a href="#project-03">
+        <span class="idx-num">003</span>
+        <span class="idx-title">—</span>
+        <span class="idx-type">—</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════
+     001  Hotel GOYO
+══════════════════════════ -->
+<section class="project" id="goyo">
+
+  <div class="project-info">
+    <p class="project-title">Hotel GOYO</p>
+
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>Hotel GOYO</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>Brand Identity</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>2024</span></div>
+    </div>
+
+    <!-- Korean -->
+    <p class="project-text-ko">도시 속 고요한 사원 — 정적, 질감, 절제된 아름다움으로 이루어진 브랜드 아이덴티티.</p>
+    <p class="project-body-ko">Hotel GOYO(高了)는 한국의 전통 미감과 자연의 고요함에서 영감을 받은 도시형 호텔입니다. 기하학적 정밀함과 유기적 질감의 균형 위에서, 커스텀 로고타입, 목판화 스타일의 일러스트레이션, 질감 있는 사진, 절제된 패키징이 하나의 고요한 감성으로 통합된 아이덴티티 시스템을 구현했습니다.</p>
+
+    <!-- English -->
+    <p class="project-tagline">A serene temple in the city — visual identity rooted in stillness, texture, and refined restraint.</p>
+    <p class="project-body">Hotel GOYO is an urban retreat drawing from traditional Korean aesthetics and the quietude of nature. The identity system balances geometric precision with organic texture: a custom logotype, woodcut illustration motifs, tactile photography, and understated packaging united by a single, unhurried sensibility.</p>
+
+    <p class="project-number">001</p>
+  </div>
+
+  <div class="image-grid" data-group="goyo">
+
+    <div class="image-item col-2">
+      <img src="goyo-02.png" alt="Logotype on Paper">
+      <div class="caption"><span class="n">1</span>Logotype on Paper</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-13.png" alt="Letterform Construction">
+      <div class="caption"><span class="n">2</span>Letterform Construction</div>
+    </div>
+
+    <div class="image-item col-3">
+      <img src="goyo-01.png" alt="Clear Space Guidelines">
+      <div class="caption"><span class="n">3</span>Clear Space Guidelines</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-03.png" alt="Illustration — Bird">
+      <div class="caption"><span class="n">4</span>Illustration — Bird</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-06.png" alt="Illustration — Figure I">
+      <div class="caption"><span class="n">5</span>Illustration — Figure I</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-07.png" alt="Illustration — Figure II">
+      <div class="caption"><span class="n">6</span>Illustration — Figure II</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-04.png" alt="Mood — Pine, Light">
+      <div class="caption"><span class="n">7</span>Mood — Pine, Light</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-10.png" alt="Mood — Pine, Shadow">
+      <div class="caption"><span class="n">8</span>Mood — Pine, Shadow</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-05.png" alt="Texture — Paper">
+      <div class="caption"><span class="n">9</span>Texture — Paper</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-11.png" alt="Mood — Garden">
+      <div class="caption"><span class="n">10</span>Mood — Garden</div>
+    </div>
+
+    <div class="image-item col-2">
+      <img src="goyo-12.png" alt="Mood — Traditional Door">
+      <div class="caption"><span class="n">11</span>Mood — Traditional Door</div>
+    </div>
+
+    <div class="image-item col-2">
+      <img src="goyo-08.png" alt="Packaging — Body Soap &amp; Shampoo Dieline">
+      <div class="caption"><span class="n">12</span>Packaging — Body Soap &amp; Shampoo Dieline</div>
+    </div>
+
+    <div class="image-item">
+      <img src="goyo-09.png" alt="Packaging — Conditioner Dieline">
+      <div class="caption"><span class="n">13</span>Packaging — Conditioner Dieline</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     002  (placeholder)
+══════════════════════════ -->
+<section class="project" id="project-02">
+
+  <div class="project-info">
+    <p class="project-title">—</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>—</span></div>
+    </div>
+    <p class="project-number">002</p>
+  </div>
+
+  <div class="image-grid">
+    <div class="image-item col-2">
+      <div class="ph ph-4x3"></div>
+      <div class="caption"><span class="n">1</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">2</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">3</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">4</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">5</span>&nbsp;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     003  (placeholder)
+══════════════════════════ -->
+<section class="project" id="project-03">
+
+  <div class="project-info">
+    <p class="project-title">—</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>—</span></div>
+    </div>
+    <p class="project-number">003</p>
+  </div>
+
+  <div class="image-grid">
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">1</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">2</span>&nbsp;</div>
+    </div>
+    <div class="image-item">
+      <div class="ph ph-3x4"></div>
+      <div class="caption"><span class="n">3</span>&nbsp;</div>
+    </div>
+    <div class="image-item col-3">
+      <div class="ph ph-16x9"></div>
+      <div class="caption"><span class="n">4</span>&nbsp;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────
+     LIGHTBOX
+────────────────────────── -->
+<div id="lightbox">
+  <div id="lb-counter"></div>
+  <button id="lb-close">Close</button>
+  <button class="lb-btn" id="lb-prev">&#8592;</button>
+  <div class="lb-inner">
+    <img id="lb-img" src="" alt="">
+    <div class="lb-caption-text" id="lb-caption"></div>
+  </div>
+  <button class="lb-btn" id="lb-next">&#8594;</button>
+</div>
+
+<script>
+  /* ── Marquee: randomize image sizes ── */
+  (function () {
+    const track  = document.getElementById('marquee-track');
+    const imgs   = track.querySelectorAll('.m-img');
+    const phs    = track.querySelectorAll('.m-ph');
+
+    const half   = imgs.length / 2;
+    const phHalf = phs.length / 2;
+
+    // Generate random heights for one set, mirror to the duplicate
+    const imgH = Array.from({ length: half }, () =>
+      Math.round(32 + Math.random() * 50)   // 32–82 vh
+    );
+    const phH = Array.from({ length: phHalf }, () =>
+      Math.round(32 + Math.random() * 50)
+    );
+    const phW = Array.from({ length: phHalf }, () =>
+      Math.round(18 + Math.random() * 20)   // 18–38 vw
+    );
+
+    imgs.forEach((el, i) => { el.style.height = imgH[i % half] + 'vh'; });
+    phs.forEach((el, i) => {
+      el.style.height = phH[i % phHalf] + 'vh';
+      el.style.width  = phW[i % phHalf] + 'vw';
+    });
+  })();
+
+  /* ── Lightbox ── */
+  (function () {
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbCaption = document.getElementById('lb-caption');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbClose   = document.getElementById('lb-close');
+    const lbPrev    = document.getElementById('lb-prev');
+    const lbNext    = document.getElementById('lb-next');
+
+    let images = [];
+    let current = 0;
+
+    function buildList(img) {
+      const grid = img.closest('[data-group]') || img.closest('.image-grid');
+      return grid ? Array.from(grid.querySelectorAll('img')) : [img];
+    }
+
+    function show(idx) {
+      current = (idx + images.length) % images.length;
+      const img = images[current];
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = img.alt;
+      lbCounter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    function open(img) {
+      images = buildList(img);
+      current = images.indexOf(img);
+      show(current);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    document.querySelectorAll('.image-grid img').forEach(function (img) {
+      img.addEventListener('click', function () { open(img); });
+    });
+
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click', function () { show(current - 1); });
+    lbNext.addEventListener('click', function () { show(current + 1); });
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  })();
+</script>
+
+</body>
+</html>

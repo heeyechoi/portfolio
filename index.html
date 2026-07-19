@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Heeye Choi</title>
+  <style>
+    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-weight:400; font-size:11px; line-height:1.6; color:#1a1a1a; background:#fff; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+
+    /* ── Landing ── */
+    .landing { position:relative; width:100vw; height:100vh; overflow:hidden; }
+    .landing-header { position:absolute; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:baseline; padding:28px 40px; }
+    .landing-name { font-size:11px; font-weight:600; letter-spacing:.01em; }
+    .landing-nav { display:flex; gap:32px; }
+    .landing-nav a { font-size:11px; color:#888; transition:color .15s; }
+    .landing-nav a:hover { color:#1a1a1a; }
+    .marquee-outer { position:absolute; inset:0; overflow:hidden; }
+    .marquee-track { display:flex; align-items:flex-end; height:100%; padding:0 48px 40px; gap:0; will-change:transform; animation:marquee-scroll 72s linear infinite; }
+    .marquee-track:hover { animation-play-state:paused; }
+    @keyframes marquee-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .m-item { flex-shrink:0; display:flex; flex-direction:column; justify-content:flex-end; margin-right:var(--mr,10px); cursor:pointer; }
+    .m-item:hover .m-img,.m-item:hover .m-ph { opacity:.8; }
+    .m-img { display:block; height:var(--h,55vh); width:auto; max-width:50vw; object-fit:cover; transition:opacity .22s; }
+    .m-ph { background:#e6e6e6; position:relative; overflow:hidden; flex-shrink:0; width:var(--w,28vw); height:var(--h,55vh); transition:opacity .22s; }
+    .m-ph::after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(0,0,0,.038) 30px,rgba(0,0,0,.038) 31px); }
+    .m-label { margin-top:10px; font-size:10px; color:#bbb; letter-spacing:.03em; white-space:nowrap; }
+    .m-label .m-num { color:#d0d0d0; margin-right:6px; }
+    .landing-hint { position:absolute; bottom:28px; left:40px; font-size:10px; color:#bbb; letter-spacing:.06em; z-index:10; }
+
+    /* ── Site header ── */
+    .site-header { display:grid; grid-template-columns:240px 1fr auto; column-gap:48px; padding:32px 48px; border-bottom:1px solid #e0e0e0; align-items:center; }
+    .site-name { font-size:11px; font-weight:600; letter-spacing:.01em; }
+    .site-desc,.site-contact { color:#888; }
+
+    /* ── Project index ── */
+    .index { display:grid; grid-template-columns:240px 1fr; column-gap:48px; padding:48px 48px 64px; border-bottom:1px solid #e0e0e0; }
+    .index-label { font-size:10px; color:#aaa; letter-spacing:.08em; text-transform:uppercase; padding-top:2px; }
+    .index-list { list-style:none; }
+    .index-list li { display:grid; grid-template-columns:32px 1fr auto; column-gap:16px; padding:9px 0; border-top:1px solid #e8e8e8; align-items:baseline; }
+    .index-list li:last-child { border-bottom:1px solid #e8e8e8; }
+    .index-list a { display:contents; }
+    .index-list a:hover .idx-title { color:#888; }
+    .idx-num { color:#bbb; font-size:10px; }
+    .idx-title { font-weight:600; transition:color .15s; }
+    .idx-type { color:#aaa; font-size:10px; }
+
+    /* ── Project section ── */
+    .project { display:grid; grid-template-columns:240px 1fr; column-gap:48px; padding:56px 48px 96px; border-top:1px solid #e0e0e0; }
+    .project-info { align-self:start; }
+    .project-title { font-size:11px; font-weight:600; letter-spacing:.01em; margin-bottom:20px; }
+    .project-meta { margin-bottom:24px; }
+    .meta-row { display:grid; grid-template-columns:68px 1fr; margin-bottom:1px; }
+    .meta-key { color:#aaa; }
+    .project-text-ko { margin-bottom:10px; line-height:1.7; }
+    .project-body-ko { color:#444; margin-bottom:10px; line-height:1.75; }
+    .project-tagline { font-style:italic; margin-bottom:10px; color:#444; }
+    .project-body { color:#888; margin-bottom:32px; line-height:1.7; }
+    .project-number { color:#bbb; font-size:10px; }
+
+    /* ── Image grid ── */
+    .image-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; align-content:start; }
+    .image-item { display:flex; flex-direction:column; }
+    .image-item.col-2 { grid-column:span 2; }
+    .image-item.col-3 { grid-column:span 3; }
+    .image-item:not(.col-2):not(.col-3) img { width:86%; }
+    .image-item.col-2 img,.image-item.col-3 img { width:100%; }
+    .image-item img { height:auto; display:block; background:#f0f0f0; cursor:pointer; transition:opacity .15s; }
+    .image-item img:hover { opacity:.85; }
+    .caption { margin-top:7px; font-size:10px; color:#aaa; line-height:1.45; }
+    .caption .n { display:inline; color:#ccc; margin-right:6px; }
+
+    /* ── Lightbox ── */
+    #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.93); z-index:1000; align-items:center; justify-content:center; }
+    #lightbox.open { display:flex; }
+    .lb-inner { max-width:88vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; }
+    #lb-img { max-width:100%; max-height:82vh; object-fit:contain; display:block; }
+    .lb-caption-text { margin-top:14px; font-size:10px; color:rgba(255,255,255,.4); letter-spacing:.04em; text-align:center; }
+    .lb-btn { position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.45); font-size:20px; cursor:pointer; padding:20px 28px; transition:color .15s; line-height:1; z-index:1001; font-family:inherit; }
+    .lb-btn:hover { color:#fff; }
+    #lb-prev { left:0; } #lb-next { right:0; }
+    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.45); font-size:11px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; letter-spacing:.06em; font-family:inherit; }
+    #lb-close:hover { color:#fff; }
+    #lb-counter { position:fixed; top:28px; left:48px; font-size:10px; color:rgba(255,255,255,.3); letter-spacing:.06em; }
+  </style>
+</head>
+<body>
+
+<!-- LANDING -->
+<section class="landing">
+  <div class="landing-header">
+    <span class="landing-name">Heeye Choi</span>
+    <nav class="landing-nav">
+      <a href="#work">Work</a>
+      <a href="mailto:choiheeye6@gmail.com">Contact</a>
+    </nav>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track" id="marquee-track">
+      <!-- Set A -->
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-hotel-goyo'">
+        <img class="m-img" src="_web/Hotel GOYO/goyo-02.png" alt="Hotel GOYO Brand Identity">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-hotel-goyo'">
+        <img class="m-img" src="_web/Hotel GOYO/goyo-01.png" alt="Hotel GOYO Brand Identity">
+        <div class="m-label"><span class="m-num">001</span>Hotel GOYO Brand Identity</div>
+      </div>
+      <div class="m-item" style="--mr:10px"><div class="m-ph"></div></div>
+      <div class="m-item" style="--mr:64px">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">002</span>_web</div>
+      </div>
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-dotdotdot'">
+        <img class="m-img" src="_web/dotdotdot/졸전-01.png" alt="점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-dotdotdot'">
+        <img class="m-img" src="_web/dotdotdot/졸전-02.png" alt="점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전">
+        <div class="m-label"><span class="m-num">003</span>점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전</div>
+      </div>
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-endline-25ss-visual-directing'">
+        <img class="m-img" src="_web/endline 25ss Visual Directing/20251210_앤드라인11319 copy-2-2.jpg" alt="Endline 25SS Collection Visual Directing">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-endline-25ss-visual-directing'">
+        <img class="m-img" src="_web/endline 25ss Visual Directing/20251210_앤드라인11588-Edit.jpg" alt="Endline 25SS Collection Visual Directing">
+        <div class="m-label"><span class="m-num">004</span>Endline 25SS Collection Visual Directing</div>
+      </div>
+      <div class="m-item" style="--mr:10px"><div class="m-ph"></div></div>
+      <div class="m-item" style="--mr:80px">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">005</span>fonts</div>
+      </div>
+      <!-- Set B -->
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-hotel-goyo'">
+        <img class="m-img" src="_web/Hotel GOYO/goyo-02.png" alt="Hotel GOYO Brand Identity">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-hotel-goyo'">
+        <img class="m-img" src="_web/Hotel GOYO/goyo-01.png" alt="Hotel GOYO Brand Identity">
+        <div class="m-label"><span class="m-num">001</span>Hotel GOYO Brand Identity</div>
+      </div>
+      <div class="m-item" style="--mr:10px"><div class="m-ph"></div></div>
+      <div class="m-item" style="--mr:64px">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">002</span>_web</div>
+      </div>
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-dotdotdot'">
+        <img class="m-img" src="_web/dotdotdot/졸전-01.png" alt="점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-dotdotdot'">
+        <img class="m-img" src="_web/dotdotdot/졸전-02.png" alt="점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전">
+        <div class="m-label"><span class="m-num">003</span>점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전</div>
+      </div>
+      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-endline-25ss-visual-directing'">
+        <img class="m-img" src="_web/endline 25ss Visual Directing/20251210_앤드라인11319 copy-2-2.jpg" alt="Endline 25SS Collection Visual Directing">
+      </div>
+      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-endline-25ss-visual-directing'">
+        <img class="m-img" src="_web/endline 25ss Visual Directing/20251210_앤드라인11588-Edit.jpg" alt="Endline 25SS Collection Visual Directing">
+        <div class="m-label"><span class="m-num">004</span>Endline 25SS Collection Visual Directing</div>
+      </div>
+      <div class="m-item" style="--mr:10px"><div class="m-ph"></div></div>
+      <div class="m-item" style="--mr:80px">
+        <div class="m-ph"></div>
+        <div class="m-label"><span class="m-num">005</span>fonts</div>
+      </div>
+    </div>
+  </div>
+  <div class="landing-hint">Scroll to explore ↓</div>
+</section>
+
+<!-- SITE HEADER -->
+<header class="site-header" id="work">
+  <div class="site-name">Heeye Choi</div>
+  <div class="site-desc">Brand &amp; Graphic Designer</div>
+  <div class="site-contact">choiheeye6@gmail.com</div>
+</header>
+
+<!-- PROJECT INDEX -->
+<nav class="index">
+  <div class="index-label">Projects</div>
+  <ul class="index-list">
+    <li>
+      <a href="#proj-hotel-goyo">
+        <span class="idx-num">001</span>
+        <span class="idx-title">Hotel GOYO Brand Identity</span>
+        <span class="idx-type">Brand Identity</span>
+      </a>
+    </li>
+    <li>
+      <a href="#proj-_web">
+        <span class="idx-num">002</span>
+        <span class="idx-title">_web</span>
+        <span class="idx-type">—</span>
+      </a>
+    </li>
+    <li>
+      <a href="#proj-dotdotdot">
+        <span class="idx-num">003</span>
+        <span class="idx-title">점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전</span>
+        <span class="idx-type">Exhibition Identity / Poster</span>
+      </a>
+    </li>
+    <li>
+      <a href="#proj-endline-25ss-visual-directing">
+        <span class="idx-num">004</span>
+        <span class="idx-title">Endline 25SS Collection Visual Directing</span>
+        <span class="idx-type">Fashion Photography / Visual Directing</span>
+      </a>
+    </li>
+    <li>
+      <a href="#proj-fonts">
+        <span class="idx-num">005</span>
+        <span class="idx-title">fonts</span>
+        <span class="idx-type">—</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- PROJECT SECTIONS -->
+
+<!-- 001  Hotel GOYO Brand Identity -->
+<section class="project" id="proj-hotel-goyo">
+  <div class="project-info">
+    <p class="project-title">Hotel GOYO Brand Identity</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>Hotel GOYO</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>Brand Identity</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>—</span></div>
+    </div>
+    <p class="project-text-ko">다섯 잎 소나무처럼, 고요하고 높은 곳에 머물다</p>
+    <p class="project-body-ko">호텔 고요(GOYO)의 브랜드 아이덴티티 작업으로, 일본어로 오엽송(五葉松, ごよう)을 뜻하는 이름에서 출발한다. '高了'라는 한자 서브마크를 통해 동아시아적 감성과 고아한 품격을 함께 담았으며, 솔잎과 목판화 질감의 이미지로 자연에 깃든 정적인 아름다움을 시각화했다. 절제된 회색조와 블러시 핑크의 팔레트, 기하학적 원형을 살린 커스텀 워드마크가 조화를 이루며 조용하고 격조 있는 공간을 표현한다.</p>
+    <p class="project-tagline">Still. Elevated. Rooted in nature.</p>
+    <p class="project-body">A brand identity for Hotel GOYO, drawing its name from the Japanese goyōmatsu — the five-needle pine — to evoke stillness, refinement, and a quiet connection to the natural world. The custom wordmark pairs circular geometric letterforms with a '高了' sub-mark, weaving East Asian sensibility into a contemporary visual language. Woodblock-textured illustration, blush-toned pine needle photography, and a muted grey palette together compose a world that feels both ancient and effortlessly modern.</p>
+    <p class="project-number">001</p>
+  </div>
+  <div class="image-grid" data-group="proj-hotel-goyo">
+    <div class="image-item col-2">
+      <img src="_web/Hotel GOYO/goyo-02.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-01.png" alt="">
+      
+    </div>
+    <div class="image-item col-3">
+      <img src="_web/Hotel GOYO/goyo-04.png" alt="">
+      
+    </div>
+    <div class="image-item col-3">
+      <img src="_web/Hotel GOYO/goyo-05.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-03.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-06.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-07.png" alt="">
+      
+    </div>
+    <div class="image-item col-2">
+      <img src="_web/Hotel GOYO/goyo-08.png" alt="">
+      
+    </div>
+    <div class="image-item col-2">
+      <img src="_web/Hotel GOYO/goyo-09.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-10.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-11.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/Hotel GOYO/goyo-12.png" alt="">
+      
+    </div>
+    <div class="image-item col-3">
+      <img src="_web/Hotel GOYO/goyo-13.png" alt="">
+      
+    </div>
+  </div>
+</section>
+
+<!-- 002  _web -->
+<section class="project" id="proj-_web">
+  <div class="project-info">
+    <p class="project-title">_web</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>—</span></div>
+    </div>
+    
+    
+    
+    
+    <p class="project-number">002</p>
+  </div>
+  <div class="image-grid" data-group="proj-_web">
+
+  </div>
+</section>
+
+<!-- 003  점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전 -->
+<section class="project" id="proj-dotdotdot">
+  <div class="project-info">
+    <p class="project-title">점, 점점 — 서울여자대학교 도자심화 제58회 졸업작품전</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>서울여자대학교 아트앤디자인스쿨 공예전공</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>Exhibition Identity / Poster</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>2025</span></div>
+    </div>
+    <p class="project-text-ko">하나의 점이 모여 비로소 완성되는 이야기</p>
+    <p class="project-body-ko">서울여자대학교 공예전공 제58회 졸업작품전 《점, 점점》의 전시 아이덴티티 및 포스터 디자인. '점(點)'을 시각 언어의 핵심 단위로 삼아, 흩어진 점들이 모여 형태를 이루는 과정을 도자 공예의 결과물과 중첩시켰다. 점묘(點描)적 패턴, 픽셀화된 유기적 실루엣, 수공의 흔적이 느껴지는 반복 모티프를 통해 흙에서 완성품으로 나아가는 제작의 시간성을 담아냈다.</p>
+    <p class="project-tagline">Every dot a beginning — together, a graduation.</p>
+    <p class="project-body">Visual identity and poster design for the 58th Graduation Exhibition of Seoul Women's University's Ceramics Major, titled 'Dot, Dot by Dot.' The concept treats the dot as the fundamental unit of ceramic craft — each student's work a single mark that, gathered together, forms a whole. Stippled patterns, pixelated organic silhouettes, and embossed ornamental motifs translate the tactile language of ceramics into a cohesive graphic system.</p>
+    <p class="project-number">003</p>
+  </div>
+  <div class="image-grid" data-group="proj-dotdotdot">
+    <div class="image-item col-3">
+      <img src="_web/dotdotdot/졸전-01.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-02.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-03.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-04.png" alt="">
+      
+    </div>
+    <div class="image-item col-3">
+      <img src="_web/dotdotdot/졸전-05.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-06.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-07.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-08.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-09.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-10.png" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/dotdotdot/졸전-11.png" alt="">
+      
+    </div>
+  </div>
+</section>
+
+<!-- 004  Endline 25SS Collection Visual Directing -->
+<section class="project" id="proj-endline-25ss-visual-directing">
+  <div class="project-info">
+    <p class="project-title">Endline 25SS Collection Visual Directing</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>Endline (앤드라인)</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>Fashion Photography / Visual Directing</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>2025</span></div>
+    </div>
+    <p class="project-text-ko">코트 위의 냉정함, 빛으로 빚은 스포츠웨어</p>
+    <p class="project-body-ko">배드민턴 스포츠웨어 브랜드 앤드라인의 2025 Spring/Summer 컬렉션 비주얼 디렉팅. 쿨톤 블루와 슬레이트 그레이를 기반으로 한 절제된 컬러 팔레트 위에, 퍼포먼스 소재의 질감과 그라디언트 서브리메이션 프린트를 담아냈다. 스튜디오의 아이시한 배경과 모델의 정적인 포즈가 어우러져 스포츠웨어의 기능성과 패션성을 동시에 표현했다.</p>
+    <p class="project-tagline">Cool, precise, and built for the court.</p>
+    <p class="project-body">Visual directing for Endline's 2025 Spring/Summer sportswear collection, centered around badminton-inspired athletic wear. A restrained cool-tone palette of icy blue, slate grey, and gradient sublimation purple was chosen to convey both performance precision and contemporary aesthetic. Clean studio lighting and controlled model direction highlight the technical fabrication and refined silhouettes of the collection.</p>
+    <p class="project-number">004</p>
+  </div>
+  <div class="image-grid" data-group="proj-endline-25ss-visual-directing">
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11319 copy-2-2.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11588-Edit.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11674.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11676-Edit.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11677.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11683.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인11851 copy.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인12027-Edit.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인12281 copy.jpg" alt="">
+      
+    </div>
+    <div class="image-item">
+      <img src="_web/endline 25ss Visual Directing/20251210_앤드라인12968 copy.jpg" alt="">
+      
+    </div>
+  </div>
+</section>
+
+<!-- 005  fonts -->
+<section class="project" id="proj-fonts">
+  <div class="project-info">
+    <p class="project-title">fonts</p>
+    <div class="project-meta">
+      <div class="meta-row"><span class="meta-key">Client</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Format</span><span>—</span></div>
+      <div class="meta-row"><span class="meta-key">Date</span><span>—</span></div>
+    </div>
+    
+    
+    
+    
+    <p class="project-number">005</p>
+  </div>
+  <div class="image-grid" data-group="proj-fonts">
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div id="lb-counter"></div>
+  <button id="lb-close">Close</button>
+  <button class="lb-btn" id="lb-prev">&#8592;</button>
+  <div class="lb-inner">
+    <img id="lb-img" src="" alt="">
+    <div class="lb-caption-text" id="lb-caption"></div>
+  </div>
+  <button class="lb-btn" id="lb-next">&#8594;</button>
+</div>
+
+<script>
+  /* Marquee: randomize heights */
+  (function(){
+    const track=document.getElementById('marquee-track');
+    const imgs=track.querySelectorAll('.m-img');
+    const phs=track.querySelectorAll('.m-ph');
+    const half=imgs.length/2, phHalf=phs.length/2;
+    const iH=Array.from({length:half},()=>Math.round(32+Math.random()*50));
+    const pH=Array.from({length:phHalf},()=>Math.round(32+Math.random()*50));
+    const pW=Array.from({length:phHalf},()=>Math.round(18+Math.random()*20));
+    imgs.forEach((el,i)=>el.style.height=iH[i%half]+'vh');
+    phs.forEach((el,i)=>{el.style.height=pH[i%phHalf]+'vh';el.style.width=pW[i%phHalf]+'vw';});
+  })();
+
+  /* Lightbox */
+  (function(){
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lb-img');
+    const lbCap=document.getElementById('lb-caption');
+    const lbCnt=document.getElementById('lb-counter');
+    let images=[],cur=0;
+    function buildList(img){const g=img.closest('[data-group]')||img.closest('.image-grid');return g?Array.from(g.querySelectorAll('img')):[img];}
+    function show(idx){cur=(idx+images.length)%images.length;const img=images[cur];lbImg.src=img.src;lbImg.alt=img.alt;lbCap.textContent=img.alt;lbCnt.textContent=(cur+1)+' / '+images.length;}
+    function open(img){images=buildList(img);cur=images.indexOf(img);show(cur);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
+    document.querySelectorAll('.image-grid img').forEach(img=>img.addEventListener('click',()=>open(img)));
+    document.getElementById('lb-close').addEventListener('click',close);
+    document.getElementById('lb-prev').addEventListener('click',()=>show(cur-1));
+    document.getElementById('lb-next').addEventListener('click',()=>show(cur+1));
+    lb.addEventListener('click',e=>{if(e.target===lb)close();});
+    document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+  })();
+</script>
+
+</body>
+</html>
