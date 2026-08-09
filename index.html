@@ -9,7 +9,7 @@
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html, body { width:100%; height:100%; overflow:hidden; }
-    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:13px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
+    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
     a { color:inherit; text-decoration:none; }
 
     /* ══ HOME VIEW ══ */
@@ -22,22 +22,22 @@
 
     #guide-layer { position:absolute; inset:0; z-index:10; pointer-events:none; }
     .guide { position:absolute; pointer-events:none; }
-    .guide.h { left:0; right:0; height:1px; background:rgba(30,110,255,.5); }
-    .guide.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.5); }
-    .gprev { position:fixed; pointer-events:none; z-index:200; opacity:.55; }
-    .gprev.h { left:0; right:0; height:1px; background:rgba(30,110,255,.8); }
-    .gprev.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.8); }
+    .guide.h { left:0; right:0; height:1px; background:rgba(0,0,0,.55); }
+    .guide.v { top:0; bottom:0; width:1px; background:rgba(0,0,0,.55); }
+    .gprev { position:fixed; pointer-events:none; z-index:200; opacity:.7; }
+    .gprev.h { left:0; right:0; height:1px; background:#1a1a1a; }
+    .gprev.v { top:0; bottom:0; width:1px; background:#1a1a1a; }
 
     #canvas { position:absolute; top:15px; left:15px; right:0; bottom:0; }
 
     .dtext { position:absolute; cursor:grab; z-index:30; user-select:none; }
     .dtext:active { cursor:grabbing; }
-    .dtext.t1 { font-size:13px; font-weight:600; white-space:nowrap; }
-    .dtext.t2 { font-size:13px; font-weight:400; line-height:1.5; width:calc(100vw - 40px); }
-    .dtext.t3 { font-size:13px; font-weight:400; }
+    .dtext.t1 { font-size:15px; font-weight:600; white-space:nowrap; }
+    .dtext.t2 { font-size:15px; font-weight:400; line-height:1.5; width:calc(100vw - 40px); }
+    .dtext.t3 { font-size:15px; font-weight:400; }
     .hidden-ink { color:#ebebeb; }
 
-    #home-menu { position:absolute; z-index:30; font-size:13px; font-weight:400; line-height:1.5; }
+    #home-menu { position:absolute; z-index:30; font-size:15px; font-weight:400; line-height:1.5; }
     #home-menu a { display:block; color:#1a1a1a; text-decoration:none; cursor:pointer; }
     #home-menu a:hover { color:#888; }
     #home-menu .menu-gap { height:13px; }
@@ -58,7 +58,7 @@
     #drawer {
       position:fixed; left:0; right:0; bottom:0;
       height:80vh;
-      background:#fff;
+      background:rgba(255,255,255,.88);
       z-index:100;
       transform:translateY(100%);
       transition:transform .65s cubic-bezier(0.16,1,0.3,1);
