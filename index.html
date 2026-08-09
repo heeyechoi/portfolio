@@ -10,6 +10,8 @@
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html, body { width:100%; height:100%; overflow:hidden; }
     body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
+    :root { --cur: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2022.68%2022.45%22%3E%3Cpolygon%20points%3D%22.22%2011.22%2022.2%2022%2018.98%2011.22%2022.2%20.45%20.22%2011.22%22%2F%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M21.98%2C22.45L0%2C11.67v-.9L21.98%2C0l.7.59-3.18%2C10.63%2C3.18%2C10.63-.7.59ZM1.36%2C11.22l20.04%2C9.82-2.89-9.68v-.29l2.89-9.68L1.36%2C11.22Z%22%2F%3E%3C%2Fsvg%3E") 0 12, auto; }
+    html, body { cursor: var(--cur); }
     a { color:inherit; text-decoration:none; }
 
     /* ══ HOME VIEW ══ */
@@ -41,7 +43,7 @@
     #dt2 { font-weight:400; width:calc(100vw - 40px); }
     .hidden-ink { color:#ebebeb; }
     #home-menu { font-weight:400; margin-top:0; }
-    #home-menu a { display:block; color:#1a1a1a; text-decoration:none; cursor:pointer; }
+    #home-menu a { display:block; color:#1a1a1a; text-decoration:none; cursor:var(--cur); }
     #home-menu a:hover { color:#888; }
 
     /* initial hidden for typing anim */
@@ -53,7 +55,7 @@
       position:absolute; pointer-events:auto; z-index:20;
       transform:translate(-50%,-50%);
       opacity:0; transition:opacity .22s ease;
-      object-fit:cover; cursor:default;
+      object-fit:cover; cursor:var(--cur);
     }
     .trail-img.visible { opacity:1; }
     .trail-img.kept { outline:none; }
@@ -82,7 +84,7 @@
     }
     #dr-cat ul { list-style:none; }
     #dr-cat li { margin-bottom:1px; }
-    #dr-cat a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#1a1a1a; cursor:pointer; }
+    #dr-cat a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#1a1a1a; cursor:var(--cur); }
     #dr-cat a.on { color:#1a1a1a; font-weight:600; }
     #dr-cat a:hover { color:#1a1a1a; }
 
@@ -94,7 +96,7 @@
     }
     #dr-plist ul { list-style:none; }
     #dr-plist li { margin-bottom:1px; }
-    #dr-plist a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#1a1a1a; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #dr-plist a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#1a1a1a; cursor:var(--cur); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     #dr-plist a.on { font-weight:600; }
     #dr-plist a:hover { color:#888; }
 
@@ -104,7 +106,7 @@
       align-items:center; gap:8px;
       width:100%; flex-shrink:0;
       padding:12px 32px 12px 35px;
-      background:none; border:none; cursor:pointer;
+      background:none; border:none; cursor:var(--cur);
       font-family:inherit; font-size:13px; font-weight:600;
       color:#1a1a1a; text-align:left;
       border-bottom:1px solid rgba(0,0,0,.06);
@@ -126,7 +128,7 @@
     #dr-close {
       position:absolute; top:22px; right:24px; z-index:10;
       font-family:inherit; font-size:44px; font-weight:300; line-height:1;
-      background:none; border:none; cursor:pointer; color:#aaa; padding:0;
+      background:none; border:none; cursor:var(--cur); color:#aaa; padding:0;
     }
     #dr-close:hover { color:#1a1a1a; }
 
@@ -161,7 +163,7 @@
     .dr-img-wrap { flex-shrink:0; }
     .dr-img-wrap img {
       display:block; width:100%; height:auto;
-      cursor:pointer; transition:opacity .15s;
+      cursor:var(--cur); transition:opacity .15s;
     }
     .dr-img-wrap img:hover { opacity:.88; }
     .dr-img-counter {
@@ -187,7 +189,7 @@
     #lb-close {
       position:fixed; top:24px; right:32px; z-index:1001;
       background:none; border:none; color:rgba(255,255,255,.6);
-      font-size:15px; font-family:inherit; cursor:pointer; padding:8px;
+      font-size:15px; font-family:inherit; cursor:var(--cur); padding:8px;
       transition:color .15s;
     }
     #lb-close:hover { color:#fff; }
@@ -381,7 +383,7 @@
         <a class="drawer-link" data-filter="commercial">Commercial projects</a>
         <a class="drawer-link" data-filter="personal">Personal projects</a>
         <br>
-        <a href="mailto:choiheeye6@gmail.com">e-mail</a>
+        <a id="email-copy" data-email="choiheeye6@gmail.com">e-mail</a>
         <a href="https://instagram.com/ordk.kr" target="_blank" rel="noopener">Instagram</a>
         <br>
         <span id="dt3">&#169;Heeye Choi,<br>Based in Seoul, Korea</span>
@@ -926,6 +928,34 @@ window.addEventListener('load', function(){
       img.style.opacity = '1';
       img.classList.add('kept');
     });
+  });
+})();
+
+/* ── EMAIL: copy address to clipboard ── */
+(function(){
+  var el = document.getElementById('email-copy');
+  if (!el) return;
+  var LABEL = el.textContent;
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch (_) {}
+    document.body.removeChild(ta);
+  }
+  function feedback(){
+    el.textContent = 'copied!';
+    clearTimeout(el._resetT);
+    el._resetT = setTimeout(function(){ el.textContent = LABEL; }, 1200);
+  }
+  el.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    var addr = el.dataset.email;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(feedback, function(){ fallbackCopy(addr); feedback(); });
+    } else {
+      fallbackCopy(addr); feedback();
+    }
   });
 })();
 </script>
