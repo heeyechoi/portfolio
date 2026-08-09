@@ -50,6 +50,17 @@
     .dtext.t3 { font-size:13px; font-weight:400; }
     .hidden-ink { color:#ebebeb; }
 
+    /* Home menu */
+    #home-menu {
+      position:absolute; z-index:30;
+      font-size:13px; font-weight:400; line-height:1.5;
+    }
+    #home-menu a {
+      display:block; color:#1a1a1a; text-decoration:none; cursor:pointer;
+    }
+    #home-menu a:hover { color:#888; }
+    #home-menu .menu-gap { height:13px; }
+
     /* ═══ SUB VIEW ═══ */
     #sub-view {
       position:fixed; inset:0; background:#fff;
@@ -177,6 +188,14 @@
     <div class="dtext t1" id="dt1" style="top:23px;left:20px;">ordk, ord<span class="hidden-ink">erk</span>nac<span class="hidden-ink">k</span></div>
     <div class="dtext t2" id="dt2" style="top:43px;left:20px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
     <div class="dtext t3" id="dt3" style="top:84px;left:20px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
+    <div id="home-menu" style="top:120px;left:20px;">
+      <a onclick="goSub('commercial')">Commercial projects</a>
+      <a onclick="goSub('personal')">Personal projects</a>
+      <a onclick="goSub('all')">Index</a>
+      <div class="menu-gap"></div>
+      <a href="mailto:choiheeye6@gmail.com">E-mail</a>
+      <a href="https://instagram.com/ordk.kr" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </div>
 </div>
 
@@ -373,11 +392,19 @@ var detailView  = document.getElementById('detail-view');
 var backBtn     = document.getElementById('back-btn');
 var closeDetail = document.getElementById('close-detail');
 
-function goSub() {
+function goSub(filter) {
   homeView.classList.add('out');
   subView.classList.add('in');
   backBtn.classList.add('show');
   closeDetail.classList.remove('show');
+  // Apply category filter
+  var cat = filter || 'all';
+  document.querySelectorAll('.cat-link').forEach(function(l){ l.classList.remove('on'); });
+  var active = document.querySelector('.cat-link[data-cat="' + cat + '"]');
+  if (active) active.classList.add('on');
+  document.querySelectorAll('.prow').forEach(function(row){
+    row.style.display = (cat==='all' || (row.dataset.cats||'').includes(cat)) ? '' : 'none';
+  });
 }
 function goHome() {
   homeView.classList.remove('out');
@@ -398,7 +425,7 @@ function showDetail(anchor) {
   }
 }
 
-homeView.addEventListener('click', goSub);
+/* click-anywhere removed — navigation via menu only */
 backBtn.addEventListener('click', function(e) { e.stopPropagation(); goHome(); });
 closeDetail.addEventListener('click', function() {
   detailView.classList.remove('in');
