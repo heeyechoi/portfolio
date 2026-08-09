@@ -98,6 +98,24 @@
     #dr-plist a.on { font-weight:600; }
     #dr-plist a:hover { color:#888; }
 
+    /* Project-list toggle — only visible in tablet/stacked layout */
+    #dr-plist-toggle {
+      display:none;
+      align-items:center; gap:8px;
+      width:100%; flex-shrink:0;
+      padding:12px 32px 12px 35px;
+      background:none; border:none; cursor:pointer;
+      font-family:inherit; font-size:13px; font-weight:600;
+      color:#1a1a1a; text-align:left;
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    #dr-plist-toggle .pt-key { color:#aaa; font-weight:400; margin-right:2px; }
+    #dr-plist-toggle .chev {
+      margin-left:auto; font-size:10px; color:#888;
+      transition:transform .25s ease;
+    }
+    #dr-plist-toggle.open .chev { transform:rotate(180deg); }
+
     /* Detail col — 80% */
     #dr-detail {
       flex:1; display:flex; flex-direction:row;
@@ -179,28 +197,63 @@
     }
 
     /* ══ RESPONSIVE ══ */
-    @media (max-width:1024px) and (min-width:769px) {
-      #dr-cat  { width:14vw; }
-      #dr-plist { width:16vw; }
-    }
-
-    /* 설명칸 최소 너비 이하 → 이미지 아래로 이동 */
+    /* ── TABLET: category on top, project list collapsible ── */
     @media (max-width:1350px) and (min-width:769px) {
+      #drawer { flex-direction:column; }
+
+      /* Close button — vertically centered on the category row */
+      #dr-close {
+        top:0; right:0; height:48px;
+        padding:0 20px; font-size:32px; line-height:1;
+        display:flex; align-items:center; justify-content:center;
+      }
+
+      /* Category — horizontal scroll row at top (equal top/bottom spacing) */
+      #dr-cat {
+        width:100%; flex-shrink:0; height:48px;
+        display:flex; align-items:center;
+        padding:0 64px 0 35px;
+        overflow-x:auto; overflow-y:hidden;
+        border-bottom:1px solid rgba(0,0,0,.06);
+      }
+      #dr-cat::-webkit-scrollbar { display:none; }
+      #dr-cat ul { display:flex; flex-direction:row; gap:20px; white-space:nowrap; }
+      #dr-cat li { margin:0; }
+
+      /* Toggle button visible */
+      #dr-plist-toggle { display:flex; }
+
+      /* Project list — collapsible horizontal row (collapsed by default) */
+      #dr-plist {
+        width:100%; flex-shrink:0;
+        max-height:0; opacity:0; padding:0 32px 0 35px;
+        overflow:hidden;
+        transition:max-height .3s ease, opacity .2s ease, padding .3s ease;
+      }
+      #dr-plist::-webkit-scrollbar { display:none; }
+      #dr-plist.expanded {
+        max-height:120px; opacity:1;
+        padding:10px 32px 12px 35px;
+        overflow-x:auto; overflow-y:hidden;
+        border-bottom:1px solid rgba(0,0,0,.06);
+      }
+      #dr-plist ul { display:flex; flex-direction:row; gap:20px; white-space:nowrap; }
+      #dr-plist li { margin:0; }
+      #dr-plist a { white-space:nowrap; overflow:visible; text-overflow:clip; }
+
+      /* Detail — remaining space; description wraps below images */
       #dr-detail {
+        flex:1;
         flex-wrap:wrap;
         overflow-y:auto;
         align-content:flex-start;
       }
-      #dr-imgs {
-        flex:1; min-width:0; align-self:flex-start;
-      }
-      #dr-info {
-        align-self:flex-start;
-      }
+      #dr-imgs { flex:1; min-width:0; align-self:flex-start; }
+      #dr-info { align-self:flex-start; padding-left:35px; }
       #dr-desc {
         width:100%;
         flex-shrink:0;
-        padding:24px 32px 40px 24px;
+        padding:24px 32px 40px 35px;
         overflow-y:visible;
       }
     }
@@ -216,13 +269,14 @@
       .r-corner { width:10px; height:10px; }
       #canvas { top:10px; left:10px; }
 
-      /* Drawer: stacked vertically */
-      #drawer { height:92vh; flex-direction:column; }
+      /* Drawer: full screen, stacked vertically */
+      #drawer { height:100vh; height:100dvh; flex-direction:column; }
 
-      /* Category — horizontal scroll row */
+      /* Category — horizontal scroll row (equal top/bottom spacing) */
       #dr-cat {
-        width:100%; flex-shrink:0;
-        padding:14px 20px 10px;
+        width:100%; flex-shrink:0; height:44px;
+        display:flex; align-items:center;
+        padding:0 52px 0 30px;
         overflow-x:auto; overflow-y:hidden;
         border-bottom:1px solid rgba(0,0,0,.06);
       }
@@ -230,14 +284,23 @@
       #dr-cat ul { display:flex; flex-direction:row; gap:18px; white-space:nowrap; }
       #dr-cat li { margin:0; }
 
-      /* Project list — horizontal scroll row */
+      /* Toggle button visible */
+      #dr-plist-toggle { display:flex; padding:12px 20px 12px 30px; }
+
+      /* Project list — collapsible horizontal row (collapsed by default) */
       #dr-plist {
         width:100%; flex-shrink:0;
-        padding:8px 20px 10px;
+        max-height:0; opacity:0; padding:0 20px 0 30px;
+        overflow:hidden;
+        transition:max-height .3s ease, opacity .2s ease, padding .3s ease;
+      }
+      #dr-plist::-webkit-scrollbar { display:none; }
+      #dr-plist.expanded {
+        max-height:120px; opacity:1;
+        padding:8px 20px 10px 30px;
         overflow-x:auto; overflow-y:hidden;
         border-bottom:1px solid rgba(0,0,0,.06);
       }
-      #dr-plist::-webkit-scrollbar { display:none; }
       #dr-plist ul { display:flex; flex-direction:row; gap:20px; white-space:nowrap; }
       #dr-plist li { margin:0; }
       #dr-plist a { white-space:nowrap; overflow:visible; text-overflow:clip; }
@@ -246,7 +309,7 @@
       #dr-detail { flex:1; flex-direction:column; overflow-y:auto; overflow-x:hidden; }
 
       /* Info full width */
-      #dr-info { width:100%; flex-shrink:0; padding:18px 20px 12px; }
+      #dr-info { width:100%; flex-shrink:0; padding:18px 20px 12px 30px; }
       #dr-info .dr-title { margin-bottom:10px; }
 
       /* Images — horizontal strip */
@@ -261,10 +324,17 @@
       .dr-img-wrap img { width:auto; height:100%; object-fit:cover; }
 
       /* Description full width */
-      #dr-desc { width:100%; flex-shrink:0; padding:14px 20px 48px; }
+      #dr-desc { width:100%; flex-shrink:0; padding:14px 20px 48px 30px; }
 
-      /* Close button */
-      #dr-close { font-size:32px; top:10px; right:16px; }
+      /* Close button — vertically centered on the category row,
+         with a fade-to-white backing so scrolling category text
+         doesn't show through behind the × */
+      #dr-close {
+        top:0; right:0; height:44px;
+        padding:0 16px 0 28px; font-size:32px; line-height:1;
+        display:flex; align-items:center; justify-content:flex-end;
+        background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,.92) 55%);
+      }
 
       /* Lightbox: touch-friendly */
       #lb-counter { font-size:13px; bottom:20px; }
@@ -322,6 +392,7 @@
 
 <!-- ══ DRAWER ══ -->
 <div id="drawer">
+  <button id="dr-close" onclick="closeDrawer()">&#215;</button>
   <!-- Category col 10% -->
   <div id="dr-cat">
     <ul>
@@ -337,6 +408,13 @@
     </ul>
   </div>
 
+  <!-- Project list toggle (tablet/stacked view) -->
+  <button id="dr-plist-toggle" type="button" aria-expanded="false">
+    <span class="pt-key">Projects</span>
+    <span id="dr-plist-current"></span>
+    <span class="chev">&#9662;</span>
+  </button>
+
   <!-- Project list col 10% -->
   <div id="dr-plist">
     <ul id="dr-plist-ul"></ul>
@@ -344,7 +422,6 @@
 
   <!-- Detail col 80% -->
   <div id="dr-detail">
-    <button id="dr-close" onclick="closeDrawer()">&#215;</button>
 
     <!-- Info sub-col -->
     <div id="dr-info">
@@ -517,6 +594,18 @@ function renderProjectList() {
   });
 }
 
+/* ── PROJECT-LIST TOGGLE (tablet/stacked view) ── */
+var plistEl = document.getElementById('dr-plist');
+var plistToggle = document.getElementById('dr-plist-toggle');
+function setPlistOpen(open) {
+  plistEl.classList.toggle('expanded', open);
+  plistToggle.classList.toggle('open', open);
+  plistToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+plistToggle.addEventListener('click', function(){
+  setPlistOpen(!plistEl.classList.contains('expanded'));
+});
+
 function loadProject(id) {
   currentProject = id;
   var p = PROJECTS.find(function(x){ return x.id === id; });
@@ -526,6 +615,11 @@ function loadProject(id) {
   document.querySelectorAll('#dr-plist-ul a').forEach(function(a){
     a.classList.toggle('on', a.dataset.id === id);
   });
+
+  // Tablet toggle: show current title, then collapse the list
+  var cur = document.getElementById('dr-plist-current');
+  if (cur) cur.textContent = p.titleEn || p.title;
+  setPlistOpen(false);
 
   // Info
   document.getElementById('dr-title').textContent = p.title;
@@ -637,6 +731,19 @@ function initMobileCarousel() {
   mobImgIdx = 0;
   mobShowImg(0);
 }
+
+/* Keep carousel state valid when resizing across the mobile breakpoint.
+   Without this, a drawer opened at desktop width has no .mob-active wrap,
+   so shrinking to mobile hides every image (display:none). */
+window.addEventListener('resize', function(){
+  var wraps = document.querySelectorAll('#dr-imgs .dr-img-wrap');
+  if (!wraps.length) return;
+  if (isMobile()) {
+    if (!document.querySelector('#dr-imgs .dr-img-wrap.mob-active')) mobShowImg(mobImgIdx || 0);
+  } else {
+    wraps.forEach(function(w){ w.classList.remove('mob-active'); });
+  }
+});
 
 var drImgsEl = document.getElementById('dr-imgs');
 var mobTouchX = 0, mobTouchY = 0, mobDir = null;
