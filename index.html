@@ -12,25 +12,13 @@
     body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:13px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
     a { color:inherit; text-decoration:none; }
 
-    /* ═══ HOME VIEW ═══ */
+    /* ══ HOME VIEW ══ */
     #home-view {
-      position:fixed; inset:0; background:#ebebeb;
-      z-index:100; transition:opacity .45s ease;
+      position:fixed; inset:0; background:#ebebeb; z-index:10;
     }
-    #home-view.out { opacity:0; pointer-events:none; }
-
-    .r-corner {
-      position:absolute; top:0; left:0; width:15px; height:15px;
-      background:#ebebeb; border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; z-index:20;
-    }
-    .r-top {
-      position:absolute; top:0; left:15px; right:0; height:15px;
-      background:#ebebeb; border-bottom:1px solid #c0c0c0; z-index:15; cursor:s-resize; overflow:hidden;
-    }
-    .r-left {
-      position:absolute; top:15px; left:0; width:15px; bottom:0;
-      background:#ebebeb; border-right:1px solid #c0c0c0; z-index:15; cursor:e-resize; overflow:hidden;
-    }
+    .r-corner { position:absolute; top:0; left:0; width:15px; height:15px; background:#ebebeb; border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; z-index:20; }
+    .r-top    { position:absolute; top:0; left:15px; right:0; height:15px; background:#ebebeb; border-bottom:1px solid #c0c0c0; z-index:15; cursor:s-resize; overflow:hidden; }
+    .r-left   { position:absolute; top:15px; left:0; width:15px; bottom:0; background:#ebebeb; border-right:1px solid #c0c0c0; z-index:15; cursor:e-resize; overflow:hidden; }
 
     #guide-layer { position:absolute; inset:0; z-index:10; pointer-events:none; }
     .guide { position:absolute; pointer-events:none; }
@@ -40,9 +28,8 @@
     .gprev.h { left:0; right:0; height:1px; background:rgba(30,110,255,.8); }
     .gprev.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.8); }
 
-    #canvas { position:absolute; top:15px; left:15px; right:0; bottom:0; overflow:hidden; }
+    #canvas { position:absolute; top:15px; left:15px; right:0; bottom:0; }
 
-    /* Draggable texts */
     .dtext { position:absolute; cursor:grab; z-index:30; user-select:none; }
     .dtext:active { cursor:grabbing; }
     .dtext.t1 { font-size:13px; font-weight:600; white-space:nowrap; }
@@ -50,129 +37,130 @@
     .dtext.t3 { font-size:13px; font-weight:400; }
     .hidden-ink { color:#ebebeb; }
 
-    /* Home menu */
-    #home-menu {
-      position:absolute; z-index:30;
-      font-size:13px; font-weight:400; line-height:1.5;
-    }
-    #home-menu a {
-      display:block; color:#1a1a1a; text-decoration:none; cursor:pointer;
-    }
+    #home-menu { position:absolute; z-index:30; font-size:13px; font-weight:400; line-height:1.5; }
+    #home-menu a { display:block; color:#1a1a1a; text-decoration:none; cursor:pointer; }
     #home-menu a:hover { color:#888; }
     #home-menu .menu-gap { height:13px; }
 
-    /* ═══ SUB VIEW ═══ */
-    #sub-view {
-      position:fixed; inset:0; background:#fff;
-      z-index:90; display:flex;
-      opacity:0; pointer-events:none; transition:opacity .4s ease;
+    /* initial hidden for typing anim */
+    .dtext, #home-menu { opacity:0; }
+
+    /* mouse trail images */
+    .trail-img {
+      position:absolute; pointer-events:none; z-index:20;
+      transform:translate(-50%,-50%);
+      opacity:0; transition:opacity .22s ease;
+      object-fit:cover;
     }
-    #sub-view.in { opacity:1; pointer-events:auto; }
+    .trail-img.visible { opacity:1; }
 
-    .cat-col {
-      width:160px; flex-shrink:0; padding:32px 24px;
-      border-right:1px solid #ebebeb; overflow-y:auto;
+    /* ══ DRAWER ══ */
+    #drawer {
+      position:fixed; left:0; right:0; bottom:0;
+      height:80vh;
+      background:#fff;
+      z-index:100;
+      transform:translateY(100%);
+      transition:transform .65s cubic-bezier(0.16,1,0.3,1);
+      display:flex;
+      flex-direction:row;
+      overflow:hidden;
     }
-    .cat-col ul { list-style:none; }
-    .cat-col li { margin-bottom:1px; }
-    .cat-col a { display:block; padding:2px 0; font-size:11px; font-weight:400; color:#aaa; cursor:pointer; }
-    .cat-col a.on { font-weight:600; color:#1a1a1a; }
-    .cat-col a:hover { color:#1a1a1a; }
+    #drawer.open { transform:translateY(0); }
 
-    .proj-col {
-      width:220px; flex-shrink:0; padding:32px 24px;
-      border-right:1px solid #ebebeb; overflow-y:auto;
+    /* Category col — 10% */
+    #dr-cat {
+      width:10vw; flex-shrink:0;
+      padding:28px 20px 28px 24px;
+      overflow-y:auto;
     }
-    .proj-col ul { list-style:none; }
-    .proj-col li { margin-bottom:2px; }
-    .proj-col a { display:block; padding:2px 0; font-size:11px; font-weight:400; color:#1a1a1a; cursor:pointer; }
-    .proj-col a:hover { color:#aaa; }
+    #dr-cat ul { list-style:none; }
+    #dr-cat li { margin-bottom:1px; }
+    #dr-cat a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#aaa; cursor:pointer; }
+    #dr-cat a.on { color:#1a1a1a; font-weight:600; }
+    #dr-cat a:hover { color:#1a1a1a; }
 
-    .main-area { flex:1; overflow-y:auto; padding:32px 24px 80px; }
-
-    .prow { margin-bottom:52px; }
-    .prow-head { font-size:11px; margin-bottom:10px; }
-    .prow-head b { font-weight:600; }
-    .prow-head span { color:#aaa; margin-left:6px; font-weight:400; }
-
-    .strip {
-      display:flex; gap:8px; overflow-x:auto;
-      -webkit-overflow-scrolling:touch; cursor:grab;
+    /* Project list col — 10% */
+    #dr-plist {
+      width:10vw; flex-shrink:0;
+      padding:28px 16px 28px 0;
+      overflow-y:auto;
     }
-    .strip:active { cursor:grabbing; }
-    .strip::-webkit-scrollbar { display:none; }
-    .strip img { flex-shrink:0; height:300px; width:auto; display:block; object-fit:cover; transition:opacity .15s; }
-    .strip img:hover { opacity:.82; }
+    #dr-plist ul { list-style:none; }
+    #dr-plist li { margin-bottom:1px; }
+    #dr-plist a { display:block; padding:1px 0; font-size:13px; font-weight:400; color:#1a1a1a; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #dr-plist a.on { font-weight:600; }
+    #dr-plist a:hover { color:#888; }
 
-    /* ═══ NAV BUTTONS ═══ */
-    .nav-btn {
-      position:fixed; top:18px; right:24px; z-index:150;
-      font-family:inherit; font-size:10px; letter-spacing:.06em;
-      background:none; border:none; cursor:pointer; color:#888; padding:4px 8px;
-      display:none;
+    /* Detail col — 80% */
+    #dr-detail {
+      flex:1; display:flex; flex-direction:row;
+      overflow:hidden; position:relative;
     }
-    .nav-btn.show { display:block; }
-    .nav-btn:hover { color:#1a1a1a; }
 
-    /* ═══ DETAIL VIEW ═══ */
-    #detail-view {
-      position:fixed; inset:0; background:#fff; z-index:80;
-      overflow-y:auto; opacity:0; pointer-events:none; transition:opacity .4s ease;
+    /* Close button */
+    #dr-close {
+      position:absolute; top:20px; right:24px; z-index:10;
+      font-family:inherit; font-size:44px; font-weight:300; line-height:1;
+      background:none; border:none; cursor:pointer; color:#aaa; padding:0;
     }
-    #detail-view.in { opacity:1; pointer-events:auto; }
+    #dr-close:hover { color:#1a1a1a; }
 
-    .site-header {
-      display:grid; grid-template-columns:240px 1fr auto;
-      column-gap:48px; padding:32px 48px;
-      border-bottom:1px solid #e0e0e0; align-items:center;
+    /* Info sub-col */
+    #dr-info {
+      width:22%; flex-shrink:0;
+      padding:28px 20px 32px 24px;
+      overflow-y:auto;
     }
-    .site-name { font-size:11px; font-weight:600; }
-    .site-desc, .site-contact { color:#888; }
+    #dr-info .dr-title { font-size:13px; font-weight:600; margin-bottom:20px; line-height:1.4; }
+    .dr-meta { margin-bottom:1px; font-size:13px; }
+    .dr-key { color:#aaa; margin-right:4px; }
 
-    .project {
-      display:grid; grid-template-columns:240px 1fr;
-      column-gap:48px; padding:56px 48px 96px;
-      border-top:1px solid #e0e0e0;
+    /* Description sub-col */
+    #dr-desc {
+      width:28%; flex-shrink:0;
+      padding:28px 24px 32px 0;
+      overflow-y:auto;
     }
-    .project-info { align-self:start; }
-    .project-title { font-size:11px; font-weight:600; letter-spacing:.01em; margin-bottom:20px; }
-    .project-meta { margin-bottom:24px; }
-    .meta-row { display:grid; grid-template-columns:68px 1fr; margin-bottom:1px; }
-    .meta-key { color:#aaa; }
-    .project-text-ko { margin-bottom:10px; line-height:1.7; }
-    .project-body-ko { color:#444; margin-bottom:10px; line-height:1.75; }
-    .project-tagline { font-style:italic; margin-bottom:10px; color:#444; }
-    .project-body { color:#888; margin-bottom:32px; line-height:1.7; }
-    .project-number { color:#bbb; font-size:10px; }
+    #dr-desc .dr-body-ko { margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
+    #dr-desc .dr-tagline { font-style:italic; margin-bottom:10px; color:#444; }
+    #dr-desc .dr-body-en { color:#888; line-height:1.65; }
 
-    .image-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; align-content:start; }
-    .image-item { display:flex; flex-direction:column; }
-    .image-item.col-2 { grid-column:span 2; }
-    .image-item.col-3 { grid-column:span 3; }
-    .image-item:not(.col-2):not(.col-3) img { width:86%; }
-    .image-item.col-2 img, .image-item.col-3 img { width:100%; }
-    .image-item img { height:auto; display:block; background:#f0f0f0; cursor:pointer; transition:opacity .15s; }
-    .image-item img:hover { opacity:.85; }
-    .caption { margin-top:7px; font-size:10px; color:#aaa; line-height:1.45; }
-    .caption .n { color:#ccc; margin-right:6px; }
+    /* Images sub-col */
+    #dr-imgs {
+      flex:1;
+      overflow-y:auto;
+      padding:0 0 32px 0;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    #dr-imgs::-webkit-scrollbar { display:none; }
+    .dr-img-wrap { flex-shrink:0; }
+    .dr-img-wrap img {
+      display:block; width:100%; height:auto;
+      cursor:pointer; transition:opacity .15s;
+    }
+    .dr-img-wrap img:hover { opacity:.88; }
+    .dr-img-counter {
+      padding:10px 0 4px;
+      font-size:11px; color:#aaa; letter-spacing:.04em;
+    }
 
     /* Lightbox */
     #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.93); z-index:1000; align-items:center; justify-content:center; }
     #lightbox.open { display:flex; }
     .lb-inner { max-width:88vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; }
-    #lb-img { max-width:100%; max-height:82vh; object-fit:contain; display:block; }
-    .lb-caption-text { margin-top:14px; font-size:10px; color:rgba(255,255,255,.4); letter-spacing:.04em; text-align:center; }
+    #lb-img { max-width:100%; max-height:84vh; object-fit:contain; display:block; }
     .lb-btn { position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.4); font-size:20px; cursor:pointer; padding:20px 28px; transition:color .15s; font-family:inherit; z-index:1001; }
     .lb-btn:hover { color:#fff; }
     #lb-prev { left:0; } #lb-next { right:0; }
-    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.4); font-size:11px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; letter-spacing:.06em; font-family:inherit; }
+    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.4); font-size:13px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; font-family:inherit; }
     #lb-close:hover { color:#fff; }
-    #lb-counter { position:fixed; top:28px; left:48px; font-size:10px; color:rgba(255,255,255,.3); letter-spacing:.06em; }
+    #lb-counter { position:fixed; top:28px; left:48px; font-size:11px; color:rgba(255,255,255,.3); letter-spacing:.06em; }
   </style>
 </head>
 <body>
 
-<!-- ════ HOME VIEW ════ -->
+<!-- ══ HOME VIEW ══ -->
 <div id="home-view">
   <div class="r-corner"></div>
   <div class="r-top" id="rtop">
@@ -189,9 +177,9 @@
     <div class="dtext t2" id="dt2" style="top:43px;left:20px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
     <div class="dtext t3" id="dt3" style="top:84px;left:20px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
     <div id="home-menu" style="top:120px;left:20px;">
-      <a onclick="goSub('commercial')">Commercial projects</a>
-      <a onclick="goSub('personal')">Personal projects</a>
-      <a onclick="goSub('all')">Index</a>
+      <a class="drawer-link" data-filter="commercial">Commercial projects</a>
+      <a class="drawer-link" data-filter="personal">Personal projects</a>
+      <a class="drawer-link" data-filter="all">Index</a>
       <div class="menu-gap"></div>
       <a href="mailto:choiheeye6@gmail.com">E-mail</a>
       <a href="https://instagram.com/ordk.kr" target="_blank" rel="noopener">Instagram</a>
@@ -199,108 +187,50 @@
   </div>
 </div>
 
-<!-- ════ SUB VIEW ════ -->
-<div id="sub-view">
-  <div class="cat-col">
+<!-- ══ DRAWER ══ -->
+<div id="drawer">
+  <!-- Category col 10% -->
+  <div id="dr-cat">
     <ul>
-      <li><a class="cat-link on" data-cat="all">ALL</a></li>
-      <li><a class="cat-link" data-cat="branding">Branding</a></li>
-      <li><a class="cat-link" data-cat="contents">Contents</a></li>
-      <li><a class="cat-link" data-cat="graphic">Graphic</a></li>
-      <li><a class="cat-link" data-cat="identity">Identity</a></li>
-      <li><a class="cat-link" data-cat="package">Package</a></li>
-      <li><a class="cat-link" data-cat="photography">Photography</a></li>
-      <li><a class="cat-link" data-cat="website">Website</a></li>
-      <li><a class="cat-link" data-cat="visual-directing">Visual Directing</a></li>
+      <li><a class="dr-cat-link on" data-cat="all">ALL</a></li>
+      <li><a class="dr-cat-link" data-cat="branding">Branding</a></li>
+      <li><a class="dr-cat-link" data-cat="contents">Contents</a></li>
+      <li><a class="dr-cat-link" data-cat="graphic">Graphic</a></li>
+      <li><a class="dr-cat-link" data-cat="identity">Identity</a></li>
+      <li><a class="dr-cat-link" data-cat="package">Package</a></li>
+      <li><a class="dr-cat-link" data-cat="photography">Photography</a></li>
+      <li><a class="dr-cat-link" data-cat="website">Website</a></li>
+      <li><a class="dr-cat-link" data-cat="visual-directing">Visual Directing</a></li>
     </ul>
   </div>
-  <div class="proj-col">
-    <ul>
-      <li><a class="pjump" data-target="prow-hotel">&#54840;&#53588;&#47532; &#44256;&#50836;</a></li>
-      <li><a class="pjump" data-target="prow-dot">&#51216;, &#51216;&#51216;</a></li>
-    </ul>
+
+  <!-- Project list col 10% -->
+  <div id="dr-plist">
+    <ul id="dr-plist-ul"></ul>
   </div>
-  <div class="main-area" id="main-area">
-    <div class="prow" id="prow-hotel" data-cats="branding identity">
-      <div class="prow-head"><b>&#54840;&#53588;&#47532; &#44256;&#50836;</b><span>Brand Identity</span></div>
-      <div class="strip" id="strip-hotel" data-anchor="proj-hotel-goyo"></div>
+
+  <!-- Detail col 80% -->
+  <div id="dr-detail">
+    <button id="dr-close" onclick="closeDrawer()">&#215;</button>
+
+    <!-- Info sub-col -->
+    <div id="dr-info">
+      <p class="dr-title" id="dr-title"></p>
+      <p class="dr-meta"><span class="dr-key">Format</span><span id="dr-format"></span></p>
+      <p class="dr-meta"><span class="dr-key">Client</span><span id="dr-client"></span></p>
+      <p class="dr-meta"><span class="dr-key">Date</span><span id="dr-date"></span></p>
     </div>
-    <div class="prow" id="prow-dot" data-cats="graphic identity">
-      <div class="prow-head"><b>&#51216;, &#51216;&#51216; &#8212; &#51228;58&#54924; &#46020;&#51088;&#49900;&#54868; &#51333;&#50629;&#51204;&#49884;</b><span>Exhibition Identity / Poster</span></div>
-      <div class="strip" id="strip-dot" data-anchor="proj-dotdotdot"></div>
+
+    <!-- Description sub-col -->
+    <div id="dr-desc">
+      <p class="dr-body-ko" id="dr-body-ko"></p>
+      <p class="dr-tagline" id="dr-tagline"></p>
+      <p class="dr-body-en" id="dr-body-en"></p>
     </div>
+
+    <!-- Images sub-col -->
+    <div id="dr-imgs"></div>
   </div>
-</div>
-
-<button class="nav-btn" id="back-btn">&#8592; Back</button>
-<button class="nav-btn" id="close-detail">&#8592; Projects</button>
-
-<!-- ════ DETAIL VIEW ════ -->
-<div id="detail-view">
-  <header class="site-header">
-    <div class="site-name">Heeye Choi</div>
-    <div class="site-desc">Brand &amp; Graphic Designer</div>
-    <div class="site-contact">choiheeye6@gmail.com</div>
-  </header>
-
-  <section class="project" id="proj-hotel-goyo">
-    <div class="project-info">
-      <p class="project-title">&#54840;&#53588;&#47532; &#44256;&#50836;</p>
-      <div class="project-meta">
-        <div class="meta-row"><span class="meta-key">Client</span><span>&#8212;</span></div>
-        <div class="meta-row"><span class="meta-key">Format</span><span>Brand Identity</span></div>
-        <div class="meta-row"><span class="meta-key">Date</span><span>2024</span></div>
-      </div>
-      <p class="project-body-ko">&#44544;&#51088;&#46é¤;&#51060; &#49436;&#47196;&#47484; &#44288;&#53685;&#54616;&#47728; &#44141;&#52³;&#51648;&#45716; &#47196;&#44256;&#53380;&#51077;&#51008; &#49352;&#48359; &#50504;&#44060;&#44032; &#BC88;&#51648;&#46íµ¯ &#48512;&#46å&#7139;&#47084;&#50864;&#47749;&#49436;&#46åµ &#51208;&#51228;&#46¤¼ &#54615;&#53468;&#47196; &#8216;&#44256;&#50836;&#8217;&#51032; &#51221;&#49436;&#47484; &#49884;&#44033;&#54868;&#54620;&#45796;. &#45202;&#51008; &#45824;&#48708;&#51032; &#D751;&#BC31;&#53864;&#51004;&#47196; &#44396;&#49457;&#46¤¼ &#48512;&#52³;&#49436; &#51068;&#47084;&#49828;&#53944;&#45716; &#51¢ á°5¼;&#44368;&#51201; &#BB34;&#44172;&#44048; &#C5C6;&#51060; &#D55C;&#AD6D; &#BD88;&#AD50; &#ACE0;&#C720;&#C758; &#ACE0;&#C988;&#B098;&#D55B; &#C544;&#B984;&#B2E4;&#C6C0;&#C744; &#B2F4;&#C544;&#B0B8;&#B2E4;. &#B85C;&#ACE0;&#D0C0;&#C785;&#BD80;&#D130; &#C77C;&#B7EC;&#C2A4;&#D2B8;, &#ADF8;&#B798;&#D53D; &#D328;&#D134;&#AE4C;&#C9C0; &#BAA8;&#B4E0; &#C694;&#C18C;&#AC00; &#BCF5;&#C7A1;&#D55C; &#C77C;&#C0C1;&#C5D0;&#C11C; &#BC97;&#C5B4;&#B098; &#C9C4;&#C815;&#D55C; &#C26C;&#C74C;&#C744; &#C120;&#C0AC;&#D558;&#B294; &#D558;&#B098;&#C758; &#BE0C;&#B79C;&#B4DC; &#C5B8;&#C5B4;&#B85C; &#C218;&#B834;&#D55C;&#B2E4;.</p>
-      <p class="project-tagline">In stillness, you finally meet yourself.</p>
-      <p class="project-body">The logotype &#8212; letters overlapping and dissolving into one another &#8212; renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.</p>
-      <p class="project-number">001</p>
-    </div>
-    <div class="image-grid">
-      <div class="image-item col-3"><img src="_web/Hotel GOYO/002.jpg" alt="Logotype"><div class="caption"><span class="n">1</span>Logotype</div></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/001.jpg" alt=""></div>
-      <div class="image-item col-3"><img src="_web/Hotel GOYO/004.jpg" alt=""></div>
-      <div class="image-item col-3"><img src="_web/Hotel GOYO/005.jpg" alt=""></div>
-      <div class="image-item col-2"><img src="_web/Hotel GOYO/003.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/006.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/007.jpg" alt=""></div>
-      <div class="image-item col-2"><img src="_web/Hotel GOYO/008.jpg" alt=""></div>
-      <div class="image-item col-2"><img src="_web/Hotel GOYO/009.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/010.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/011.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/Hotel GOYO/012.jpg" alt=""></div>
-      <div class="image-item col-3"><img src="_web/Hotel GOYO/013.jpg" alt=""></div>
-    </div>
-  </section>
-
-  <section class="project" id="proj-dotdotdot">
-    <div class="project-info">
-      <p class="project-title">&#51216;, &#51216;&#51216; &#8212; &#51228;58&#54924; &#46020;&#51088;&#49900;&#54868; &#51333;&#50629;&#51204;&#49884; &#50500;&#51060;&#45ด¤´&#53000;&#D2F0;</p>
-      <div class="project-meta">
-        <div class="meta-row"><span class="meta-key">Client</span><span>&#49436;&#50872;&#C5EC;&#C790;&#B300;&#D559;&#AD50; &#C544;&#D2B8;&#C564;&#B514;&#C790;&#C778;&#C2A4;&#CFE8; &#ACF5;&#C608;&#C804;&#ACF5;</span></div>
-        <div class="meta-row"><span class="meta-key">Format</span><span>Exhibition Identity / Poster</span></div>
-        <div class="meta-row"><span class="meta-key">Date</span><span>2025</span></div>
-      </div>
-      <p class="project-text-ko">&#51216; &#D558;&#B098;&#C5D0;&#C11C; &#D615;&#D0DC;&#AC00; &#BE44;&#B86F;&#B41C;&#B2E4;.</p>
-      <p class="project-body-ko">&#C218;&#BC31; &#AC1C;&#C758; &#C810;&#B4E4;&#C774; &#BC29;&#C0AC;&#D615;&#C73C;&#B85C; &#D37C;&#C9C0;&#ACE0; &#AD70;&#C9D1;&#D558;&#BA70; &#C720;&#AE30;&#C801; &#D615;&#D0DC;&#B97C; &#C774;&#B8E8;&#B3C4;&#B85D; &#AD6C;&#C131;&#D558;&#C5EC;, &#D759;&#C744; &#BE5A;&#ACE0; &#AC00;&#B9C8;&#B97C; &#D1B5;&#AD6C;&#D558;&#B294; &#B3C4;&#C790; &#C81C;&#C791;&#C758; &#C190;&#AE38;&#C744; &#ADF8;&#B798;&#D53D; &#C5B8;&#C5B4;&#B85C; &#BC88;&#C5ED;&#D558;&#C600;&#B2E4;. &#D06C;&#B9BC;&#BE5B; &#BC14;&#D0D5; &#C704;&#C5D0; &#BC88;&#C9C0;&#B4EF; &#D758;&#C5B4;&#C9C0;&#B294; &#C810;&#B4E4;&#C758; &#BC00;&#B3C4;&#B294; &#C12C;&#C138;&#D558;&#BA74;&#C11C;&#B3C4; &#C0DD;&#B3D9;&#D558;&#B294; &#AC10;&#AC01;&#C744; &#C804;&#B2EC;&#D558;&#BA70;, &#8216;&#51216;&#8217;&#C774;&#B77C;&#B294; &#AC00;&#C7A5; &#C791;&#C740; &#B2E8;&#C704;&#AC00; &#ACF3; &#D615;&#D0DC;&#C758; &#CD9C;&#BC1C;&#C784;&#C744; &#C804;&#C2DC; &#C804;&#CC44;&#C758; &#B17C;&#B9AC;&#B85C; &#C0BC;&#B294;&#B2E4;.</p>
-      <p class="project-tagline">Form begins from a single point.</p>
-      <p class="project-body">Hundreds of dots radiate and cluster into organic forms, translating the ceramicist&#8217;s gesture &#8212; shaping clay, enduring the kiln &#8212; into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself &#8212; the smallest unit of ceramic making &#8212; the governing logic of the entire exhibition identity.</p>
-      <p class="project-number">002</p>
-    </div>
-    <div class="image-grid">
-      <div class="image-item col-3"><img src="_web/dotdotdot/001.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/002.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/003.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/004.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/005.jpg" alt=""></div>
-      <div class="image-item col-2"><img src="_web/dotdotdot/006.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/007.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/008.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/009.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/010.jpg" alt=""></div>
-      <div class="image-item"><img src="_web/dotdotdot/011.jpg" alt=""></div>
-    </div>
-  </section>
 </div>
 
 <!-- Lightbox -->
@@ -308,17 +238,50 @@
   <div id="lb-counter"></div>
   <button id="lb-close">Close</button>
   <button class="lb-btn" id="lb-prev">&#8592;</button>
-  <div class="lb-inner"><img id="lb-img" src="" alt=""><div class="lb-caption-text" id="lb-caption"></div></div>
+  <div class="lb-inner"><img id="lb-img" src="" alt=""></div>
   <button class="lb-btn" id="lb-next">&#8594;</button>
 </div>
 
 <script>
+/* ── PROJECT DATA ── */
+var PROJECTS = [
+  {
+    id: 'hotel-goyo',
+    title: '호텔 고요',
+    format: 'Brand Identity',
+    client: '—',
+    date: '2024',
+    bodyKo: '글자들이 서로를 관통하며 겹쳐지는 로고타입은 새벽 안개가 번지듯 부드러우면서도 절제된 형태로 \'고요\'의 정서를 시각화한다. 낮은 대비의 흑백톤으로 구성된 부처 일러스트는 종교적 무게감 없이 한국 불교 고유의 고즈넉한 아름다움을 담아낸다. 로고타입부터 일러스트, 그래픽 패턴까지 모든 요소가 복잡한 일상에서 벗어나 진정한 쉼을 선사하는 하나의 브랜드 언어로 수렴한다.',
+    taglineEn: 'In stillness, you finally meet yourself.',
+    bodyEn: 'The logotype — letters overlapping and dissolving into one another — renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.',
+    imgCount: 13,
+    folder: 'Hotel GOYO',
+    cats: ['commercial', 'branding', 'identity']
+  },
+  {
+    id: 'dotdotdot',
+    title: '점, 점점',
+    format: 'Exhibition Identity / Poster',
+    client: '서울여자대학교 아트앤디자인스쿨 공예전공',
+    date: '2025',
+    bodyKo: '수백 개의 점들이 방사형으로 퍼지고 군집하며 유기적 형태를 이루도록 구성하여, 흙을 빚고 가마를 통과하는 도자 제작의 손길을 그래픽 언어로 번역하였다. 크림빛 바탕 위에 번지듯 흩어지는 점들의 밀도는 섬세하면서도 생동하는 감각을 전달하며, \'점\'이라는 가장 작은 단위가 곧 형태의 출발임을 전시 전체의 논리로 삼는다.',
+    taglineEn: 'Form begins from a single point.',
+    bodyEn: 'Hundreds of dots radiate and cluster into organic forms, translating the ceramicist\'s gesture — shaping clay, enduring the kiln — into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself — the smallest unit of ceramic making — the governing logic of the entire exhibition identity.',
+    imgCount: 11,
+    folder: 'dotdotdot',
+    cats: ['commercial', 'graphic', 'identity']
+  }
+];
+
+var currentFilter = 'all';
+var currentProject = null;
+
 /* ── RULERS ── */
 function drawH(svg) {
   var w = svg.clientWidth, s = '';
   for (var x = 0; x <= w; x += 30) {
     var maj = x % 90 === 0, th = maj ? 8 : (x % 60 === 0 ? 5 : 3);
-    s += '<line x1="' + x + '" y1="' + (15-th) + '" x2="' + x + '" y2="15" stroke="#b8b8b8" stroke-width=".5"/>';
+    s += '<line x1="'+x+'" y1="'+(15-th)+'" x2="'+x+'" y2="15" stroke="#b8b8b8" stroke-width=".5"/>';
   }
   svg.innerHTML = s;
 }
@@ -326,181 +289,291 @@ function drawV(svg) {
   var h = svg.clientHeight, s = '';
   for (var y = 0; y <= h; y += 30) {
     var maj = y % 90 === 0, tw = maj ? 8 : (y % 60 === 0 ? 5 : 3);
-    s += '<line x1="' + (15-tw) + '" y1="' + y + '" x2="15" y2="' + y + '" stroke="#b8b8b8" stroke-width=".5"/>';
+    s += '<line x1="'+(15-tw)+'" y1="'+y+'" x2="15" y2="'+y+'" stroke="#b8b8b8" stroke-width=".5"/>';
   }
   svg.innerHTML = s;
 }
-function initRulers() {
-  drawH(document.getElementById('svg-top'));
-  drawV(document.getElementById('svg-left'));
-}
-window.addEventListener('load', initRulers);
-window.addEventListener('resize', initRulers);
+window.addEventListener('load', function(){ drawH(document.getElementById('svg-top')); drawV(document.getElementById('svg-left')); });
+window.addEventListener('resize', function(){ drawH(document.getElementById('svg-top')); drawV(document.getElementById('svg-left')); });
 
 /* ── GUIDELINES ── */
 (function(){
   var GL = document.getElementById('guide-layer');
-  var pH = document.getElementById('gpH');
-  var pV = document.getElementById('gpV');
+  var pH = document.getElementById('gpH'), pV = document.getElementById('gpV');
   var mode = null;
-  document.getElementById('rtop').addEventListener('mousedown', function(e) {
-    mode='v'; pV.style.display='block'; pV.style.left=e.clientX+'px';
-    e.preventDefault(); e.stopPropagation();
-  });
-  document.getElementById('rleft').addEventListener('mousedown', function(e) {
-    mode='h'; pH.style.display='block'; pH.style.top=e.clientY+'px';
-    e.preventDefault(); e.stopPropagation();
-  });
-  window.addEventListener('mousemove', function(e) {
-    if (!mode) return;
-    if (mode==='h') pH.style.top = e.clientY+'px';
-    if (mode==='v') pV.style.left = e.clientX+'px';
-  });
-  window.addEventListener('mouseup', function(e) {
-    if (!mode) return;
-    var g = document.createElement('div');
-    g.className = 'guide ' + mode;
-    if (mode==='h') g.style.top = e.clientY+'px';
-    if (mode==='v') g.style.left = e.clientX+'px';
-    GL.appendChild(g);
-    pH.style.display='none'; pV.style.display='none';
-    mode = null;
+  document.getElementById('rtop').addEventListener('mousedown', function(e){ mode='v'; pV.style.display='block'; pV.style.left=e.clientX+'px'; e.preventDefault(); e.stopPropagation(); });
+  document.getElementById('rleft').addEventListener('mousedown', function(e){ mode='h'; pH.style.display='block'; pH.style.top=e.clientY+'px'; e.preventDefault(); e.stopPropagation(); });
+  window.addEventListener('mousemove', function(e){ if(!mode)return; if(mode==='h')pH.style.top=e.clientY+'px'; if(mode==='v')pV.style.left=e.clientX+'px'; });
+  window.addEventListener('mouseup', function(e){
+    if(!mode)return;
+    var g=document.createElement('div'); g.className='guide '+mode;
+    if(mode==='h')g.style.top=e.clientY+'px'; if(mode==='v')g.style.left=e.clientX+'px';
+    GL.appendChild(g); pH.style.display='none'; pV.style.display='none'; mode=null;
   });
 })();
 
 /* ── DRAGGABLE TEXTS ── */
-['dt1','dt2','dt3'].forEach(function(id) {
-  var el = document.getElementById(id);
-  var sx,sy,ox,oy,down=false;
-  el.addEventListener('mousedown', function(e) {
-    down=true; sx=e.clientX; sy=e.clientY;
-    ox=parseInt(el.style.left)||0; oy=parseInt(el.style.top)||0;
-    el.style.zIndex=50; e.preventDefault(); e.stopPropagation();
-  });
-  window.addEventListener('mousemove', function(e) {
-    if (!down) return;
-    el.style.left=(ox+e.clientX-sx)+'px'; el.style.top=(oy+e.clientY-sy)+'px';
-  });
-  window.addEventListener('mouseup', function() { if(down){down=false;el.style.zIndex=30;} });
+['dt1','dt2','dt3'].forEach(function(id){
+  var el=document.getElementById(id), sx,sy,ox,oy,down=false;
+  el.addEventListener('mousedown',function(e){ down=true;sx=e.clientX;sy=e.clientY;ox=parseInt(el.style.left)||0;oy=parseInt(el.style.top)||0;el.style.zIndex=50;e.preventDefault();e.stopPropagation(); });
+  window.addEventListener('mousemove',function(e){ if(!down)return; el.style.left=(ox+e.clientX-sx)+'px';el.style.top=(oy+e.clientY-sy)+'px'; });
+  window.addEventListener('mouseup',function(){ if(down){down=false;el.style.zIndex=30;} });
 });
 
-
-/* ── NAVIGATION ── */
-var homeView    = document.getElementById('home-view');
-var subView     = document.getElementById('sub-view');
-var detailView  = document.getElementById('detail-view');
-var backBtn     = document.getElementById('back-btn');
-var closeDetail = document.getElementById('close-detail');
-
-function goSub(filter) {
-  homeView.classList.add('out');
-  subView.classList.add('in');
-  backBtn.classList.add('show');
-  closeDetail.classList.remove('show');
-  // Apply category filter
-  var cat = filter || 'all';
-  document.querySelectorAll('.cat-link').forEach(function(l){ l.classList.remove('on'); });
-  var active = document.querySelector('.cat-link[data-cat="' + cat + '"]');
-  if (active) active.classList.add('on');
-  document.querySelectorAll('.prow').forEach(function(row){
-    row.style.display = (cat==='all' || (row.dataset.cats||'').includes(cat)) ? '' : 'none';
+/* ── DRAWER ── */
+document.querySelectorAll('.drawer-link').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.stopPropagation();
+    openDrawer(a.dataset.filter);
   });
-}
-function goHome() {
-  homeView.classList.remove('out');
-  subView.classList.remove('in');
-  detailView.classList.remove('in');
-  backBtn.classList.remove('show');
-  closeDetail.classList.remove('show');
-}
-function showDetail(anchor) {
-  detailView.classList.add('in');
-  subView.classList.remove('in');
-  backBtn.classList.remove('show');
-  closeDetail.classList.add('show');
-  detailView.scrollTop = 0;
-  if (anchor) {
-    var el = document.getElementById(anchor);
-    if (el) setTimeout(function(){ detailView.scrollTop = el.offsetTop - 32; }, 50);
-  }
-}
-
-/* click-anywhere removed — navigation via menu only */
-backBtn.addEventListener('click', function(e) { e.stopPropagation(); goHome(); });
-closeDetail.addEventListener('click', function() {
-  detailView.classList.remove('in');
-  subView.classList.add('in');
-  backBtn.classList.add('show');
-  closeDetail.classList.remove('show');
 });
 
-/* ── SUBPAGE STRIPS ── */
-(function(){
-  function fill(stripId, count, folder) {
-    var strip = document.getElementById(stripId);
-    var anchor = strip.dataset.anchor;
-    for (var i=1; i<=count; i++) {
-      var img = document.createElement('img');
-      img.src = '_web/' + folder + '/' + String(i).padStart(3,'0') + '.jpg';
-      img.alt = '';
-      (function(a){ img.addEventListener('click', function(){ showDetail(a); }); })(anchor);
-      strip.appendChild(img);
-    }
-    var down=false, startX, scrollL;
-    strip.addEventListener('mousedown', function(e) { down=true; startX=e.pageX; scrollL=strip.scrollLeft; });
-    strip.addEventListener('mouseleave', function() { down=false; });
-    strip.addEventListener('mouseup', function() { down=false; });
-    strip.addEventListener('mousemove', function(e) {
-      if (!down) return; e.preventDefault();
-      strip.scrollLeft = scrollL - (e.pageX - startX);
-    });
+function openDrawer(filter) {
+  currentFilter = filter || 'all';
+  renderCatFilter();
+  renderProjectList();
+  if (PROJECTS.length > 0) {
+    var visible = filteredProjects();
+    if (visible.length > 0) loadProject(visible[0].id);
   }
-  fill('strip-hotel', 13, 'Hotel GOYO');
-  fill('strip-dot',   11, 'dotdotdot');
-})();
+  document.getElementById('drawer').classList.add('open');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+}
+document.getElementById('home-view').addEventListener('click', function(){
+  if (document.getElementById('drawer').classList.contains('open')) closeDrawer();
+});
+
+function filteredProjects() {
+  if (currentFilter === 'all') return PROJECTS;
+  return PROJECTS.filter(function(p){ return p.cats.indexOf(currentFilter) !== -1; });
+}
+
+function renderCatFilter() {
+  document.querySelectorAll('.dr-cat-link').forEach(function(a){
+    a.classList.toggle('on', a.dataset.cat === currentFilter);
+  });
+  // Show/hide project rows in list based on filter
+  renderProjectList();
+}
+
+function renderProjectList() {
+  var ul = document.getElementById('dr-plist-ul');
+  ul.innerHTML = '';
+  filteredProjects().forEach(function(p){
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.textContent = p.title;
+    a.dataset.id = p.id;
+    if (p.id === currentProject) a.classList.add('on');
+    a.addEventListener('click', function(){ loadProject(p.id); });
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+}
+
+function loadProject(id) {
+  currentProject = id;
+  var p = PROJECTS.find(function(x){ return x.id === id; });
+  if (!p) return;
+
+  // Update project list highlight
+  document.querySelectorAll('#dr-plist-ul a').forEach(function(a){
+    a.classList.toggle('on', a.dataset.id === id);
+  });
+
+  // Info
+  document.getElementById('dr-title').textContent = p.title;
+  document.getElementById('dr-format').textContent = p.format;
+  document.getElementById('dr-client').textContent = p.client;
+  document.getElementById('dr-date').textContent = p.date;
+
+  // Description
+  document.getElementById('dr-body-ko').textContent = p.bodyKo;
+  document.getElementById('dr-tagline').textContent = p.taglineEn;
+  document.getElementById('dr-body-en').textContent = p.bodyEn;
+
+  // Images
+  var imgs = document.getElementById('dr-imgs');
+  imgs.innerHTML = '';
+  var allSrcs = [];
+  for (var i = 1; i <= p.imgCount; i++) {
+    var src = '_web/' + p.folder + '/' + String(i).padStart(3,'0') + '.jpg';
+    allSrcs.push(src);
+    var wrap = document.createElement('div');
+    wrap.className = 'dr-img-wrap';
+    var img = document.createElement('img');
+    img.src = src; img.alt = '';
+    (function(idx, srcs){ img.addEventListener('click', function(){ lbOpen(srcs, idx); }); })(i-1, allSrcs);
+    wrap.appendChild(img);
+    imgs.appendChild(wrap);
+  }
+  imgs.scrollTop = 0;
+}
 
 /* ── CATEGORY FILTER ── */
-document.querySelectorAll('.cat-link').forEach(function(a) {
-  a.addEventListener('click', function(e) {
+document.querySelectorAll('.dr-cat-link').forEach(function(a){
+  a.addEventListener('click', function(e){
     e.preventDefault();
-    document.querySelectorAll('.cat-link').forEach(function(l){ l.classList.remove('on'); });
-    a.classList.add('on');
-    var cat = a.dataset.cat;
-    document.querySelectorAll('.prow').forEach(function(row) {
-      row.style.display = (cat==='all' || (row.dataset.cats||'').includes(cat)) ? '' : 'none';
-    });
-  });
-});
-
-/* ── PROJECT JUMP ── */
-document.querySelectorAll('.pjump').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    var el = document.getElementById(a.dataset.target);
-    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    currentFilter = a.dataset.cat;
+    renderCatFilter();
+    var visible = filteredProjects();
+    if (visible.length > 0 && visible.findIndex(function(p){ return p.id === currentProject; }) === -1) {
+      loadProject(visible[0].id);
+    }
   });
 });
 
 /* ── LIGHTBOX ── */
+var lbImages = [], lbCur = 0;
+function lbOpen(srcs, idx) {
+  lbImages = srcs; lbCur = idx;
+  lbShow(lbCur);
+  document.getElementById('lightbox').classList.add('open');
+}
+function lbShow(idx) {
+  lbCur = (idx + lbImages.length) % lbImages.length;
+  document.getElementById('lb-img').src = lbImages[lbCur];
+  document.getElementById('lb-counter').textContent = (lbCur+1) + ' / ' + lbImages.length;
+}
+document.getElementById('lb-close').addEventListener('click', function(){ document.getElementById('lightbox').classList.remove('open'); });
+document.getElementById('lb-prev').addEventListener('click', function(){ lbShow(lbCur-1); });
+document.getElementById('lb-next').addEventListener('click', function(){ lbShow(lbCur+1); });
+document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
+document.addEventListener('keydown', function(e){
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key==='Escape') document.getElementById('lightbox').classList.remove('open');
+  if (e.key==='ArrowLeft') lbShow(lbCur-1);
+  if (e.key==='ArrowRight') lbShow(lbCur+1);
+});
+
+/* ── TYPING ANIMATION ── */
+window.addEventListener('load', function(){
+  var SPEED = 14; // ms per char
+
+  // dt1 chars — hidden-ink chars wrapped in {h:'x'}
+  var dt1Chars = [
+    'o','r','d','k',',',' ','o','r','d',
+    {h:'e'},{h:'r'},{h:'k'},
+    'n','a','c',
+    {h:'k'}
+  ];
+
+  function typeCustom(el, chars, spd, done) {
+    el.style.opacity = '1';
+    el.innerHTML = '';
+    var i = 0;
+    function step() {
+      if (i >= chars.length) { if (done) done(); return; }
+      var c = chars[i++];
+      if (c && typeof c === 'object') {
+        var sp = document.createElement('span');
+        sp.className = 'hidden-ink'; sp.textContent = c.h;
+        el.appendChild(sp);
+      } else {
+        el.appendChild(document.createTextNode(c));
+      }
+      setTimeout(step, spd);
+    }
+    step();
+  }
+
+  function typeText(el, text, spd, done) {
+    el.style.opacity = '1';
+    el.textContent = '';
+    var i = 0;
+    function step() {
+      if (i >= text.length) { if (done) done(); return; }
+      el.textContent += text[i++];
+      setTimeout(step, spd);
+    }
+    step();
+  }
+
+  var dt1 = document.getElementById('dt1');
+  var dt2 = document.getElementById('dt2');
+  var dt3 = document.getElementById('dt3');
+  var menu = document.getElementById('home-menu');
+
+  setTimeout(function(){
+    typeCustom(dt1, dt1Chars, SPEED * 2, function(){
+      typeText(dt2,
+        'ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.',
+        SPEED, function(){
+          typeText(dt3, '©Heeye Choi, Based in Seoul, Korea', SPEED * 1.5, function(){
+            menu.style.transition = 'opacity .5s';
+            menu.style.opacity = '1';
+          });
+        });
+    });
+  }, 300);
+});
+
+/* ── MOUSE TRAIL IMAGES ── */
 (function(){
-  var lb=document.getElementById('lightbox');
-  var lbImg=document.getElementById('lb-img');
-  var lbCap=document.getElementById('lb-caption');
-  var lbCnt=document.getElementById('lb-counter');
-  var images=[], cur=0;
-  function show(idx){ cur=(idx+images.length)%images.length; lbImg.src=images[cur].src; lbCap.textContent=images[cur].alt; lbCnt.textContent=(cur+1)+' / '+images.length; }
-  function open(img){ var grid=img.closest('.image-grid'); images=grid?Array.from(grid.querySelectorAll('img')):[img]; cur=images.indexOf(img); show(cur); lb.classList.add('open'); }
-  function close(){ lb.classList.remove('open'); lbImg.src=''; }
-  document.querySelectorAll('.image-grid img').forEach(function(img){ img.addEventListener('click',function(){ open(img); }); });
-  document.getElementById('lb-close').addEventListener('click', close);
-  document.getElementById('lb-prev').addEventListener('click', function(){ show(cur-1); });
-  document.getElementById('lb-next').addEventListener('click', function(){ show(cur+1); });
-  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
-  document.addEventListener('keydown', function(e){
-    if (!lb.classList.contains('open')) return;
-    if (e.key==='Escape') close();
-    if (e.key==='ArrowLeft') show(cur-1);
-    if (e.key==='ArrowRight') show(cur+1);
+  var pool = [
+    '_web/Hotel GOYO/001.jpg','_web/Hotel GOYO/002.jpg','_web/Hotel GOYO/003.jpg',
+    '_web/Hotel GOYO/005.jpg','_web/Hotel GOYO/007.jpg','_web/Hotel GOYO/009.jpg',
+    '_web/dotdotdot/001.jpg','_web/dotdotdot/002.jpg','_web/dotdotdot/003.jpg',
+    '_web/dotdotdot/005.jpg','_web/dotdotdot/007.jpg'
+  ];
+
+  function shuffle(a) {
+    var b = a.slice();
+    for (var i = b.length-1; i > 0; i--) {
+      var j = Math.floor(Math.random()*(i+1)), t = b[i]; b[i]=b[j]; b[j]=t;
+    }
+    return b;
+  }
+
+  var deck = shuffle(pool), deckIdx = 0;
+  function nextSrc() {
+    if (deckIdx >= deck.length) { deck = shuffle(pool); deckIdx = 0; }
+    return deck[deckIdx++];
+  }
+
+  var lastX = -9999, lastY = -9999;
+  var MIN_DIST = 160;
+  var LIFE = 1000; // ms before fade
+
+  document.getElementById('home-view').addEventListener('mousemove', function(e) {
+    if (document.getElementById('drawer').classList.contains('open')) return;
+
+    var canvas = document.getElementById('canvas');
+    var r = canvas.getBoundingClientRect();
+    var cx = e.clientX - r.left;
+    var cy = e.clientY - r.top;
+
+    // exclude left text/menu zone
+    if (cx < 320) return;
+
+    var d = Math.sqrt((cx-lastX)*(cx-lastX)+(cy-lastY)*(cy-lastY));
+    if (d < MIN_DIST) return;
+    lastX = cx; lastY = cy;
+
+    var w = 160 + Math.floor(Math.random()*100); // 160-260px
+    var rot = (Math.random()*8 - 4).toFixed(1);  // -4° to +4°
+
+    var img = document.createElement('img');
+    img.className = 'trail-img';
+    img.src = nextSrc();
+    img.style.left = cx + 'px';
+    img.style.top  = cy + 'px';
+    img.style.width = w + 'px';
+    img.style.transform = 'translate(-50%,-50%) rotate('+rot+'deg)';
+    canvas.appendChild(img);
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ img.classList.add('visible'); });
+    });
+
+    setTimeout(function(){
+      img.style.transition = 'opacity .45s ease';
+      img.classList.remove('visible');
+      setTimeout(function(){ if (img.parentNode) img.parentNode.removeChild(img); }, 450);
+    }, LIFE);
   });
 })();
 </script>
