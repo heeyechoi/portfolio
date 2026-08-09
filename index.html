@@ -71,7 +71,7 @@
     /* Category col — 10% */
     #dr-cat {
       width:10vw; flex-shrink:0;
-      padding:28px 20px 28px 24px;
+      padding:28px 20px 28px 35px;
       overflow-y:auto;
     }
     #dr-cat ul { list-style:none; }
@@ -122,9 +122,10 @@
       padding:28px 24px 32px 0;
       overflow-y:auto;
     }
-    #dr-desc .dr-body-ko { margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
-    #dr-desc .dr-tagline { font-style:italic; margin-bottom:10px; color:#444; }
-    #dr-desc .dr-body-en { color:#888; line-height:1.65; }
+    #dr-desc .dr-title-ko { font-size:15px; font-weight:600; margin-bottom:20px; line-height:1.4; }
+    #dr-desc .dr-body-ko { font-size:13px; margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
+    #dr-desc .dr-tagline  { font-size:13px; font-style:italic; margin-bottom:10px; color:#444; }
+    #dr-desc .dr-body-en  { font-size:13px; color:#888; line-height:1.65; }
 
     /* Images sub-col */
     #dr-imgs {
@@ -223,6 +224,7 @@
 
     <!-- Description sub-col -->
     <div id="dr-desc">
+      <p class="dr-title-ko" id="dr-title-ko"></p>
       <p class="dr-body-ko" id="dr-body-ko"></p>
       <p class="dr-tagline" id="dr-tagline"></p>
       <p class="dr-body-en" id="dr-body-en"></p>
@@ -248,6 +250,7 @@ var PROJECTS = [
   {
     id: 'hotel-goyo',
     title: '호텔 고요',
+    titleEn: 'Hotel GOYO',
     format: 'Brand Identity',
     client: '—',
     date: '2024',
@@ -261,6 +264,7 @@ var PROJECTS = [
   {
     id: 'dotdotdot',
     title: '점, 점점',
+    titleEn: 'Dot, Dot Dot',
     format: 'Exhibition Identity / Poster',
     client: '서울여자대학교 아트앤디자인스쿨 공예전공',
     date: '2025',
@@ -365,7 +369,7 @@ function renderProjectList() {
   filteredProjects().forEach(function(p){
     var li = document.createElement('li');
     var a = document.createElement('a');
-    a.textContent = p.title;
+    a.textContent = p.titleEn || p.title;
     a.dataset.id = p.id;
     if (p.id === currentProject) a.classList.add('on');
     a.addEventListener('click', function(){ loadProject(p.id); });
@@ -385,7 +389,8 @@ function loadProject(id) {
   });
 
   // Info
-  document.getElementById('dr-title').textContent = p.title;
+  document.getElementById('dr-title').textContent = p.titleEn || p.title;
+  document.getElementById('dr-title-ko').textContent = p.title;
   document.getElementById('dr-format').textContent = p.format;
   document.getElementById('dr-client').textContent = p.client;
   document.getElementById('dr-date').textContent = p.date;
