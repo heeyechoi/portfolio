@@ -9,7 +9,7 @@
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html, body { width:100%; height:100%; overflow:hidden; }
-    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:11px; line-height:1.6; color:#1a1a1a; background:#ebebeb; }
+    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:13px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
     a { color:inherit; text-decoration:none; }
 
     /* ═══ HOME VIEW ═══ */
@@ -20,15 +20,15 @@
     #home-view.out { opacity:0; pointer-events:none; }
 
     .r-corner {
-      position:absolute; top:0; left:0; width:30px; height:30px;
+      position:absolute; top:0; left:0; width:15px; height:15px;
       background:#ebebeb; border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; z-index:20;
     }
     .r-top {
-      position:absolute; top:0; left:30px; right:0; height:30px;
+      position:absolute; top:0; left:15px; right:0; height:15px;
       background:#ebebeb; border-bottom:1px solid #c0c0c0; z-index:15; cursor:s-resize; overflow:hidden;
     }
     .r-left {
-      position:absolute; top:30px; left:0; width:30px; bottom:0;
+      position:absolute; top:15px; left:0; width:15px; bottom:0;
       background:#ebebeb; border-right:1px solid #c0c0c0; z-index:15; cursor:e-resize; overflow:hidden;
     }
 
@@ -40,35 +40,15 @@
     .gprev.h { left:0; right:0; height:1px; background:rgba(30,110,255,.8); }
     .gprev.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.8); }
 
-    #canvas { position:absolute; top:30px; left:30px; right:0; bottom:0; overflow:hidden; }
-
-    /* Floating images */
-    #float-layer { position:absolute; inset:0; pointer-events:none; will-change:transform; }
-    .fi {
-      position:absolute; pointer-events:auto; cursor:pointer;
-      overflow:hidden; transition:box-shadow .3s;
-    }
-    .fi img { display:block; width:100%; height:100%; object-fit:cover; }
-    .fi-lbl {
-      position:absolute; bottom:0; left:0; right:0;
-      background:rgba(235,235,235,.88); padding:5px 10px;
-      font-size:10px; letter-spacing:.04em;
-      opacity:0; transition:opacity .2s; pointer-events:none;
-    }
-    .fi:hover { box-shadow:0 8px 36px rgba(0,0,0,.16); }
-    .fi:hover .fi-lbl { opacity:1; }
-
-    @keyframes fa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
-    @keyframes fb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
-    @keyframes fc { 0%,100%{transform:translateY(0) rotate(-.4deg)} 50%{transform:translateY(-6px) rotate(.4deg)} }
-    @keyframes fd { 0%,100%{transform:translateY(0) rotate(.3deg)} 50%{transform:translateY(8px) rotate(-.3deg)} }
+    #canvas { position:absolute; top:15px; left:15px; right:0; bottom:0; overflow:hidden; }
 
     /* Draggable texts */
     .dtext { position:absolute; cursor:grab; z-index:30; user-select:none; }
     .dtext:active { cursor:grabbing; }
-    .dtext.t1 { font-size:11px; font-weight:600; white-space:nowrap; }
-    .dtext.t2 { font-size:11px; font-weight:400; line-height:1.75; max-width:480px; }
-    .dtext.t3 { font-size:11px; font-weight:400; }
+    .dtext.t1 { font-size:13px; font-weight:600; white-space:nowrap; }
+    .dtext.t2 { font-size:13px; font-weight:400; line-height:1.5; width:calc(100vw - 40px); }
+    .dtext.t3 { font-size:13px; font-weight:400; }
+    .hidden-ink { color:#ebebeb; }
 
     /* ═══ SUB VIEW ═══ */
     #sub-view {
@@ -194,10 +174,9 @@
   <div class="gprev v" id="gpV" style="display:none"></div>
   <div id="guide-layer"></div>
   <div id="canvas">
-    <div id="float-layer"></div>
-    <div class="dtext t1" id="dt1" style="top:40px;left:12px;">ordk, ord&nbsp;&nbsp;&nbsp;&nbsp;<em>nac</em></div>
-    <div class="dtext t2" id="dt2" style="top:62px;left:12px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
-    <div class="dtext t3" id="dt3" style="top:118px;left:12px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
+    <div class="dtext t1" id="dt1" style="top:23px;left:20px;">ordk, ord<span class="hidden-ink">erk</span>nac<span class="hidden-ink">k</span></div>
+    <div class="dtext t2" id="dt2" style="top:43px;left:20px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
+    <div class="dtext t3" id="dt3" style="top:84px;left:20px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
   </div>
 </div>
 
@@ -319,18 +298,16 @@
 function drawH(svg) {
   var w = svg.clientWidth, s = '';
   for (var x = 0; x <= w; x += 30) {
-    var maj = x % 90 === 0, th = maj ? 10 : (x % 60 === 0 ? 7 : 4);
-    s += '<line x1="' + x + '" y1="' + (30-th) + '" x2="' + x + '" y2="30" stroke="#b0b0b0" stroke-width=".5"/>';
-    if (maj && x > 0) s += '<text x="' + (x+2) + '" y="11" font-size="7" fill="#b0b0b0" font-family="SuisseIntl,sans-serif">' + x + '</text>';
+    var maj = x % 90 === 0, th = maj ? 8 : (x % 60 === 0 ? 5 : 3);
+    s += '<line x1="' + x + '" y1="' + (15-th) + '" x2="' + x + '" y2="15" stroke="#b8b8b8" stroke-width=".5"/>';
   }
   svg.innerHTML = s;
 }
 function drawV(svg) {
   var h = svg.clientHeight, s = '';
   for (var y = 0; y <= h; y += 30) {
-    var maj = y % 90 === 0, tw = maj ? 10 : (y % 60 === 0 ? 7 : 4);
-    s += '<line x1="' + (30-tw) + '" y1="' + y + '" x2="30" y2="' + y + '" stroke="#b0b0b0" stroke-width=".5"/>';
-    if (maj && y > 0) s += '<text x="1" y="' + (y-2) + '" font-size="7" fill="#b0b0b0" font-family="SuisseIntl,sans-serif" transform="rotate(-90,1,' + (y-2) + ')">' + y + '</text>';
+    var maj = y % 90 === 0, tw = maj ? 8 : (y % 60 === 0 ? 5 : 3);
+    s += '<line x1="' + (15-tw) + '" y1="' + y + '" x2="15" y2="' + y + '" stroke="#b8b8b8" stroke-width=".5"/>';
   }
   svg.innerHTML = s;
 }
@@ -388,32 +365,6 @@ window.addEventListener('resize', initRulers);
   window.addEventListener('mouseup', function() { if(down){down=false;el.style.zIndex=30;} });
 });
 
-/* ── FLOATING IMAGES ── */
-(function(){
-  var items = [
-    { src:'_web/Hotel GOYO/001.jpg', label:'호텔 고요', w:270, h:185, anim:'fa', dur:5.2, xp:0.28, yp:0.24 },
-    { src:'_web/Hotel GOYO/003.jpg', label:'호텔 고요', w:175, h:235, anim:'fb', dur:6.1, xp:0.57, yp:0.42 },
-    { src:'_web/dotdotdot/001.jpg',  label:'점, 점점',      w:210, h:290, anim:'fc', dur:4.8, xp:0.36, yp:0.46 },
-    { src:'_web/dotdotdot/003.jpg',  label:'점, 점점',      w:185, h:215, anim:'fd', dur:5.6, xp:0.63, yp:0.18 }
-  ];
-  var layer = document.getElementById('float-layer');
-  items.forEach(function(f,i) {
-    var div = document.createElement('div');
-    div.className = 'fi';
-    div.style.cssText = 'left:'+f.xp*100+'%;top:'+f.yp*100+'%;width:'+f.w+'px;height:'+f.h+'px;animation:'+f.anim+' '+f.dur+'s '+(i*0.65)+'s ease-in-out infinite;';
-    var img = document.createElement('img'); img.src=f.src; img.alt=f.label;
-    var lbl = document.createElement('div'); lbl.className='fi-lbl'; lbl.textContent=f.label;
-    div.appendChild(img); div.appendChild(lbl);
-    div.addEventListener('click', function(e) { e.stopPropagation(); goSub(); });
-    layer.appendChild(div);
-  });
-  var tx=0, ty=0;
-  document.addEventListener('mousemove', function(e) {
-    tx=(e.clientX/window.innerWidth-.5)*22;
-    ty=(e.clientY/window.innerHeight-.5)*13;
-  });
-  (function tick(){ layer.style.transform='translate('+tx+'px,'+ty+'px)'; requestAnimationFrame(tick); })();
-})();
 
 /* ── NAVIGATION ── */
 var homeView    = document.getElementById('home-view');
