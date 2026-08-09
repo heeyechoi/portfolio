@@ -3,53 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Heeye Choi</title>
+  <title>ordk — Heeye Choi</title>
   <style>
-    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
-    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
-    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-weight:400; font-size:11px; line-height:1.6; color:#1a1a1a; background:#fff; overflow-x:hidden; }
+    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-Regular.otf') format('opentype'); font-weight:400; }
+    @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; overflow:hidden; }
+    body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:11px; line-height:1.6; color:#1a1a1a; background:#ebebeb; }
     a { color:inherit; text-decoration:none; }
 
-    /* ── Landing ── */
-    .landing { position:relative; width:100vw; height:100vh; overflow:hidden; }
-    .landing-header { position:absolute; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:baseline; padding:28px 40px; }
-    .landing-name { font-size:11px; font-weight:600; letter-spacing:.01em; }
-    .landing-nav { display:flex; gap:32px; }
-    .landing-nav a { font-size:11px; color:#888; transition:color .15s; }
-    .landing-nav a:hover { color:#1a1a1a; }
-    .marquee-outer { position:absolute; inset:0; overflow:hidden; }
-    .marquee-track { display:flex; align-items:flex-end; height:100%; padding:0 48px 40px; gap:0; will-change:transform; animation:marquee-scroll 72s linear infinite; }
-    .marquee-track:hover { animation-play-state:paused; }
-    @keyframes marquee-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-    .m-item { flex-shrink:0; display:flex; flex-direction:column; justify-content:flex-end; margin-right:var(--mr,10px); cursor:pointer; }
-    .m-item:hover .m-img,.m-item:hover .m-ph { opacity:.8; }
-    .m-img { display:block; height:var(--h,55vh); width:auto; max-width:50vw; object-fit:cover; transition:opacity .22s; }
-    .m-ph { background:#e6e6e6; position:relative; overflow:hidden; flex-shrink:0; width:var(--w,28vw); height:var(--h,55vh); transition:opacity .22s; }
-    .m-ph::after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 30px,rgba(0,0,0,.038) 30px,rgba(0,0,0,.038) 31px); }
-    .m-label { margin-top:10px; font-size:10px; color:#bbb; letter-spacing:.03em; white-space:nowrap; }
-    .m-label .m-num { color:#d0d0d0; margin-right:6px; }
-    .landing-hint { position:absolute; bottom:28px; left:40px; font-size:10px; color:#bbb; letter-spacing:.06em; z-index:10; }
+    /* ═══ HOME VIEW ═══ */
+    #home-view {
+      position:fixed; inset:0; background:#ebebeb;
+      z-index:100; transition:opacity .45s ease;
+    }
+    #home-view.out { opacity:0; pointer-events:none; }
 
-    /* ── Site header ── */
-    .site-header { display:grid; grid-template-columns:240px 1fr auto; column-gap:48px; padding:32px 48px; border-bottom:1px solid #e0e0e0; align-items:center; }
-    .site-name { font-size:11px; font-weight:600; letter-spacing:.01em; }
-    .site-desc,.site-contact { color:#888; }
+    .r-corner {
+      position:absolute; top:0; left:0; width:30px; height:30px;
+      background:#ebebeb; border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; z-index:20;
+    }
+    .r-top {
+      position:absolute; top:0; left:30px; right:0; height:30px;
+      background:#ebebeb; border-bottom:1px solid #c0c0c0; z-index:15; cursor:s-resize; overflow:hidden;
+    }
+    .r-left {
+      position:absolute; top:30px; left:0; width:30px; bottom:0;
+      background:#ebebeb; border-right:1px solid #c0c0c0; z-index:15; cursor:e-resize; overflow:hidden;
+    }
 
-    /* ── Project index ── */
-    .index { display:grid; grid-template-columns:240px 1fr; column-gap:48px; padding:48px 48px 64px; border-bottom:1px solid #e0e0e0; }
-    .index-label { font-size:10px; color:#aaa; letter-spacing:.08em; text-transform:uppercase; padding-top:2px; }
-    .index-list { list-style:none; }
-    .index-list li { display:grid; grid-template-columns:32px 1fr auto; column-gap:16px; padding:9px 0; border-top:1px solid #e8e8e8; align-items:baseline; }
-    .index-list li:last-child { border-bottom:1px solid #e8e8e8; }
-    .index-list a { display:contents; }
-    .index-list a:hover .idx-title { color:#888; }
-    .idx-num { color:#bbb; font-size:10px; }
-    .idx-title { font-weight:600; transition:color .15s; }
-    .idx-type { color:#aaa; font-size:10px; }
+    #guide-layer { position:absolute; inset:0; z-index:10; pointer-events:none; }
+    .guide { position:absolute; pointer-events:none; }
+    .guide.h { left:0; right:0; height:1px; background:rgba(30,110,255,.5); }
+    .guide.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.5); }
+    .gprev { position:fixed; pointer-events:none; z-index:200; opacity:.55; }
+    .gprev.h { left:0; right:0; height:1px; background:rgba(30,110,255,.8); }
+    .gprev.v { top:0; bottom:0; width:1px; background:rgba(30,110,255,.8); }
 
-    /* ── Project section ── */
-    .project { display:grid; grid-template-columns:240px 1fr; column-gap:48px; padding:56px 48px 96px; border-top:1px solid #e0e0e0; }
+    #canvas { position:absolute; top:30px; left:30px; right:0; bottom:0; overflow:hidden; }
+
+    /* Floating images */
+    #float-layer { position:absolute; inset:0; pointer-events:none; will-change:transform; }
+    .fi {
+      position:absolute; pointer-events:auto; cursor:pointer;
+      overflow:hidden; transition:box-shadow .3s;
+    }
+    .fi img { display:block; width:100%; height:100%; object-fit:cover; }
+    .fi-lbl {
+      position:absolute; bottom:0; left:0; right:0;
+      background:rgba(235,235,235,.88); padding:5px 10px;
+      font-size:10px; letter-spacing:.04em;
+      opacity:0; transition:opacity .2s; pointer-events:none;
+    }
+    .fi:hover { box-shadow:0 8px 36px rgba(0,0,0,.16); }
+    .fi:hover .fi-lbl { opacity:1; }
+
+    @keyframes fa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+    @keyframes fb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+    @keyframes fc { 0%,100%{transform:translateY(0) rotate(-.4deg)} 50%{transform:translateY(-6px) rotate(.4deg)} }
+    @keyframes fd { 0%,100%{transform:translateY(0) rotate(.3deg)} 50%{transform:translateY(8px) rotate(-.3deg)} }
+
+    /* Draggable texts */
+    .dtext { position:absolute; cursor:grab; z-index:30; user-select:none; }
+    .dtext:active { cursor:grabbing; }
+    .dtext.t1 { font-size:11px; font-weight:600; white-space:nowrap; }
+    .dtext.t2 { font-size:11px; font-weight:400; line-height:1.75; max-width:480px; }
+    .dtext.t3 { font-size:11px; font-weight:400; }
+
+    /* ═══ SUB VIEW ═══ */
+    #sub-view {
+      position:fixed; inset:0; background:#fff;
+      z-index:90; display:flex;
+      opacity:0; pointer-events:none; transition:opacity .4s ease;
+    }
+    #sub-view.in { opacity:1; pointer-events:auto; }
+
+    .cat-col {
+      width:160px; flex-shrink:0; padding:32px 24px;
+      border-right:1px solid #ebebeb; overflow-y:auto;
+    }
+    .cat-col ul { list-style:none; }
+    .cat-col li { margin-bottom:1px; }
+    .cat-col a { display:block; padding:2px 0; font-size:11px; font-weight:400; color:#aaa; cursor:pointer; }
+    .cat-col a.on { font-weight:600; color:#1a1a1a; }
+    .cat-col a:hover { color:#1a1a1a; }
+
+    .proj-col {
+      width:220px; flex-shrink:0; padding:32px 24px;
+      border-right:1px solid #ebebeb; overflow-y:auto;
+    }
+    .proj-col ul { list-style:none; }
+    .proj-col li { margin-bottom:2px; }
+    .proj-col a { display:block; padding:2px 0; font-size:11px; font-weight:400; color:#1a1a1a; cursor:pointer; }
+    .proj-col a:hover { color:#aaa; }
+
+    .main-area { flex:1; overflow-y:auto; padding:32px 24px 80px; }
+
+    .prow { margin-bottom:52px; }
+    .prow-head { font-size:11px; margin-bottom:10px; }
+    .prow-head b { font-weight:600; }
+    .prow-head span { color:#aaa; margin-left:6px; font-weight:400; }
+
+    .strip {
+      display:flex; gap:8px; overflow-x:auto;
+      -webkit-overflow-scrolling:touch; cursor:grab;
+    }
+    .strip:active { cursor:grabbing; }
+    .strip::-webkit-scrollbar { display:none; }
+    .strip img { flex-shrink:0; height:300px; width:auto; display:block; object-fit:cover; transition:opacity .15s; }
+    .strip img:hover { opacity:.82; }
+
+    /* ═══ NAV BUTTONS ═══ */
+    .nav-btn {
+      position:fixed; top:18px; right:24px; z-index:150;
+      font-family:inherit; font-size:10px; letter-spacing:.06em;
+      background:none; border:none; cursor:pointer; color:#888; padding:4px 8px;
+      display:none;
+    }
+    .nav-btn.show { display:block; }
+    .nav-btn:hover { color:#1a1a1a; }
+
+    /* ═══ DETAIL VIEW ═══ */
+    #detail-view {
+      position:fixed; inset:0; background:#fff; z-index:80;
+      overflow-y:auto; opacity:0; pointer-events:none; transition:opacity .4s ease;
+    }
+    #detail-view.in { opacity:1; pointer-events:auto; }
+
+    .site-header {
+      display:grid; grid-template-columns:240px 1fr auto;
+      column-gap:48px; padding:32px 48px;
+      border-bottom:1px solid #e0e0e0; align-items:center;
+    }
+    .site-name { font-size:11px; font-weight:600; }
+    .site-desc, .site-contact { color:#888; }
+
+    .project {
+      display:grid; grid-template-columns:240px 1fr;
+      column-gap:48px; padding:56px 48px 96px;
+      border-top:1px solid #e0e0e0;
+    }
     .project-info { align-self:start; }
     .project-title { font-size:11px; font-weight:600; letter-spacing:.01em; margin-bottom:20px; }
     .project-meta { margin-bottom:24px; }
@@ -61,289 +154,377 @@
     .project-body { color:#888; margin-bottom:32px; line-height:1.7; }
     .project-number { color:#bbb; font-size:10px; }
 
-    /* ── Image grid ── */
     .image-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; align-content:start; }
     .image-item { display:flex; flex-direction:column; }
     .image-item.col-2 { grid-column:span 2; }
     .image-item.col-3 { grid-column:span 3; }
     .image-item:not(.col-2):not(.col-3) img { width:86%; }
-    .image-item.col-2 img,.image-item.col-3 img { width:100%; }
+    .image-item.col-2 img, .image-item.col-3 img { width:100%; }
     .image-item img { height:auto; display:block; background:#f0f0f0; cursor:pointer; transition:opacity .15s; }
     .image-item img:hover { opacity:.85; }
     .caption { margin-top:7px; font-size:10px; color:#aaa; line-height:1.45; }
-    .caption .n { display:inline; color:#ccc; margin-right:6px; }
+    .caption .n { color:#ccc; margin-right:6px; }
 
-    /* ── Lightbox ── */
+    /* Lightbox */
     #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.93); z-index:1000; align-items:center; justify-content:center; }
     #lightbox.open { display:flex; }
     .lb-inner { max-width:88vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; }
     #lb-img { max-width:100%; max-height:82vh; object-fit:contain; display:block; }
     .lb-caption-text { margin-top:14px; font-size:10px; color:rgba(255,255,255,.4); letter-spacing:.04em; text-align:center; }
-    .lb-btn { position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.45); font-size:20px; cursor:pointer; padding:20px 28px; transition:color .15s; line-height:1; z-index:1001; font-family:inherit; }
+    .lb-btn { position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.4); font-size:20px; cursor:pointer; padding:20px 28px; transition:color .15s; font-family:inherit; z-index:1001; }
     .lb-btn:hover { color:#fff; }
     #lb-prev { left:0; } #lb-next { right:0; }
-    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.45); font-size:11px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; letter-spacing:.06em; font-family:inherit; }
+    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.4); font-size:11px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; letter-spacing:.06em; font-family:inherit; }
     #lb-close:hover { color:#fff; }
     #lb-counter { position:fixed; top:28px; left:48px; font-size:10px; color:rgba(255,255,255,.3); letter-spacing:.06em; }
   </style>
 </head>
 <body>
 
-<!-- LANDING -->
-<section class="landing">
-  <div class="landing-header">
-    <span class="landing-name">Heeye Choi</span>
-    <nav class="landing-nav">
-      <a href="#work">Work</a>
-      <a href="mailto:choiheeye6@gmail.com">Contact</a>
-    </nav>
+<!-- ════ HOME VIEW ════ -->
+<div id="home-view">
+  <div class="r-corner"></div>
+  <div class="r-top" id="rtop">
+    <svg id="svg-top" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;"></svg>
   </div>
-  <div class="marquee-outer">
-    <div class="marquee-track" id="marquee-track">
-      <!-- Set A -->
-      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-hotel-goyo'">
-        <img class="m-img" src="_web/Hotel GOYO/002.png" alt="호텔 고요">
-      </div>
-      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-hotel-goyo'">
-        <img class="m-img" src="_web/Hotel GOYO/001.png" alt="호텔 고요">
-        <div class="m-label"><span class="m-num">001</span>호텔 고요</div>
-      </div>
-      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-dotdotdot'">
-        <img class="m-img" src="_web/dotdotdot/001.png" alt="점, 점점 — 제58회 도자심화 졸업전시 아이덴티티">
-      </div>
-      <div class="m-item" style="--mr:80px" onclick="location.href='#proj-dotdotdot'">
-        <img class="m-img" src="_web/dotdotdot/002.png" alt="점, 점점 — 제58회 도자심화 졸업전시 아이덴티티">
-        <div class="m-label"><span class="m-num">002</span>점, 점점 — 제58회 도자심화 졸업전시 아이덴티티</div>
-      </div>
-      <!-- Set B -->
-      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-hotel-goyo'">
-        <img class="m-img" src="_web/Hotel GOYO/002.png" alt="호텔 고요">
-      </div>
-      <div class="m-item" style="--mr:64px" onclick="location.href='#proj-hotel-goyo'">
-        <img class="m-img" src="_web/Hotel GOYO/001.png" alt="호텔 고요">
-        <div class="m-label"><span class="m-num">001</span>호텔 고요</div>
-      </div>
-      <div class="m-item" style="--mr:10px" onclick="location.href='#proj-dotdotdot'">
-        <img class="m-img" src="_web/dotdotdot/001.png" alt="점, 점점 — 제58회 도자심화 졸업전시 아이덴티티">
-      </div>
-      <div class="m-item" style="--mr:80px" onclick="location.href='#proj-dotdotdot'">
-        <img class="m-img" src="_web/dotdotdot/002.png" alt="점, 점점 — 제58회 도자심화 졸업전시 아이덴티티">
-        <div class="m-label"><span class="m-num">002</span>점, 점점 — 제58회 도자심화 졸업전시 아이덴티티</div>
-      </div>
-    </div>
+  <div class="r-left" id="rleft">
+    <svg id="svg-left" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;"></svg>
   </div>
-  <div class="landing-hint">Scroll to explore ↓</div>
-</section>
-
-<!-- SITE HEADER -->
-<header class="site-header" id="work">
-  <div class="site-name">Heeye Choi</div>
-  <div class="site-desc">Brand &amp; Graphic Designer</div>
-  <div class="site-contact">choiheeye6@gmail.com</div>
-</header>
-
-<!-- PROJECT INDEX -->
-<nav class="index">
-  <div class="index-label">Projects</div>
-  <ul class="index-list">
-    <li>
-      <a href="#proj-hotel-goyo">
-        <span class="idx-num">001</span>
-        <span class="idx-title">호텔 고요</span>
-        <span class="idx-type">Brand Identity</span>
-      </a>
-    </li>
-    <li>
-      <a href="#proj-dotdotdot">
-        <span class="idx-num">002</span>
-        <span class="idx-title">점, 점점 — 제58회 도자심화 졸업전시 아이덴티티</span>
-        <span class="idx-type">Exhibition Identity / Poster</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<!-- PROJECT SECTIONS -->
-
-<!-- 001  호텔 고요 -->
-<section class="project" id="proj-hotel-goyo">
-  <div class="project-info">
-    <p class="project-title">호텔 고요</p>
-    <div class="project-meta">
-      <div class="meta-row"><span class="meta-key">Client</span><span>—</span></div>
-      <div class="meta-row"><span class="meta-key">Format</span><span>Brand Identity</span></div>
-      <div class="meta-row"><span class="meta-key">Date</span><span>2024</span></div>
-    </div>
-    
-    <p class="project-body-ko">글자들이 서로를 관통하며 겹쳐지는 로고타입은 새벽 안개가 번지듯 부드러우면서도 절제된 형태로 '고요'의 정서를 시각화한다. 낮은 대비의 흑백톤으로 구성된 부처 일러스트는 종교적 무게감 없이 한국 불교 고유의 고즈넉한 아름다움을 담아낸다. 로고타입부터 일러스트, 그래픽 패턴까지 모든 요소가 복잡한 일상에서 벗어나 진정한 쉼을 선사하는 하나의 브랜드 언어로 수렴한다.</p>
-    <p class="project-tagline">In stillness, you finally meet yourself.</p>
-    <p class="project-body">The logotype — letters overlapping and dissolving into one another — renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.</p>
-    <p class="project-number">001</p>
+  <div class="gprev h" id="gpH" style="display:none"></div>
+  <div class="gprev v" id="gpV" style="display:none"></div>
+  <div id="guide-layer"></div>
+  <div id="canvas">
+    <div id="float-layer"></div>
+    <div class="dtext t1" id="dt1" style="top:40px;left:12px;">ordk, ord&nbsp;&nbsp;&nbsp;&nbsp;<em>nac</em></div>
+    <div class="dtext t2" id="dt2" style="top:62px;left:12px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
+    <div class="dtext t3" id="dt3" style="top:118px;left:12px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
   </div>
-  <div class="image-grid" data-group="proj-hotel-goyo">
-    <div class="image-item col-3">
-      <img src="_web/Hotel GOYO/002.png" alt="Logotype">
-      <div class="caption"><span class="n">1</span>Logotype</div>
+</div>
+
+<!-- ════ SUB VIEW ════ -->
+<div id="sub-view">
+  <div class="cat-col">
+    <ul>
+      <li><a class="cat-link on" data-cat="all">ALL</a></li>
+      <li><a class="cat-link" data-cat="branding">Branding</a></li>
+      <li><a class="cat-link" data-cat="contents">Contents</a></li>
+      <li><a class="cat-link" data-cat="graphic">Graphic</a></li>
+      <li><a class="cat-link" data-cat="identity">Identity</a></li>
+      <li><a class="cat-link" data-cat="package">Package</a></li>
+      <li><a class="cat-link" data-cat="photography">Photography</a></li>
+      <li><a class="cat-link" data-cat="website">Website</a></li>
+      <li><a class="cat-link" data-cat="visual-directing">Visual Directing</a></li>
+    </ul>
+  </div>
+  <div class="proj-col">
+    <ul>
+      <li><a class="pjump" data-target="prow-hotel">&#54840;&#53588;&#47532; &#44256;&#50836;</a></li>
+      <li><a class="pjump" data-target="prow-dot">&#51216;, &#51216;&#51216;</a></li>
+    </ul>
+  </div>
+  <div class="main-area" id="main-area">
+    <div class="prow" id="prow-hotel" data-cats="branding identity">
+      <div class="prow-head"><b>&#54840;&#53588;&#47532; &#44256;&#50836;</b><span>Brand Identity</span></div>
+      <div class="strip" id="strip-hotel" data-anchor="proj-hotel-goyo"></div>
     </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/001.png" alt="">
-      
-    </div>
-    <div class="image-item col-3">
-      <img src="_web/Hotel GOYO/004.png" alt="">
-      
-    </div>
-    <div class="image-item col-3">
-      <img src="_web/Hotel GOYO/005.png" alt="">
-      
-    </div>
-    <div class="image-item col-2">
-      <img src="_web/Hotel GOYO/003.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/006.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/007.png" alt="">
-      
-    </div>
-    <div class="image-item col-2">
-      <img src="_web/Hotel GOYO/008.png" alt="">
-      
-    </div>
-    <div class="image-item col-2">
-      <img src="_web/Hotel GOYO/009.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/010.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/011.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/Hotel GOYO/012.png" alt="">
-      
-    </div>
-    <div class="image-item col-3">
-      <img src="_web/Hotel GOYO/013.png" alt="">
-      
+    <div class="prow" id="prow-dot" data-cats="graphic identity">
+      <div class="prow-head"><b>&#51216;, &#51216;&#51216; &#8212; &#51228;58&#54924; &#46020;&#51088;&#49900;&#54868; &#51333;&#50629;&#51204;&#49884;</b><span>Exhibition Identity / Poster</span></div>
+      <div class="strip" id="strip-dot" data-anchor="proj-dotdotdot"></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- 002  점, 점점 — 제58회 도자심화 졸업전시 아이덴티티 -->
-<section class="project" id="proj-dotdotdot">
-  <div class="project-info">
-    <p class="project-title">점, 점점 — 제58회 도자심화 졸업전시 아이덴티티</p>
-    <div class="project-meta">
-      <div class="meta-row"><span class="meta-key">Client</span><span>서울여자대학교 아트앤디자인스쿨 공예전공</span></div>
-      <div class="meta-row"><span class="meta-key">Format</span><span>Exhibition Identity / Poster</span></div>
-      <div class="meta-row"><span class="meta-key">Date</span><span>2025</span></div>
-    </div>
-    <p class="project-text-ko">점 하나에서 형태가 비롯된다.</p>
-    <p class="project-body-ko">수백 개의 점들이 방사형으로 퍼지고 군집하며 유기적 형태를 이루도록 구성하여, 흙을 빚고 가마를 통과하는 도자 제작의 손길을 그래픽 언어로 번역하였다. 크림빛 바탕 위에 번지듯 흩어지는 점들의 밀도는 섬세하면서도 생동하는 감각을 전달하며, '점'이라는 가장 작은 단위가 곧 형태의 출발임을 전시 전체의 논리로 삼는다.</p>
-    <p class="project-tagline">Form begins from a single point.</p>
-    <p class="project-body">Hundreds of dots radiate and cluster into organic forms, translating the ceramicist's gesture — shaping clay, enduring the kiln — into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself — the smallest unit of ceramic making — the governing logic of the entire exhibition identity.</p>
-    <p class="project-number">002</p>
-  </div>
-  <div class="image-grid" data-group="proj-dotdotdot">
-    <div class="image-item col-3">
-      <img src="_web/dotdotdot/001.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/002.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/003.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/004.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/005.png" alt="">
-      
-    </div>
-    <div class="image-item col-2">
-      <img src="_web/dotdotdot/006.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/007.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/008.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/009.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/010.png" alt="">
-      
-    </div>
-    <div class="image-item">
-      <img src="_web/dotdotdot/011.png" alt="">
-      
-    </div>
-  </div>
-</section>
+<button class="nav-btn" id="back-btn">&#8592; Back</button>
+<button class="nav-btn" id="close-detail">&#8592; Projects</button>
 
-<!-- LIGHTBOX -->
+<!-- ════ DETAIL VIEW ════ -->
+<div id="detail-view">
+  <header class="site-header">
+    <div class="site-name">Heeye Choi</div>
+    <div class="site-desc">Brand &amp; Graphic Designer</div>
+    <div class="site-contact">choiheeye6@gmail.com</div>
+  </header>
+
+  <section class="project" id="proj-hotel-goyo">
+    <div class="project-info">
+      <p class="project-title">&#54840;&#53588;&#47532; &#44256;&#50836;</p>
+      <div class="project-meta">
+        <div class="meta-row"><span class="meta-key">Client</span><span>&#8212;</span></div>
+        <div class="meta-row"><span class="meta-key">Format</span><span>Brand Identity</span></div>
+        <div class="meta-row"><span class="meta-key">Date</span><span>2024</span></div>
+      </div>
+      <p class="project-body-ko">&#44544;&#51088;&#46é¤;&#51060; &#49436;&#47196;&#47484; &#44288;&#53685;&#54616;&#47728; &#44141;&#52³;&#51648;&#45716; &#47196;&#44256;&#53380;&#51077;&#51008; &#49352;&#48359; &#50504;&#44060;&#44032; &#BC88;&#51648;&#46íµ¯ &#48512;&#46å&#7139;&#47084;&#50864;&#47749;&#49436;&#46åµ &#51208;&#51228;&#46¤¼ &#54615;&#53468;&#47196; &#8216;&#44256;&#50836;&#8217;&#51032; &#51221;&#49436;&#47484; &#49884;&#44033;&#54868;&#54620;&#45796;. &#45202;&#51008; &#45824;&#48708;&#51032; &#D751;&#BC31;&#53864;&#51004;&#47196; &#44396;&#49457;&#46¤¼ &#48512;&#52³;&#49436; &#51068;&#47084;&#49828;&#53944;&#45716; &#51¢ á°5¼;&#44368;&#51201; &#BB34;&#44172;&#44048; &#C5C6;&#51060; &#D55C;&#AD6D; &#BD88;&#AD50; &#ACE0;&#C720;&#C758; &#ACE0;&#C988;&#B098;&#D55B; &#C544;&#B984;&#B2E4;&#C6C0;&#C744; &#B2F4;&#C544;&#B0B8;&#B2E4;. &#B85C;&#ACE0;&#D0C0;&#C785;&#BD80;&#D130; &#C77C;&#B7EC;&#C2A4;&#D2B8;, &#ADF8;&#B798;&#D53D; &#D328;&#D134;&#AE4C;&#C9C0; &#BAA8;&#B4E0; &#C694;&#C18C;&#AC00; &#BCF5;&#C7A1;&#D55C; &#C77C;&#C0C1;&#C5D0;&#C11C; &#BC97;&#C5B4;&#B098; &#C9C4;&#C815;&#D55C; &#C26C;&#C74C;&#C744; &#C120;&#C0AC;&#D558;&#B294; &#D558;&#B098;&#C758; &#BE0C;&#B79C;&#B4DC; &#C5B8;&#C5B4;&#B85C; &#C218;&#B834;&#D55C;&#B2E4;.</p>
+      <p class="project-tagline">In stillness, you finally meet yourself.</p>
+      <p class="project-body">The logotype &#8212; letters overlapping and dissolving into one another &#8212; renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.</p>
+      <p class="project-number">001</p>
+    </div>
+    <div class="image-grid">
+      <div class="image-item col-3"><img src="_web/Hotel GOYO/002.jpg" alt="Logotype"><div class="caption"><span class="n">1</span>Logotype</div></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/001.jpg" alt=""></div>
+      <div class="image-item col-3"><img src="_web/Hotel GOYO/004.jpg" alt=""></div>
+      <div class="image-item col-3"><img src="_web/Hotel GOYO/005.jpg" alt=""></div>
+      <div class="image-item col-2"><img src="_web/Hotel GOYO/003.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/006.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/007.jpg" alt=""></div>
+      <div class="image-item col-2"><img src="_web/Hotel GOYO/008.jpg" alt=""></div>
+      <div class="image-item col-2"><img src="_web/Hotel GOYO/009.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/010.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/011.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/Hotel GOYO/012.jpg" alt=""></div>
+      <div class="image-item col-3"><img src="_web/Hotel GOYO/013.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="project" id="proj-dotdotdot">
+    <div class="project-info">
+      <p class="project-title">&#51216;, &#51216;&#51216; &#8212; &#51228;58&#54924; &#46020;&#51088;&#49900;&#54868; &#51333;&#50629;&#51204;&#49884; &#50500;&#51060;&#45ด¤´&#53000;&#D2F0;</p>
+      <div class="project-meta">
+        <div class="meta-row"><span class="meta-key">Client</span><span>&#49436;&#50872;&#C5EC;&#C790;&#B300;&#D559;&#AD50; &#C544;&#D2B8;&#C564;&#B514;&#C790;&#C778;&#C2A4;&#CFE8; &#ACF5;&#C608;&#C804;&#ACF5;</span></div>
+        <div class="meta-row"><span class="meta-key">Format</span><span>Exhibition Identity / Poster</span></div>
+        <div class="meta-row"><span class="meta-key">Date</span><span>2025</span></div>
+      </div>
+      <p class="project-text-ko">&#51216; &#D558;&#B098;&#C5D0;&#C11C; &#D615;&#D0DC;&#AC00; &#BE44;&#B86F;&#B41C;&#B2E4;.</p>
+      <p class="project-body-ko">&#C218;&#BC31; &#AC1C;&#C758; &#C810;&#B4E4;&#C774; &#BC29;&#C0AC;&#D615;&#C73C;&#B85C; &#D37C;&#C9C0;&#ACE0; &#AD70;&#C9D1;&#D558;&#BA70; &#C720;&#AE30;&#C801; &#D615;&#D0DC;&#B97C; &#C774;&#B8E8;&#B3C4;&#B85D; &#AD6C;&#C131;&#D558;&#C5EC;, &#D759;&#C744; &#BE5A;&#ACE0; &#AC00;&#B9C8;&#B97C; &#D1B5;&#AD6C;&#D558;&#B294; &#B3C4;&#C790; &#C81C;&#C791;&#C758; &#C190;&#AE38;&#C744; &#ADF8;&#B798;&#D53D; &#C5B8;&#C5B4;&#B85C; &#BC88;&#C5ED;&#D558;&#C600;&#B2E4;. &#D06C;&#B9BC;&#BE5B; &#BC14;&#D0D5; &#C704;&#C5D0; &#BC88;&#C9C0;&#B4EF; &#D758;&#C5B4;&#C9C0;&#B294; &#C810;&#B4E4;&#C758; &#BC00;&#B3C4;&#B294; &#C12C;&#C138;&#D558;&#BA74;&#C11C;&#B3C4; &#C0DD;&#B3D9;&#D558;&#B294; &#AC10;&#AC01;&#C744; &#C804;&#B2EC;&#D558;&#BA70;, &#8216;&#51216;&#8217;&#C774;&#B77C;&#B294; &#AC00;&#C7A5; &#C791;&#C740; &#B2E8;&#C704;&#AC00; &#ACF3; &#D615;&#D0DC;&#C758; &#CD9C;&#BC1C;&#C784;&#C744; &#C804;&#C2DC; &#C804;&#CC44;&#C758; &#B17C;&#B9AC;&#B85C; &#C0BC;&#B294;&#B2E4;.</p>
+      <p class="project-tagline">Form begins from a single point.</p>
+      <p class="project-body">Hundreds of dots radiate and cluster into organic forms, translating the ceramicist&#8217;s gesture &#8212; shaping clay, enduring the kiln &#8212; into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself &#8212; the smallest unit of ceramic making &#8212; the governing logic of the entire exhibition identity.</p>
+      <p class="project-number">002</p>
+    </div>
+    <div class="image-grid">
+      <div class="image-item col-3"><img src="_web/dotdotdot/001.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/002.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/003.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/004.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/005.jpg" alt=""></div>
+      <div class="image-item col-2"><img src="_web/dotdotdot/006.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/007.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/008.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/009.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/010.jpg" alt=""></div>
+      <div class="image-item"><img src="_web/dotdotdot/011.jpg" alt=""></div>
+    </div>
+  </section>
+</div>
+
+<!-- Lightbox -->
 <div id="lightbox">
   <div id="lb-counter"></div>
   <button id="lb-close">Close</button>
   <button class="lb-btn" id="lb-prev">&#8592;</button>
-  <div class="lb-inner">
-    <img id="lb-img" src="" alt="">
-    <div class="lb-caption-text" id="lb-caption"></div>
-  </div>
+  <div class="lb-inner"><img id="lb-img" src="" alt=""><div class="lb-caption-text" id="lb-caption"></div></div>
   <button class="lb-btn" id="lb-next">&#8594;</button>
 </div>
 
 <script>
-  /* Marquee: randomize heights */
-  (function(){
-    const track=document.getElementById('marquee-track');
-    const imgs=track.querySelectorAll('.m-img');
-    const phs=track.querySelectorAll('.m-ph');
-    const half=imgs.length/2, phHalf=phs.length/2;
-    const iH=Array.from({length:half},()=>Math.round(32+Math.random()*50));
-    const pH=Array.from({length:phHalf},()=>Math.round(32+Math.random()*50));
-    const pW=Array.from({length:phHalf},()=>Math.round(18+Math.random()*20));
-    imgs.forEach((el,i)=>el.style.height=iH[i%half]+'vh');
-    phs.forEach((el,i)=>{el.style.height=pH[i%phHalf]+'vh';el.style.width=pW[i%phHalf]+'vw';});
-  })();
+/* ── RULERS ── */
+function drawH(svg) {
+  var w = svg.clientWidth, s = '';
+  for (var x = 0; x <= w; x += 30) {
+    var maj = x % 90 === 0, th = maj ? 10 : (x % 60 === 0 ? 7 : 4);
+    s += '<line x1="' + x + '" y1="' + (30-th) + '" x2="' + x + '" y2="30" stroke="#b0b0b0" stroke-width=".5"/>';
+    if (maj && x > 0) s += '<text x="' + (x+2) + '" y="11" font-size="7" fill="#b0b0b0" font-family="SuisseIntl,sans-serif">' + x + '</text>';
+  }
+  svg.innerHTML = s;
+}
+function drawV(svg) {
+  var h = svg.clientHeight, s = '';
+  for (var y = 0; y <= h; y += 30) {
+    var maj = y % 90 === 0, tw = maj ? 10 : (y % 60 === 0 ? 7 : 4);
+    s += '<line x1="' + (30-tw) + '" y1="' + y + '" x2="30" y2="' + y + '" stroke="#b0b0b0" stroke-width=".5"/>';
+    if (maj && y > 0) s += '<text x="1" y="' + (y-2) + '" font-size="7" fill="#b0b0b0" font-family="SuisseIntl,sans-serif" transform="rotate(-90,1,' + (y-2) + ')">' + y + '</text>';
+  }
+  svg.innerHTML = s;
+}
+function initRulers() {
+  drawH(document.getElementById('svg-top'));
+  drawV(document.getElementById('svg-left'));
+}
+window.addEventListener('load', initRulers);
+window.addEventListener('resize', initRulers);
 
-  /* Lightbox */
-  (function(){
-    const lb=document.getElementById('lightbox');
-    const lbImg=document.getElementById('lb-img');
-    const lbCap=document.getElementById('lb-caption');
-    const lbCnt=document.getElementById('lb-counter');
-    let images=[],cur=0;
-    function buildList(img){const g=img.closest('[data-group]')||img.closest('.image-grid');return g?Array.from(g.querySelectorAll('img')):[img];}
-    function show(idx){cur=(idx+images.length)%images.length;const img=images[cur];lbImg.src=img.src;lbImg.alt=img.alt;lbCap.textContent=img.alt;lbCnt.textContent=(cur+1)+' / '+images.length;}
-    function open(img){images=buildList(img);cur=images.indexOf(img);show(cur);lb.classList.add('open');document.body.style.overflow='hidden';}
-    function close(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
-    document.querySelectorAll('.image-grid img').forEach(img=>img.addEventListener('click',()=>open(img)));
-    document.getElementById('lb-close').addEventListener('click',close);
-    document.getElementById('lb-prev').addEventListener('click',()=>show(cur-1));
-    document.getElementById('lb-next').addEventListener('click',()=>show(cur+1));
-    lb.addEventListener('click',e=>{if(e.target===lb)close();});
-    document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-  })();
+/* ── GUIDELINES ── */
+(function(){
+  var GL = document.getElementById('guide-layer');
+  var pH = document.getElementById('gpH');
+  var pV = document.getElementById('gpV');
+  var mode = null;
+  document.getElementById('rtop').addEventListener('mousedown', function(e) {
+    mode='v'; pV.style.display='block'; pV.style.left=e.clientX+'px';
+    e.preventDefault(); e.stopPropagation();
+  });
+  document.getElementById('rleft').addEventListener('mousedown', function(e) {
+    mode='h'; pH.style.display='block'; pH.style.top=e.clientY+'px';
+    e.preventDefault(); e.stopPropagation();
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!mode) return;
+    if (mode==='h') pH.style.top = e.clientY+'px';
+    if (mode==='v') pV.style.left = e.clientX+'px';
+  });
+  window.addEventListener('mouseup', function(e) {
+    if (!mode) return;
+    var g = document.createElement('div');
+    g.className = 'guide ' + mode;
+    if (mode==='h') g.style.top = e.clientY+'px';
+    if (mode==='v') g.style.left = e.clientX+'px';
+    GL.appendChild(g);
+    pH.style.display='none'; pV.style.display='none';
+    mode = null;
+  });
+})();
+
+/* ── DRAGGABLE TEXTS ── */
+['dt1','dt2','dt3'].forEach(function(id) {
+  var el = document.getElementById(id);
+  var sx,sy,ox,oy,down=false;
+  el.addEventListener('mousedown', function(e) {
+    down=true; sx=e.clientX; sy=e.clientY;
+    ox=parseInt(el.style.left)||0; oy=parseInt(el.style.top)||0;
+    el.style.zIndex=50; e.preventDefault(); e.stopPropagation();
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!down) return;
+    el.style.left=(ox+e.clientX-sx)+'px'; el.style.top=(oy+e.clientY-sy)+'px';
+  });
+  window.addEventListener('mouseup', function() { if(down){down=false;el.style.zIndex=30;} });
+});
+
+/* ── FLOATING IMAGES ── */
+(function(){
+  var items = [
+    { src:'_web/Hotel GOYO/001.jpg', label:'호텔 고요', w:270, h:185, anim:'fa', dur:5.2, xp:0.28, yp:0.24 },
+    { src:'_web/Hotel GOYO/003.jpg', label:'호텔 고요', w:175, h:235, anim:'fb', dur:6.1, xp:0.57, yp:0.42 },
+    { src:'_web/dotdotdot/001.jpg',  label:'점, 점점',      w:210, h:290, anim:'fc', dur:4.8, xp:0.36, yp:0.46 },
+    { src:'_web/dotdotdot/003.jpg',  label:'점, 점점',      w:185, h:215, anim:'fd', dur:5.6, xp:0.63, yp:0.18 }
+  ];
+  var layer = document.getElementById('float-layer');
+  items.forEach(function(f,i) {
+    var div = document.createElement('div');
+    div.className = 'fi';
+    div.style.cssText = 'left:'+f.xp*100+'%;top:'+f.yp*100+'%;width:'+f.w+'px;height:'+f.h+'px;animation:'+f.anim+' '+f.dur+'s '+(i*0.65)+'s ease-in-out infinite;';
+    var img = document.createElement('img'); img.src=f.src; img.alt=f.label;
+    var lbl = document.createElement('div'); lbl.className='fi-lbl'; lbl.textContent=f.label;
+    div.appendChild(img); div.appendChild(lbl);
+    div.addEventListener('click', function(e) { e.stopPropagation(); goSub(); });
+    layer.appendChild(div);
+  });
+  var tx=0, ty=0;
+  document.addEventListener('mousemove', function(e) {
+    tx=(e.clientX/window.innerWidth-.5)*22;
+    ty=(e.clientY/window.innerHeight-.5)*13;
+  });
+  (function tick(){ layer.style.transform='translate('+tx+'px,'+ty+'px)'; requestAnimationFrame(tick); })();
+})();
+
+/* ── NAVIGATION ── */
+var homeView    = document.getElementById('home-view');
+var subView     = document.getElementById('sub-view');
+var detailView  = document.getElementById('detail-view');
+var backBtn     = document.getElementById('back-btn');
+var closeDetail = document.getElementById('close-detail');
+
+function goSub() {
+  homeView.classList.add('out');
+  subView.classList.add('in');
+  backBtn.classList.add('show');
+  closeDetail.classList.remove('show');
+}
+function goHome() {
+  homeView.classList.remove('out');
+  subView.classList.remove('in');
+  detailView.classList.remove('in');
+  backBtn.classList.remove('show');
+  closeDetail.classList.remove('show');
+}
+function showDetail(anchor) {
+  detailView.classList.add('in');
+  subView.classList.remove('in');
+  backBtn.classList.remove('show');
+  closeDetail.classList.add('show');
+  detailView.scrollTop = 0;
+  if (anchor) {
+    var el = document.getElementById(anchor);
+    if (el) setTimeout(function(){ detailView.scrollTop = el.offsetTop - 32; }, 50);
+  }
+}
+
+homeView.addEventListener('click', goSub);
+backBtn.addEventListener('click', function(e) { e.stopPropagation(); goHome(); });
+closeDetail.addEventListener('click', function() {
+  detailView.classList.remove('in');
+  subView.classList.add('in');
+  backBtn.classList.add('show');
+  closeDetail.classList.remove('show');
+});
+
+/* ── SUBPAGE STRIPS ── */
+(function(){
+  function fill(stripId, count, folder) {
+    var strip = document.getElementById(stripId);
+    var anchor = strip.dataset.anchor;
+    for (var i=1; i<=count; i++) {
+      var img = document.createElement('img');
+      img.src = '_web/' + folder + '/' + String(i).padStart(3,'0') + '.jpg';
+      img.alt = '';
+      (function(a){ img.addEventListener('click', function(){ showDetail(a); }); })(anchor);
+      strip.appendChild(img);
+    }
+    var down=false, startX, scrollL;
+    strip.addEventListener('mousedown', function(e) { down=true; startX=e.pageX; scrollL=strip.scrollLeft; });
+    strip.addEventListener('mouseleave', function() { down=false; });
+    strip.addEventListener('mouseup', function() { down=false; });
+    strip.addEventListener('mousemove', function(e) {
+      if (!down) return; e.preventDefault();
+      strip.scrollLeft = scrollL - (e.pageX - startX);
+    });
+  }
+  fill('strip-hotel', 13, 'Hotel GOYO');
+  fill('strip-dot',   11, 'dotdotdot');
+})();
+
+/* ── CATEGORY FILTER ── */
+document.querySelectorAll('.cat-link').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.cat-link').forEach(function(l){ l.classList.remove('on'); });
+    a.classList.add('on');
+    var cat = a.dataset.cat;
+    document.querySelectorAll('.prow').forEach(function(row) {
+      row.style.display = (cat==='all' || (row.dataset.cats||'').includes(cat)) ? '' : 'none';
+    });
+  });
+});
+
+/* ── PROJECT JUMP ── */
+document.querySelectorAll('.pjump').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var el = document.getElementById(a.dataset.target);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ── LIGHTBOX ── */
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lb-img');
+  var lbCap=document.getElementById('lb-caption');
+  var lbCnt=document.getElementById('lb-counter');
+  var images=[], cur=0;
+  function show(idx){ cur=(idx+images.length)%images.length; lbImg.src=images[cur].src; lbCap.textContent=images[cur].alt; lbCnt.textContent=(cur+1)+' / '+images.length; }
+  function open(img){ var grid=img.closest('.image-grid'); images=grid?Array.from(grid.querySelectorAll('img')):[img]; cur=images.indexOf(img); show(cur); lb.classList.add('open'); }
+  function close(){ lb.classList.remove('open'); lbImg.src=''; }
+  document.querySelectorAll('.image-grid img').forEach(function(img){ img.addEventListener('click',function(){ open(img); }); });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(){ show(cur-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ show(cur+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key==='Escape') close();
+    if (e.key==='ArrowLeft') show(cur-1);
+    if (e.key==='ArrowRight') show(cur+1);
+  });
+})();
 </script>
-
 </body>
 </html>
