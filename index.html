@@ -7,9 +7,10 @@
   <style>
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-Regular.otf') format('opentype'); font-weight:400; }
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
     html, body { width:100%; height:100%; overflow:hidden; }
     body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
+    #site-cursor { position:fixed; top:0; left:0; pointer-events:none; z-index:99999; display:none; }
     a { color:inherit; text-decoration:none; }
 
     /* ══ HOME VIEW ══ */
@@ -57,7 +58,7 @@
     /* ══ DRAWER ══ */
     #drawer {
       position:fixed; left:0; right:0; bottom:0;
-      height:80vh;
+      height:85vh;
       background:rgba(255,255,255,.88);
       z-index:100;
       transform:translateY(100%);
@@ -71,7 +72,7 @@
     /* Category col — 10% */
     #dr-cat {
       width:10vw; flex-shrink:0;
-      padding:28px 20px 28px 35px;
+      padding:32px 20px 28px 35px;
       overflow-y:auto;
     }
     #dr-cat ul { list-style:none; }
@@ -83,7 +84,7 @@
     /* Project list col — 10% */
     #dr-plist {
       width:10vw; flex-shrink:0;
-      padding:28px 16px 28px 0;
+      padding:32px 16px 28px 0;
       overflow-y:auto;
     }
     #dr-plist ul { list-style:none; }
@@ -100,7 +101,7 @@
 
     /* Close button */
     #dr-close {
-      position:absolute; top:20px; right:24px; z-index:10;
+      position:absolute; top:22px; right:24px; z-index:10;
       font-family:inherit; font-size:44px; font-weight:300; line-height:1;
       background:none; border:none; cursor:pointer; color:#aaa; padding:0;
     }
@@ -109,35 +110,34 @@
     /* Info sub-col */
     #dr-info {
       width:22%; flex-shrink:0;
-      padding:28px 20px 32px 24px;
+      padding:32px 20px 32px 24px;
       overflow-y:auto;
     }
     #dr-info .dr-title { font-size:13px; font-weight:600; margin-bottom:20px; line-height:1.4; }
     .dr-meta { margin-bottom:1px; font-size:13px; }
     .dr-key { color:#aaa; margin-right:4px; }
 
-    /* Description sub-col */
+    /* Description sub-col (right) */
     #dr-desc {
       width:28%; flex-shrink:0;
-      padding:28px 24px 32px 0;
+      padding:32px 80px 32px 0;
       overflow-y:auto;
     }
-    #dr-desc .dr-title-ko { font-size:15px; font-weight:600; margin-bottom:20px; line-height:1.4; }
     #dr-desc .dr-body-ko { font-size:13px; margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
     #dr-desc .dr-tagline  { font-size:13px; font-style:italic; margin-bottom:10px; color:#444; }
     #dr-desc .dr-body-en  { font-size:13px; color:#888; line-height:1.65; }
 
-    /* Images sub-col */
+    /* Images sub-col (center) */
     #dr-imgs {
       flex:1;
       overflow-y:auto;
-      padding:0 0 32px 0;
+      padding:0 32px 0 0;
       display:flex; flex-direction:column; gap:6px;
     }
     #dr-imgs::-webkit-scrollbar { display:none; }
     .dr-img-wrap { flex-shrink:0; }
     .dr-img-wrap img {
-      display:block; width:100%; height:auto;
+      display:block; width:auto; height:80vh;
       cursor:pointer; transition:opacity .15s;
     }
     .dr-img-wrap img:hover { opacity:.88; }
@@ -147,16 +147,123 @@
     }
 
     /* Lightbox */
-    #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.93); z-index:1000; align-items:center; justify-content:center; }
-    #lightbox.open { display:flex; }
-    .lb-inner { max-width:88vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; }
-    #lb-img { max-width:100%; max-height:84vh; object-fit:contain; display:block; }
-    .lb-btn { position:fixed; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.4); font-size:20px; cursor:pointer; padding:20px 28px; transition:color .15s; font-family:inherit; z-index:1001; }
-    .lb-btn:hover { color:#fff; }
-    #lb-prev { left:0; } #lb-next { right:0; }
-    #lb-close { position:fixed; top:24px; right:32px; background:none; border:none; color:rgba(255,255,255,.4); font-size:13px; cursor:pointer; padding:8px; transition:color .15s; z-index:1001; font-family:inherit; }
+    #lightbox {
+      display:none; position:fixed; inset:0; z-index:1000;
+      background:rgba(20,20,20,.55);
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      cursor:none;
+    }
+    #lightbox.open { display:flex; align-items:center; justify-content:center; }
+    .lb-inner { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+    #lb-img { height:100vh; width:auto; max-width:100vw; object-fit:contain; display:block; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+    #lightbox, #lightbox * { user-select:none; }
+    #lb-arrow {
+      position:fixed; pointer-events:none; z-index:1002;
+      transform:translate(-50%,-50%); display:none;
+    }
+    #lb-close {
+      position:fixed; top:24px; right:32px; z-index:1001;
+      background:none; border:none; color:rgba(255,255,255,.6);
+      font-size:15px; font-family:inherit; cursor:pointer; padding:8px;
+      transition:color .15s;
+    }
     #lb-close:hover { color:#fff; }
-    #lb-counter { position:fixed; top:28px; left:48px; font-size:11px; color:rgba(255,255,255,.3); letter-spacing:.06em; }
+    #lb-counter {
+      position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+      font-size:15px; font-family:inherit; color:rgba(255,255,255,.65);
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width:1024px) and (min-width:769px) {
+      #dr-cat  { width:14vw; }
+      #dr-plist { width:16vw; }
+    }
+
+    @media (max-width:768px) {
+      /* Homepage */
+      .dtext.t2 { width:calc(100vw - 32px); }
+      #home-menu { top:108px !important; }
+
+      /* Rulers thin on mobile */
+      .r-top  { height:10px; }
+      .r-left { width:10px; }
+      .r-corner { width:10px; height:10px; }
+      #canvas { top:10px; left:10px; }
+
+      /* Drawer: stacked vertically */
+      #drawer { height:92vh; flex-direction:column; }
+
+      /* Category — horizontal scroll row */
+      #dr-cat {
+        width:100%; flex-shrink:0;
+        padding:14px 20px 10px;
+        overflow-x:auto; overflow-y:hidden;
+        border-bottom:1px solid rgba(0,0,0,.06);
+      }
+      #dr-cat::-webkit-scrollbar { display:none; }
+      #dr-cat ul { display:flex; flex-direction:row; gap:18px; white-space:nowrap; }
+      #dr-cat li { margin:0; }
+
+      /* Project list — horizontal scroll row */
+      #dr-plist {
+        width:100%; flex-shrink:0;
+        padding:8px 20px 10px;
+        overflow-x:auto; overflow-y:hidden;
+        border-bottom:1px solid rgba(0,0,0,.06);
+      }
+      #dr-plist::-webkit-scrollbar { display:none; }
+      #dr-plist ul { display:flex; flex-direction:row; gap:20px; white-space:nowrap; }
+      #dr-plist li { margin:0; }
+      #dr-plist a { white-space:nowrap; overflow:visible; text-overflow:clip; }
+
+      /* Detail — column */
+      #dr-detail { flex:1; flex-direction:column; overflow-y:auto; overflow-x:hidden; }
+
+      /* Info full width */
+      #dr-info { width:100%; flex-shrink:0; padding:18px 20px 12px; }
+      #dr-info .dr-title { margin-bottom:10px; }
+
+      /* Images — horizontal strip */
+      #dr-imgs {
+        width:100%; flex-shrink:0;
+        flex-direction:row;
+        overflow-x:auto; overflow-y:hidden;
+        height:58vw; padding:0; gap:4px;
+      }
+      #dr-imgs::-webkit-scrollbar { display:none; }
+      .dr-img-wrap { flex-shrink:0; height:100%; width:auto; }
+      .dr-img-wrap img { width:auto; height:100%; object-fit:cover; }
+
+      /* Description full width */
+      #dr-desc { width:100%; flex-shrink:0; padding:14px 20px 48px; }
+
+      /* Close button */
+      #dr-close { font-size:32px; top:10px; right:16px; }
+
+      /* Lightbox: touch-friendly */
+      #lb-counter { font-size:13px; bottom:20px; }
+
+      /* Mobile text positions — prevent overlap */
+      #dt3 { top:152px !important; }
+      #home-menu { top:178px !important; }
+
+      /* Mobile: drawer scrolls vertically */
+      #dr-detail { overflow-y:auto; overflow-x:hidden; flex-direction:column; }
+      #dr-info  { flex-shrink:0; }
+      #dr-desc  { flex-shrink:0; }
+
+      /* Images: JS-controlled single-image display */
+      #dr-imgs {
+        flex-direction:column;
+        overflow:visible;
+        height:auto;
+        flex-shrink:0;
+        gap:0;
+      }
+      .dr-img-wrap { display:none; width:100%; height:auto; }
+      .dr-img-wrap.mob-active { display:block; }
+      .dr-img-wrap img { width:100%; height:auto; display:block; object-fit:initial; }
+    }
   </style>
 </head>
 <body>
@@ -176,14 +283,14 @@
   <div id="canvas">
     <div class="dtext t1" id="dt1" style="top:23px;left:20px;">ordk, ord<span class="hidden-ink">erk</span>nac<span class="hidden-ink">k</span></div>
     <div class="dtext t2" id="dt2" style="top:43px;left:20px;">ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.</div>
-    <div class="dtext t3" id="dt3" style="top:84px;left:20px;">&#169;Heeye Choi, Based in Seoul, Korea</div>
-    <div id="home-menu" style="top:120px;left:20px;">
+    <div id="home-menu" style="top:84px;left:20px;">
       <a class="drawer-link" data-filter="commercial">Commercial projects</a>
       <a class="drawer-link" data-filter="personal">Personal projects</a>
-      <a class="drawer-link" data-filter="all">Index</a>
       <div class="menu-gap"></div>
       <a href="mailto:choiheeye6@gmail.com">E-mail</a>
       <a href="https://instagram.com/ordk.kr" target="_blank" rel="noopener">Instagram</a>
+      <div class="menu-gap"></div>
+      <span id="dt3">&#169;Heeye Choi, Based in Seoul, Korea</span>
     </div>
   </div>
 </div>
@@ -222,26 +329,29 @@
       <p class="dr-meta"><span class="dr-key">Date</span><span id="dr-date"></span></p>
     </div>
 
-    <!-- Description sub-col -->
+    <!-- Images sub-col (center) -->
+    <div id="dr-imgs"></div>
+
+    <!-- Description sub-col (right) -->
     <div id="dr-desc">
-      <p class="dr-title-ko" id="dr-title-ko"></p>
       <p class="dr-body-ko" id="dr-body-ko"></p>
       <p class="dr-tagline" id="dr-tagline"></p>
       <p class="dr-body-en" id="dr-body-en"></p>
     </div>
-
-    <!-- Images sub-col -->
-    <div id="dr-imgs"></div>
   </div>
 </div>
 
+<!-- Custom cursor -->
+<svg id="site-cursor" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
+  <path d="M3 2L3 22L8 16L11 24L14 22L11 14L19 14Z" fill="white" stroke="#1a1a1a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+
 <!-- Lightbox -->
 <div id="lightbox">
+  <div id="lb-arrow"></div>
   <div id="lb-counter"></div>
   <button id="lb-close">Close</button>
-  <button class="lb-btn" id="lb-prev">&#8592;</button>
   <div class="lb-inner"><img id="lb-img" src="" alt=""></div>
-  <button class="lb-btn" id="lb-next">&#8594;</button>
 </div>
 
 <script>
@@ -317,7 +427,7 @@ window.addEventListener('resize', function(){ drawH(document.getElementById('svg
 })();
 
 /* ── DRAGGABLE TEXTS ── */
-['dt1','dt2','dt3'].forEach(function(id){
+['dt1','dt2'].forEach(function(id){
   var el=document.getElementById(id), sx,sy,ox,oy,down=false;
   el.addEventListener('mousedown',function(e){ down=true;sx=e.clientX;sy=e.clientY;ox=parseInt(el.style.left)||0;oy=parseInt(el.style.top)||0;el.style.zIndex=50;e.preventDefault();e.stopPropagation(); });
   window.addEventListener('mousemove',function(e){ if(!down)return; el.style.left=(ox+e.clientX-sx)+'px';el.style.top=(oy+e.clientY-sy)+'px'; });
@@ -389,8 +499,7 @@ function loadProject(id) {
   });
 
   // Info
-  document.getElementById('dr-title').textContent = p.titleEn || p.title;
-  document.getElementById('dr-title-ko').textContent = p.title;
+  document.getElementById('dr-title').textContent = p.title;
   document.getElementById('dr-format').textContent = p.format;
   document.getElementById('dr-client').textContent = p.client;
   document.getElementById('dr-date').textContent = p.date;
@@ -416,6 +525,7 @@ function loadProject(id) {
     imgs.appendChild(wrap);
   }
   imgs.scrollTop = 0;
+  initMobileCarousel();
 }
 
 /* ── CATEGORY FILTER ── */
@@ -433,30 +543,108 @@ document.querySelectorAll('.dr-cat-link').forEach(function(a){
 
 /* ── LIGHTBOX ── */
 var lbImages = [], lbCur = 0;
+/* ── CUSTOM CURSOR ── */
+var siteCursor = document.getElementById('site-cursor');
+document.addEventListener('mousemove', function(e) {
+  siteCursor.style.left = e.clientX + 'px';
+  siteCursor.style.top  = e.clientY + 'px';
+  siteCursor.style.display = document.getElementById('lightbox').classList.contains('open') ? 'none' : 'block';
+});
+document.addEventListener('mouseleave', function() { siteCursor.style.display = 'none'; });
+
+var lb = document.getElementById('lightbox');
+var lbArrow = document.getElementById('lb-arrow');
+lb.addEventListener('dragstart', function(e){ e.preventDefault(); });
+lb.addEventListener('mousedown', function(e){
+  if (e.target.id !== 'lb-close') e.preventDefault();
+});
+
 function lbOpen(srcs, idx) {
   lbImages = srcs; lbCur = idx;
   lbShow(lbCur);
-  document.getElementById('lightbox').classList.add('open');
+  lb.classList.add('open');
+  siteCursor.style.display = 'none';
 }
 function lbShow(idx) {
   lbCur = (idx + lbImages.length) % lbImages.length;
   document.getElementById('lb-img').src = lbImages[lbCur];
   document.getElementById('lb-counter').textContent = (lbCur+1) + ' / ' + lbImages.length;
 }
-document.getElementById('lb-close').addEventListener('click', function(){ document.getElementById('lightbox').classList.remove('open'); });
-document.getElementById('lb-prev').addEventListener('click', function(){ lbShow(lbCur-1); });
-document.getElementById('lb-next').addEventListener('click', function(){ lbShow(lbCur+1); });
-document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
+
+document.getElementById('lb-close').addEventListener('click', function(e){
+  e.stopPropagation();
+  lb.classList.remove('open');
+  siteCursor.style.display = 'block';
+});
+
+var SVG_R = '<svg width="36" height="64" viewBox="0 0 36 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L30 32L6 62" stroke="#1a1a1a" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
+var SVG_L = '<svg width="36" height="64" viewBox="0 0 36 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 2L6 32L30 62" stroke="#1a1a1a" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
+
+lb.addEventListener('mousemove', function(e) {
+  lbArrow.style.left = e.clientX + 'px';
+  lbArrow.style.top  = e.clientY + 'px';
+  lbArrow.style.display = 'block';
+  lbArrow.innerHTML = e.clientX > window.innerWidth / 2 ? SVG_R : SVG_L;
+});
+lb.addEventListener('mouseleave', function() { lbArrow.style.display = 'none'; });
+
+lb.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('lb-close')) return;
+  if (e.clientX > window.innerWidth / 2) lbShow(lbCur + 1);
+  else lbShow(lbCur - 1);
+});
+
 document.addEventListener('keydown', function(e){
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key==='Escape') document.getElementById('lightbox').classList.remove('open');
-  if (e.key==='ArrowLeft') lbShow(lbCur-1);
-  if (e.key==='ArrowRight') lbShow(lbCur+1);
+  if (!lb.classList.contains('open')) return;
+  if (e.key==='Escape') lb.classList.remove('open');
+  if (e.key==='ArrowLeft')  lbShow(lbCur - 1);
+  if (e.key==='ArrowRight') lbShow(lbCur + 1);
+});
+
+/* ── MOBILE IMAGE CAROUSEL ── */
+var mobImgIdx = 0;
+function isMobile() { return window.innerWidth <= 768; }
+
+function mobShowImg(idx) {
+  var wraps = document.querySelectorAll('#dr-imgs .dr-img-wrap');
+  if (!wraps.length) return;
+  mobImgIdx = (idx + wraps.length) % wraps.length;
+  wraps.forEach(function(w, i) { w.classList.toggle('mob-active', i === mobImgIdx); });
+}
+
+function initMobileCarousel() {
+  if (!isMobile()) return;
+  mobImgIdx = 0;
+  mobShowImg(0);
+}
+
+var drImgsEl = document.getElementById('dr-imgs');
+var mobTouchX = 0;
+drImgsEl.addEventListener('touchstart', function(e){ mobTouchX = e.touches[0].clientX; }, {passive:true});
+drImgsEl.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - mobTouchX;
+  if (isMobile() && Math.abs(dx) > 40) mobShowImg(mobImgIdx + (dx < 0 ? 1 : -1));
+}, {passive:true});
+
+/* Touch swipe for lightbox */
+var lbTouchX = 0;
+lb.addEventListener('touchstart', function(e){ lbTouchX = e.touches[0].clientX; }, {passive:true});
+lb.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - lbTouchX;
+  if (Math.abs(dx) > 40) dx < 0 ? lbShow(lbCur+1) : lbShow(lbCur-1);
+}, {passive:true});
+
+/* Touch drag scroll for image strips */
+document.querySelectorAll('.strip, #dr-imgs').forEach(function(el){
+  var tx=0, sl=0, dragging=false;
+  el.addEventListener('touchstart', function(e){ tx=e.touches[0].clientX; sl=el.scrollLeft; dragging=true; },{passive:true});
+  el.addEventListener('touchmove', function(e){ if(!dragging)return; el.scrollLeft=sl-(e.touches[0].clientX-tx); },{passive:true});
+  el.addEventListener('touchend', function(){ dragging=false; },{passive:true});
 });
 
 /* ── TYPING ANIMATION ── */
 window.addEventListener('load', function(){
-  var SPEED = 14; // ms per char
+  var SPEED = 7; // ms per char
 
   // dt1 chars — hidden-ink chars wrapped in {h:'x'}
   var dt1Chars = [
@@ -499,7 +687,6 @@ window.addEventListener('load', function(){
 
   var dt1 = document.getElementById('dt1');
   var dt2 = document.getElementById('dt2');
-  var dt3 = document.getElementById('dt3');
   var menu = document.getElementById('home-menu');
 
   setTimeout(function(){
@@ -507,10 +694,8 @@ window.addEventListener('load', function(){
       typeText(dt2,
         'ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.',
         SPEED, function(){
-          typeText(dt3, '©Heeye Choi, Based in Seoul, Korea', SPEED * 1.5, function(){
-            menu.style.transition = 'opacity .5s';
-            menu.style.opacity = '1';
-          });
+          menu.style.transition = 'opacity .5s';
+          menu.style.opacity = '1';
         });
     });
   }, 300);
