@@ -7,10 +7,9 @@
   <style>
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-Regular.otf') format('opentype'); font-weight:400; }
     @font-face { font-family:'SuisseIntl'; src:url('fonts/SuisseIntlTrial-SemiBold.otf') format('opentype'); font-weight:600; }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html, body { width:100%; height:100%; overflow:hidden; }
     body { font-family:'SuisseIntl','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.5; color:#1a1a1a; background:#ebebeb; }
-    #site-cursor { position:fixed; top:0; left:0; pointer-events:none; z-index:99999; display:none; }
     a { color:inherit; text-decoration:none; }
 
     /* ══ HOME VIEW ══ */
@@ -341,11 +340,6 @@
   </div>
 </div>
 
-<!-- Custom cursor -->
-<svg id="site-cursor" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
-  <path d="M3 2L3 22L8 16L11 24L14 22L11 14L19 14Z" fill="white" stroke="#1a1a1a" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-</svg>
-
 <!-- Lightbox -->
 <div id="lightbox">
   <div id="lb-arrow"></div>
@@ -543,14 +537,6 @@ document.querySelectorAll('.dr-cat-link').forEach(function(a){
 
 /* ── LIGHTBOX ── */
 var lbImages = [], lbCur = 0;
-/* ── CUSTOM CURSOR ── */
-var siteCursor = document.getElementById('site-cursor');
-document.addEventListener('mousemove', function(e) {
-  siteCursor.style.left = e.clientX + 'px';
-  siteCursor.style.top  = e.clientY + 'px';
-  siteCursor.style.display = document.getElementById('lightbox').classList.contains('open') ? 'none' : 'block';
-});
-document.addEventListener('mouseleave', function() { siteCursor.style.display = 'none'; });
 
 var lb = document.getElementById('lightbox');
 var lbArrow = document.getElementById('lb-arrow');
@@ -563,7 +549,6 @@ function lbOpen(srcs, idx) {
   lbImages = srcs; lbCur = idx;
   lbShow(lbCur);
   lb.classList.add('open');
-  siteCursor.style.display = 'none';
 }
 function lbShow(idx) {
   lbCur = (idx + lbImages.length) % lbImages.length;
@@ -574,7 +559,6 @@ function lbShow(idx) {
 document.getElementById('lb-close').addEventListener('click', function(e){
   e.stopPropagation();
   lb.classList.remove('open');
-  siteCursor.style.display = 'block';
 });
 
 var SVG_R = '<svg width="36" height="64" viewBox="0 0 36 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L30 32L6 62" stroke="#1a1a1a" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
