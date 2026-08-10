@@ -663,20 +663,20 @@ var PROJECTS = [
     "id": "dotdotdot",
     "title": "점, 점점",
     "titleEn": "Dot, Dot Dot",
-    "format": "Exhibition Identity / Poster",
-    "client": "서울여자대학교 아트앤디자인스쿨 공예전공",
+    "format": "Exhibition Identity",
+    "client": "서울여자대학교 조형예술 졸업전시",
     "date": "2025",
-    "taglineKo": "점 하나에서 형태가 비롯된다.",
-    "bodyKo": "수백 개의 점들이 방사형으로 퍼지고 군집하며 유기적 형태를 이루도록 구성하여, 흙을 빚고 가마를 통과하는 도자 제작의 손길을 그래픽 언어로 번역하였다. 크림빛 바탕 위에 번지듯 흩어지는 점들의 밀도는 섬세하면서도 생동하는 감각을 전달하며, '점'이라는 가장 작은 단위가 곧 형태의 출발임을 전시 전체의 논리로 삼는다.",
-    "taglineEn": "Form begins from a single point.",
-    "bodyEn": "Hundreds of dots radiate and cluster into organic forms, translating the ceramicist's gesture — shaping clay, enduring the kiln — into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself — the smallest unit of ceramic making — the governing logic of the entire exhibition identity.",
+    "taglineKo": "점 하나는 아무것도 아니지만, 모이면 이야기가 된다.",
+    "bodyKo": "낱낱의 점을 방사와 궤도로 배열해 형상이 서서히 맺히도록 그래픽 시스템을 짰다. 멀리서는 한 덩어리의 상으로 읽히고 가까이서는 다시 흩어진 점으로 풀리며, 응집되면서도 흩날리는 긴장을 만든다. 이는 저마다의 작업이 흩어진 점처럼 놓였다가 하나의 전시로 수렴하는 순간을 그대로 옮긴 것이다.",
+    "taglineEn": "A single dot is nothing; gathered, it becomes a story.",
+    "bodyEn": "I built a graphic system where individual dots are arranged along radiating orbits so a form slowly gathers into view. From afar it reads as one image, up close it dissolves back into scattered points—held together yet drifting apart at once. It mirrors the moment when separate works, laid out like stray dots, converge into a single exhibition.",
     "type": "Commercial",
     "categories": [
       "Graphic",
       "Identity"
     ],
     "fields": [],
-    "imgCount": 11,
+    "imgCount": 6,
     "folder": "dotdotdot",
     "images": [
       {
@@ -720,16 +720,6 @@ var PROJECTS = [
         "bg": "#f0f0f0"
       },
       {
-        "file": "005.jpg",
-        "origname": "졸전-05.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
         "file": "006.jpg",
         "origname": "졸전-06.png",
         "alt": "",
@@ -742,46 +732,6 @@ var PROJECTS = [
       {
         "file": "007.jpg",
         "origname": "졸전-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "008.jpg",
-        "origname": "졸전-08.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "009.jpg",
-        "origname": "졸전-09.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "010.jpg",
-        "origname": "졸전-10.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "011.jpg",
-        "origname": "졸전-11.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -1209,15 +1159,17 @@ document.querySelectorAll('.strip, #dr-imgs').forEach(function(el){
 window.addEventListener('load', function(){
   var SPEED = 7; // ms per char
 
-  // dt1 chars — hidden-ink chars wrapped in {h:'x'}
-  var dt1Chars = [
-    'O','R','D','K',',',' ','o','r','d',
-    {h:'e'},{h:'r'},
-    'k','n','a','c','k',',',' ','o','r','d','e','r',
-    {h:'k'},
-    'n','a','c',
-    {h:'k'}
-  ];
+  // dt1 sequence is read straight from the #dt1 markup — edit ONLY the HTML.
+  // Text nodes → typed chars; .hidden-ink spans → hidden-ink chars.
+  function readChars(el) {
+    var out = [];
+    for (var n = el.firstChild; n; n = n.nextSibling) {
+      var txt = n.textContent || '';
+      var hidden = (n.nodeType === 1 && n.classList && n.classList.contains('hidden-ink'));
+      for (var i = 0; i < txt.length; i++) out.push(hidden ? { h: txt[i] } : txt[i]);
+    }
+    return out;
+  }
 
   function typeCustom(el, chars, spd, done) {
     el.style.opacity = '1';
@@ -1264,7 +1216,7 @@ window.addEventListener('load', function(){
 
   setTimeout(function(){
     block.style.opacity = '1';
-    typeCustom(dt1, dt1Chars, SPEED * 2, function(){
+    typeCustom(dt1, readChars(dt1), SPEED * 2, function(){
       typeText(dt2,
         'ordk is a designer who assembles messages into visual systems. Working across branding, graphic, and visual design, ordk builds structured and intentional identities grounded in real-world context and hands-on experience.\nMove your mouse. Click to keep the moment.',
         SPEED, function(){
