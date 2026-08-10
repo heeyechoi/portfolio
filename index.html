@@ -1566,6 +1566,14 @@ function loadProject(id) {
   if (list.length) {
     var gal = document.createElement('div');
     gal.className = 'dv-gallery';
+    var galCols = p.galleryColumns || 1;
+    var galGap  = p.galleryGap !== false;
+    if (galCols > 1) {
+      gal.style.display = 'grid';
+      gal.style.gridTemplateColumns = 'repeat(' + galCols + ', 1fr)';
+      gal.style.columnGap = galGap ? '6px' : '0';
+      gal.style.rowGap = '6px';
+    }
     list.forEach(function(x){
       var s = x.s || {};
       var wrap = document.createElement('div');
