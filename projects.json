@@ -132,8 +132,14 @@
     "taglineEn": "",
     "bodyEn": "",
     "type": "",
-    "categories": [],
-    "fields": [],
+    "categories": [
+      "Visual directing",
+      "Photography",
+      "Contents"
+    ],
+    "fields": [
+      "Lifestyle"
+    ],
     "credits": [],
     "imgCount": 10,
     "images": [
