@@ -28,18 +28,18 @@
     "imgCount": 9,
     "images": [
       {
-        "file": "001.jpg",
-        "origname": "goyo-01.png",
+        "file": "002.jpg",
+        "origname": "goyo-02.png",
         "alt": "",
-        "ratio": "original",
+        "ratio": "16:9",
         "zoom": 1,
         "posX": 0,
         "posY": 0,
-        "bg": "#f0f0f0"
+        "bg": "#eaeaea"
       },
       {
-        "file": "002.jpg",
-        "origname": "goyo-02.png",
+        "file": "001.jpg",
+        "origname": "goyo-01.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
