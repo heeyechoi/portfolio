@@ -276,6 +276,7 @@
     .ar-cell { overflow:hidden; }
     .ar-cell img { display:block; width:100%; height:auto; }
     .ar-title { font-size:11px; font-weight:600; margin-top:7px; word-break:keep-all; }
+    .ar-date  { font-size:10px; color:#888; margin-top:2px; }
     .ar-cap   { font-size:10px; color:#888; margin-top:3px; line-height:1.4; word-break:keep-all; }
     @media (max-width:768px) {
       #archive-grid { grid-template-columns:repeat(2,1fr); padding:56px 20px 32px; }
@@ -1366,6 +1367,7 @@ function renderArchive() {
     var file    = (a && typeof a === 'object') ? a.file : a;
     var title   = (a && a.title)   || '';
     var caption = (a && a.caption) || '';
+    var date    = (a && a.date)    || '';
     var cell = document.createElement('div');
     cell.className = 'ar-cell';
     var img = document.createElement('img');
@@ -1378,6 +1380,12 @@ function renderArchive() {
       t.className = 'ar-title';
       t.textContent = title;
       cell.appendChild(t);
+    }
+    if (date) {
+      var d = document.createElement('div');
+      d.className = 'ar-date';
+      d.textContent = date;
+      cell.appendChild(d);
     }
     if (caption) {
       var c = document.createElement('div');
@@ -1492,6 +1500,35 @@ plistToggle.addEventListener('click', function(){
   setPlistOpen(!plistEl.classList.contains('expanded'));
 });
 
+// Apply ratio / bg to a cell element, and zoom+position transform to its img.
+// Used by both the strip and the gallery.
+function applyImgCell(el, s) {
+  if (!s) return;
+  if (s.bg) el.style.background = s.bg;
+  if (s.ratio && s.ratio !== 'original') {
+    var rp = s.ratio.split(':');
+    el.style.aspectRatio = rp[0] + ' / ' + rp[1];
+    el.style.position = 'relative';
+    el.style.overflow = 'hidden';
+    el.style.height = 'auto';   // let aspect-ratio drive height when ratio is set
+  }
+}
+function applyImgTransform(img, s) {
+  if (!s) return;
+  if (s.ratio && s.ratio !== 'original') {
+    img.style.position = 'absolute';
+    img.style.inset = '0';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+  }
+  var zoom = s.zoom || 1, px = s.posX || 0, py = s.posY || 0;
+  if (zoom !== 1 || px !== 0 || py !== 0) {
+    img.style.transform = 'translate(' + px + '%, ' + py + '%) scale(' + zoom + ')';
+    img.style.transformOrigin = 'center center';
+  }
+}
+
 // Resolve a project's image list: p.images[] (ratio/zoom/pos/bg) first, else imgCount fallback
 function projectImgList(p) {
   var list = (p.images && p.images.length)
@@ -1521,8 +1558,11 @@ function renderList() {
     projectImgList(p).forEach(function(x){
       var cell = document.createElement('div');
       cell.className = 'dl-cell';
+      var s = x.s || {};
+      applyImgCell(cell, s);
       var img = document.createElement('img');
-      img.src = x.src; img.alt = (x.s && x.s.alt) || ''; img.loading = 'lazy';
+      img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
+      applyImgTransform(img, s);
       cell.appendChild(img);
       strip.appendChild(cell);
     });
@@ -1607,8 +1647,11 @@ function loadProject(id) {
     list.forEach(function(x){
       var cell = document.createElement('div');
       cell.className = 'dl-cell';
+      var s = x.s || {};
+      applyImgCell(cell, s);
       var img = document.createElement('img');
-      img.src = x.src; img.alt = (x.s && x.s.alt) || ''; img.loading = 'lazy';
+      img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
+      applyImgTransform(img, s);
       cell.appendChild(img);
       strip.appendChild(cell);
     });
@@ -1664,8 +1707,10 @@ function loadProject(id) {
       var s = x.s || {};
       var wrap = document.createElement('div');
       wrap.className = 'dr-img-wrap';
+      applyImgCell(wrap, s);
       var img = document.createElement('img');
       img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
+      applyImgTransform(img, s);
       wrap.appendChild(img);
       if (s.alt) {
         var cap = document.createElement('span');
