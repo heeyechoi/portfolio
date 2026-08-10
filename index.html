@@ -191,6 +191,10 @@
     .dv-body-ko { font-size:14px; line-height:1.5; margin-bottom:16px; }
     .dv-tagline { font-size:14px; font-style:italic; color:#444; margin-bottom:12px; }
     .dv-body-en { font-size:14px; line-height:1.3; color:#333; }
+    .dv-gallery { margin-top:40px; display:flex; flex-direction:column; gap:6px; }
+    .dv-gallery img { display:block; width:100%; height:auto; }
+    .dv-top { display:block; margin:28px 0 8px; padding:8px 0; background:none; border:none; cursor:var(--cur); font-family:inherit; font-size:15px; font-weight:500; line-height:1; color:#1a1a1a; text-align:left; }
+    .dv-top:hover { color:#888; }
     .dr-img-wrap { flex-shrink:0; position:relative; }
     .dr-img-wrap img {
       display:block; width:100%; height:auto;
@@ -1150,6 +1154,43 @@ function loadProject(id) {
   if (p.bodyEn)    { var e = document.createElement('p'); e.className = 'dv-body-en'; e.textContent = p.bodyEn; desc.appendChild(e); }
   det.appendChild(desc);
 
+  // Full image list below the description — stacked in order; hover shows the caption
+  if (list.length) {
+    var gal = document.createElement('div');
+    gal.className = 'dv-gallery';
+    list.forEach(function(x){
+      var s = x.s || {};
+      var wrap = document.createElement('div');
+      wrap.className = 'dr-img-wrap';
+      var img = document.createElement('img');
+      img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
+      wrap.appendChild(img);
+      if (s.alt) {
+        var cap = document.createElement('span');
+        cap.className = 'dr-cap';
+        cap.textContent = s.alt;
+        wrap.appendChild(cap);
+        (function(w, c){
+          w.addEventListener('mousemove', function(ev){
+            var r = w.getBoundingClientRect();
+            c.style.left = (ev.clientX - r.left) + 'px';
+            c.style.top  = (ev.clientY - r.top)  + 'px';
+          });
+        })(wrap, cap);
+      }
+      gal.appendChild(wrap);
+    });
+    det.appendChild(gal);
+
+    // Back-to-top arrow
+    var toTop = document.createElement('button');
+    toTop.className = 'dv-top';
+    toTop.setAttribute('aria-label', 'Back to top');
+    toTop.textContent = '↑ (top)';
+    toTop.addEventListener('click', function(){ det.scrollTo({ top: 0, behavior: 'smooth' }); });
+    det.appendChild(toTop);
+  }
+
   showDetail();
 }
 
@@ -1252,22 +1293,14 @@ function makeStripCarousel(strip, auto) {
   if (!cells.length) return;
   if (auto) { makeMarquee(strip, cells.length); return; }
 
-  // Detail: seamless looped carousel (right half → next, left half → prev) with springy ease
-  var N = cells.length;
-  if (N > 1) Array.prototype.slice.call(cells).forEach(function(c){ strip.appendChild(c.cloneNode(true)); });
-  var all = strip.querySelectorAll('.dl-cell');
-  var ri = 0;
-  function half(){ return strip.scrollWidth / 2; }
-  function normalize(){
-    if (ri >= N) { ri -= N; strip.scrollLeft -= half(); }
-    else if (ri < 0) { ri += N; strip.scrollLeft += half(); }
-  }
+  // Detail: paged carousel (right half → next, left half → prev). Stops at the ends (no loop).
+  var N = cells.length, idx = 0;
   function go(dir){
     if (N < 2) return;
-    normalize();
-    ri += dir;
-    if (ri < 0) { strip.scrollLeft += half(); ri += N; }   // jump into the clone set for a seamless prev
-    animateScroll(strip, all[ri].offsetLeft, 560, normalize);
+    var ni = Math.max(0, Math.min(N - 1, idx + dir));
+    if (ni === idx) return;   // already at an end → stop
+    idx = ni;
+    animateScroll(strip, cells[idx].offsetLeft, 340);
   }
   strip.addEventListener('click', function(e){
     if (N < 2) return;
