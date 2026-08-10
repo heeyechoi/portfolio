@@ -195,7 +195,7 @@
         "posX": -0.1,
         "posY": 13.7,
         "bg": "#eaeaea",
-        "cols": 1
+        "cols": 3
       },
       {
         "file": "001.jpg",
@@ -217,22 +217,11 @@
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 2
       },
       {
         "file": "003.jpg",
         "origname": "goyo-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1
-      },
-      {
-        "file": "005.jpg",
-        "origname": "goyo-05.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -255,6 +244,17 @@
       {
         "file": "007.jpg",
         "origname": "goyo-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1
+      },
+      {
+        "file": "005.jpg",
+        "origname": "goyo-05.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
