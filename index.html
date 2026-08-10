@@ -49,7 +49,7 @@
     .hidden-ink { color:#ebebeb; }
     #home-menu { font-weight:500; margin-top:0; }
     #home-menu a { display:inline-block; color:#1a1a1a; text-decoration:none; cursor:var(--cur); }
-    #home-menu a:hover { color:#888; }
+    #home-menu a:hover { color:#ff2a2a; }
     #home-block .word { display:inline-block; }
     #home-block .word, #home-menu a { cursor:grab; }
     #home-block .word:active, #home-menu a:active { cursor:grabbing; }
@@ -77,12 +77,14 @@
       -webkit-backdrop-filter:blur(4px);
       z-index:100;
       transform:translateY(100%);
-      transition:transform .65s cubic-bezier(0.16,1,0.3,1);
+      transition:transform .65s cubic-bezier(0.16,1,0.3,1), height .5s cubic-bezier(0.16,1,0.3,1);
       display:flex;
       flex-direction:row;
       overflow:hidden;
     }
     #drawer.open { transform:translateY(0); }
+    /* Detail view: fill the whole screen while browsing the images below the description */
+    #drawer.expanded { height:100vh; height:100dvh; }
 
     /* Category col — 10% */
     #dr-cat {
@@ -138,6 +140,7 @@
     }
     #dr-topbtn:hover { opacity:.7; }
     #dr-list, #dr-detail { height:100%; overflow-y:auto; padding:32px 35px 48px; }
+    #dr-detail { padding-bottom:24px; }   /* halve space below the ↑ (top) button */
     #dr-list::-webkit-scrollbar, #dr-detail::-webkit-scrollbar { display:none; }
     #dr-main.mode-list #dr-detail { display:none; }
     #dr-main.mode-detail #dr-list { display:none; }
@@ -175,20 +178,21 @@
     .dv-imgs-top { margin-bottom:28px; }
     .dv-imgs-rest { margin-top:28px; }
     .dv-head {
-      display:grid; grid-template-columns:1.4fr 1fr 1.3fr 1fr 1.2fr; gap:20px;
+      display:grid; grid-template-columns:1.4fr 0.5fr 1fr 1.3fr 1fr 1.2fr; gap:20px;
       margin-bottom:24px;
     }
+    .dv-spacer { grid-column:2; }
     .dv-title-col { padding-right:32px; }
     .dv-title { font-size:14px; font-weight:600; margin-bottom:16px; line-height:1.4; }
     .dv-typedate { font-size:14px; white-space:pre-line; line-height:1.5; }
     .dv-k { font-size:14px; font-weight:600; margin-bottom:0; }
-    .dv-v { font-size:14px; line-height:1.5; }
+    .dv-v { font-size:14px; line-height:1.3; }
     .dv-credit-line { margin-bottom:2px; }
     .dr-credit-link { color:#1a1a1a; text-decoration:underline; text-underline-offset:2px; cursor:var(--cur); }
     .dr-credit-link:hover { color:#888; }
-    /* Description left-aligned with the Client column (same grid as .dv-head, start at col 2) */
-    .dv-desc { display:grid; grid-template-columns:1.4fr 1fr 1.3fr 1fr 1.2fr; gap:0 20px; margin-bottom:8px; }
-    .dv-desc > * { grid-column:2 / 5; }   /* right edge at the col4/col5 boundary */
+    /* Description left-aligned with the Client column (same grid as .dv-head, start at col 3) */
+    .dv-desc { display:grid; grid-template-columns:1.4fr 0.5fr 1fr 1.3fr 1fr 1.2fr; gap:0 20px; margin-bottom:8px; }
+    .dv-desc > * { grid-column:3 / 6; }   /* right edge at the col5/col6 boundary */
     .dv-body-ko { font-size:14px; line-height:1.5; margin-bottom:16px; }
     .dv-tagline { font-size:14px; font-style:italic; color:#444; margin-bottom:12px; }
     .dv-body-en { font-size:14px; line-height:1.3; color:#333; }
@@ -342,18 +346,22 @@
       /* Main fills remaining height */
       #dr-main { flex:1; min-height:0; }
       #dr-list, #dr-detail { padding:44px 32px 40px 35px; }
+      #dr-detail { padding-bottom:20px; }
       .dl-strip { height:38vh; }
+      /* Detail: no horizontal swipe strip — images stack vertically (gallery below) */
+      .dv-strip { display:none; }
       .dl-meta { grid-template-columns:1fr 1fr; gap:8px 20px; }
       .dl-meta .dl-cats { grid-column:1 / -1; }
       .dv-head { grid-template-columns:1fr 1fr 1fr; gap:16px; }
       .dv-title-col { grid-column:1 / -1; }
+      .dv-spacer { display:none; }
       .dv-desc { display:block; }
     }
 
 
     @media (max-width:768px) {
       /* Homepage */
-      #dt2 { width:calc(100vw - 32px); }
+      #dt2 { width:calc(100vw - 60px); }
 
       /* Rulers thin on mobile */
       .r-top  { height:10px; }
@@ -411,7 +419,10 @@
       /* Detail: stacked full-width images + wrapped meta */
       .dv-head { grid-template-columns:1fr 1fr; gap:14px; }
       .dv-title-col { grid-column:1 / -1; padding-right:0; }
+      .dv-spacer { display:none; }
       .dv-desc { display:block; }
+      /* Detail: no horizontal swipe strip — images stack vertically (gallery below) */
+      .dv-strip { display:none; }
       .dv-imgs-top { margin-bottom:18px; }
       .dv-imgs-rest { margin-top:18px; }
 
@@ -888,11 +899,14 @@ function openDrawer(filter) {
 }
 
 function closeDrawer() {
-  document.getElementById('drawer').classList.remove('open');
+  var d = document.getElementById('drawer');
+  d.classList.remove('open');
+  d.classList.remove('expanded');
 }
 
 /* ── DRAWER MODES: image-led index (list) ⇄ project detail ── */
 function showList() {
+  document.getElementById('drawer').classList.remove('expanded');
   var main = document.getElementById('dr-main');
   main.classList.add('mode-list');
   main.classList.remove('mode-detail');
@@ -1089,6 +1103,23 @@ function updateListSpy() {
   if (wrap) wrap.addEventListener('scroll', updateListSpy, {passive:true});
 })();
 
+/* Detail (tablet/desktop): expand the drawer to full screen once the image
+   gallery below the description comes into view; collapse when scrolled back up. */
+(function(){
+  var det = document.getElementById('dr-detail');
+  var drawer = document.getElementById('drawer');
+  if (!det || !drawer) return;
+  det.addEventListener('scroll', function(){
+    if (isMobile()) { drawer.classList.remove('expanded'); return; }
+    var gal = det.querySelector('.dv-gallery');
+    if (!gal) { drawer.classList.remove('expanded'); return; }
+    var rel = gal.getBoundingClientRect().top - det.getBoundingClientRect().top;
+    var h = det.clientHeight;
+    if (rel <= h * 0.5) drawer.classList.add('expanded');
+    else if (rel > h * 0.7) drawer.classList.remove('expanded');
+  }, {passive:true});
+})();
+
 /* ── PROJECT DETAIL ── */
 function loadProject(id) {
   currentProject = id;
@@ -1106,6 +1137,7 @@ function loadProject(id) {
   var det = document.getElementById('dr-detail');
   det.innerHTML = '';
   det.scrollTop = 0;
+  document.getElementById('drawer').classList.remove('expanded');
 
   var list = projectImgList(p);
 
@@ -1130,6 +1162,7 @@ function loadProject(id) {
   head.className = 'dv-head';
   head.innerHTML =
     '<div class="dv-title-col"><p class="dv-title"></p><p class="dv-typedate"></p></div>' +
+    '<div class="dv-spacer"></div>' +
     '<div class="dv-col"><div class="dv-k">Client</div><div class="dv-v dv-client"></div></div>' +
     '<div class="dv-col"><div class="dv-k">Category</div><div class="dv-v dv-cat"></div></div>' +
     '<div class="dv-col"><div class="dv-k">Field</div><div class="dv-v dv-field"></div></div>' +
