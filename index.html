@@ -87,7 +87,7 @@
     }
     #dr-cat ul { list-style:none; }
     #dr-cat li { margin-bottom:1px; }
-    #dr-cat a { display:block; padding:1px 0; font-size:13px; font-weight:500; color:#1a1a1a; cursor:var(--cur); }
+    #dr-cat a { display:block; padding:1px 0; font-size:14px; font-weight:500; color:#1a1a1a; cursor:var(--cur); }
     #dr-cat a.on { color:#1a1a1a; font-weight:600; }
     #dr-cat a:hover { color:#1a1a1a; }
 
@@ -99,7 +99,7 @@
     }
     #dr-plist ul { list-style:none; }
     #dr-plist li { margin-bottom:1px; }
-    #dr-plist a { display:block; padding:1px 0; font-size:13px; font-weight:500; color:#1a1a1a; cursor:var(--cur); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #dr-plist a { display:block; padding:1px 0; font-size:14px; font-weight:500; color:#1a1a1a; cursor:var(--cur); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     #dr-plist a.on { font-weight:600; }
     #dr-plist a:hover { color:#888; }
 
@@ -110,7 +110,7 @@
       width:100%; flex-shrink:0;
       padding:12px 32px 12px 35px;
       background:none; border:none; cursor:var(--cur);
-      font-family:inherit; font-size:13px; font-weight:600;
+      font-family:inherit; font-size:14px; font-weight:600;
       color:#1a1a1a; text-align:left;
       border-bottom:1px solid rgba(0,0,0,.06);
     }
@@ -130,7 +130,7 @@
     /* Close button */
     #dr-close {
       position:absolute; top:22px; right:24px; z-index:10;
-      font-family:inherit; font-size:44px; font-weight:500; line-height:1;
+      font-family:inherit; font-size:44px; font-weight:200; line-height:1;
       background:none; border:none; cursor:var(--cur); color:#aaa; padding:0;
     }
     #dr-close:hover { color:#1a1a1a; }
@@ -141,8 +141,8 @@
       padding:32px 20px 32px 24px;
       overflow-y:auto;
     }
-    #dr-info .dr-title { font-size:13px; font-weight:600; margin-bottom:20px; line-height:1.4; }
-    .dr-meta { margin-bottom:1px; font-size:13px; }
+    #dr-info .dr-title { font-size:14px; font-weight:600; margin-bottom:20px; line-height:1.4; }
+    .dr-meta { margin-bottom:1px; font-size:14px; }
     .dr-key { color:#aaa; margin-right:4px; }
 
     /* Description sub-col (right) */
@@ -151,9 +151,9 @@
       padding:32px 80px 32px 0;
       overflow-y:auto;
     }
-    #dr-desc .dr-body-ko { font-size:13px; margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
-    #dr-desc .dr-tagline  { font-size:13px; font-style:italic; margin-bottom:10px; color:#444; }
-    #dr-desc .dr-body-en  { font-size:13px; color:#888; line-height:1.65; }
+    #dr-desc .dr-body-ko { font-size:14px; margin-bottom:14px; line-height:1.65; color:#1a1a1a; }
+    #dr-desc .dr-tagline  { font-size:14px; font-style:italic; margin-bottom:10px; color:#444; }
+    #dr-desc .dr-body-en  { font-size:14px; color:#888; line-height:1.65; }
 
     /* Images sub-col (center) */
     #dr-imgs {
@@ -170,18 +170,15 @@
     }
     .dr-img-wrap img:hover { opacity:.88; }
     .dr-cap {
-      position:absolute; left:10px; bottom:10px;
-      display:inline-block; max-width:calc(100% - 20px);
+      position:absolute; left:0; top:0;
+      transform:translate(-50%,-100%); margin-top:-12px;
+      display:inline-block; max-width:220px;
       background:rgba(20,20,20,.78); color:#fff;
       font-size:11px; line-height:1.4; letter-spacing:.01em;
       padding:4px 8px;
-      opacity:0; transition:opacity .15s; pointer-events:none;
+      opacity:0; transition:opacity .12s; pointer-events:none; z-index:6;
     }
     .dr-img-wrap:hover .dr-cap { opacity:1; }
-    .dr-img-counter {
-      padding:10px 0 4px;
-      font-size:11px; color:#aaa; letter-spacing:.04em;
-    }
 
     /* Lightbox */
     #lightbox {
@@ -1011,12 +1008,19 @@ function loadProject(id) {
     }
     (function(i2, srcs){ img.addEventListener('click', function(){ lbOpen(srcs, i2); }); })(idx, allSrcs);
     wrap.appendChild(img);
-    // Hover caption — only when alt/caption exists
+    // Hover caption — only when alt/caption exists; follows cursor, floats above it
     if (s.alt) {
       var cap = document.createElement('span');
       cap.className = 'dr-cap';
       cap.textContent = s.alt;
       wrap.appendChild(cap);
+      (function(w, c){
+        w.addEventListener('mousemove', function(ev){
+          var r = w.getBoundingClientRect();
+          c.style.left = (ev.clientX - r.left) + 'px';
+          c.style.top  = (ev.clientY - r.top)  + 'px';
+        });
+      })(wrap, cap);
     }
     imgs.appendChild(wrap);
   });
