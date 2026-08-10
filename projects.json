@@ -1,5 +1,155 @@
 [
   {
+    "id": "seoul-beauty-global-brand-identity-design",
+    "folder": "Seoul Beauty Global Brand Identity Design",
+    "titleKo": "",
+    "titleEn": "Seoul Beauty Global Brand Identity Design",
+    "format": "Brand Identity",
+    "client": "Seoul Beauty Global",
+    "date": "2025. 01",
+    "taglineKo": "",
+    "bodyKo": "Connected 언어의 장벽을 넘어 뷰티로 하나되는 순간\nReliable 검증된 뷰티 서비스들과 함께 안전한 여행\nElegant 서울에서만 경험할 수 있는 품격있고 합리적인 서비스\n세 가지 키워드로 브랜드를 정의하고 아이덴티티 디자인을 하였습니다. \nS와 B로 이루어진 두 곡선은 대칭적인 구조를 통해 무한하고 지속적인 커넥션을 나타냅니다. 곡선의 일부를 하트 형태로 나타내어 서울뷰티글로벌의 기존 아이덴티티를 유지하고, 뷰티를 중심으로 하나되는 고유의 가치를 전달합니다. 간결하면서도 기하학적인 타입페이스를 통하여 세련되고 감각적인 도시 이미지를 나타냅니다.",
+    "taglineEn": "",
+    "bodyEn": "Four hearts join along one continuous line to form a clover-shaped mark, wrapped in a teal drawn from the city's clear water. As scattered hearts lock into a single stroke, mutual affection blooms, while the wide-set wordmark lends a calm yet open tone. Every element converges into one face—warm yet composed—that carries the beauty of Seoul to the world.",
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Visual directing"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle"
+    ],
+    "credits": [
+      {
+        "role": "Symbol Design Assist",
+        "name": "Sangah Yoo",
+        "url": ""
+      },
+      {
+        "role": "",
+        "name": "",
+        "url": ""
+      }
+    ],
+    "imgCount": 3,
+    "images": [
+      {
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "3:4",
+        "zoom": 2.41,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      }
+    ]
+  },
+  {
+    "id": "dotdotdot",
+    "folder": "dotdotdot",
+    "titleKo": "점, 점점",
+    "titleEn": "DOT, Dot dot",
+    "format": "Exhibition Identity",
+    "client": "서울여자대학교 조형예술 졸업전시",
+    "date": "2025",
+    "taglineKo": "",
+    "bodyKo": "낱낱의 점을 방사와 궤도로 배열해 형상이 서서히 맺히도록 그래픽 시스템을 짰다. 멀리서는 한 덩어리의 상으로 읽히고 가까이서는 다시 흩어진 점으로 풀리며, 응집되면서도 흩날리는 긴장을 만든다. 이는 저마다의 작업이 흩어진 점처럼 놓였다가 하나의 전시로 수렴하는 순간을 그대로 옮긴 것이다.",
+    "taglineEn": "",
+    "bodyEn": "I built a graphic system where individual dots are arranged along radiating orbits so a form slowly gathers into view. From afar it reads as one image, up close it dissolves back into scattered points—held together yet drifting apart at once. It mirrors the moment when separate works, laid out like stray dots, converge into a single exhibition.",
+    "type": "Commercial",
+    "categories": [
+      "Graphic",
+      "Identity"
+    ],
+    "fields": [],
+    "credits": [],
+    "imgCount": 6,
+    "images": [
+      {
+        "file": "001.jpg",
+        "origname": "졸전-01.png",
+        "alt": "구의 전개도를 그래픽 모티프로 사용하였다.",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "졸전-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "졸전-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "005.jpg",
+        "origname": "졸전-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      }
+    ]
+  },
+  {
     "id": "hotel-goyo-branding",
     "folder": "Hotel GOYO Branding",
     "titleKo": "",
@@ -476,156 +626,6 @@
       {
         "file": "033.jpg",
         "origname": "goyophoto-33.jpg",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      }
-    ]
-  },
-  {
-    "id": "seoul-beauty-global-brand-identity-design",
-    "folder": "Seoul Beauty Global Brand Identity Design",
-    "titleKo": "",
-    "titleEn": "Seoul Beauty Global Brand Identity Design",
-    "format": "Brand Identity",
-    "client": "Seoul Beauty Global",
-    "date": "2025. 01",
-    "taglineKo": "",
-    "bodyKo": "Connected 언어의 장벽을 넘어 뷰티로 하나되는 순간\nReliable 검증된 뷰티 서비스들과 함께 안전한 여행\nElegant 서울에서만 경험할 수 있는 품격있고 합리적인 서비스\n세 가지 키워드로 브랜드를 정의하고 아이덴티티 디자인을 하였습니다. \nS와 B로 이루어진 두 곡선은 대칭적인 구조를 통해 무한하고 지속적인 커넥션을 나타냅니다. 곡선의 일부를 하트 형태로 나타내어 서울뷰티글로벌의 기존 아이덴티티를 유지하고, 뷰티를 중심으로 하나되는 고유의 가치를 전달합니다. 간결하면서도 기하학적인 타입페이스를 통하여 세련되고 감각적인 도시 이미지를 나타냅니다.\n",
-    "taglineEn": "",
-    "bodyEn": "Four hearts join along one continuous line to form a clover-shaped mark, wrapped in a teal drawn from the city's clear water. As scattered hearts lock into a single stroke, mutual affection blooms, while the wide-set wordmark lends a calm yet open tone. Every element converges into one face—warm yet composed—that carries the beauty of Seoul to the world.",
-    "type": "Commercial",
-    "categories": [
-      "Identity",
-      "Visual directing"
-    ],
-    "fields": [
-      "Cosmetic",
-      "Lifestyle"
-    ],
-    "credits": [
-      {
-        "role": "Symbol Design Assist",
-        "name": "Sangah Yoo",
-        "url": ""
-      },
-      {
-        "role": "",
-        "name": "",
-        "url": ""
-      }
-    ],
-    "imgCount": 3,
-    "images": [
-      {
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "3:4",
-        "zoom": 2.41,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      }
-    ]
-  },
-  {
-    "id": "dotdotdot",
-    "folder": "dotdotdot",
-    "titleKo": "점, 점점",
-    "titleEn": "Dot, Dot Dot",
-    "format": "Exhibition Identity",
-    "client": "서울여자대학교 조형예술 졸업전시",
-    "date": "2025",
-    "taglineKo": "",
-    "bodyKo": "낱낱의 점을 방사와 궤도로 배열해 형상이 서서히 맺히도록 그래픽 시스템을 짰다. 멀리서는 한 덩어리의 상으로 읽히고 가까이서는 다시 흩어진 점으로 풀리며, 응집되면서도 흩날리는 긴장을 만든다. 이는 저마다의 작업이 흩어진 점처럼 놓였다가 하나의 전시로 수렴하는 순간을 그대로 옮긴 것이다.",
-    "taglineEn": "",
-    "bodyEn": "I built a graphic system where individual dots are arranged along radiating orbits so a form slowly gathers into view. From afar it reads as one image, up close it dissolves back into scattered points—held together yet drifting apart at once. It mirrors the moment when separate works, laid out like stray dots, converge into a single exhibition.",
-    "type": "Commercial",
-    "categories": [
-      "Graphic",
-      "Identity"
-    ],
-    "fields": [],
-    "credits": [],
-    "imgCount": 6,
-    "images": [
-      {
-        "file": "001.jpg",
-        "origname": "졸전-01.png",
-        "alt": "구의 전개도를 그래픽 모티프로 사용하였다.",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "졸전-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "003.jpg",
-        "origname": "졸전-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "004.jpg",
-        "origname": "졸전-04.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "005.jpg",
-        "origname": "졸전-06.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "006.jpg",
-        "origname": "졸전-07.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
