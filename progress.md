@@ -44,6 +44,34 @@
 - [x] 커스텀 SVG 화살표 커서 (index.html 인라인 data URI, 트레일 이미지 위에서도 유지)
 - [x] 메뉴 e-mail 클릭 → mailto 대신 주소 클립보드 복사 ("copied!" 피드백)
 
+### 사이트 개편 (2026-08-10) — Works 2단계 구조 + 인터랙션 (커밋 3f5af18, 21fce38)
+> 위 "드로어 상세 3분할 + 라이트박스" 는 이 개편으로 **대체됨**.
+
+**홈**
+- [x] 드로어/아카이브/어바웃 배경 블러 16 → **4px**
+- [x] 메뉴 링크 `display:inline-block` (글자 폭만 클릭), About·Instagram 아래 줄바꿈 추가
+- [x] 홈 텍스트: 타이핑 완료 후 **단어별 span 분리 → 개별 드래그**, 메뉴 링크는 드래그 시 클릭 무시
+- [x] **About 탭** 추가: `#about` 오버레이(Archive와 동일 패널), `/* ABOUT:START/END */ var ABOUT` 마커를 publish가 빌더 `localStorage['about-text']`로 채움 + 빌더 About 편집 모달
+- [x] 커스텀 커서 3종: 기본 **45° 회전 + 5% 축소**, 이미지 위 좌/우 방향 반전 커서(`--cur-left/right`)
+
+**Works 드로어 — 이미지 중심 목차 → 상세 (2단계)**
+- [x] 좌측 카테고리 필터 + 프로젝트 리스트 유지. `#dr-main` 이 `mode-list`/`mode-detail` 토글
+- [x] **목차(리스트)**: 프로젝트별 카드 = 전 이미지 가로 스트립 + 메타(제목/Type·Date/Client/Categories)
+  - [x] **전광판 마퀴**(transform 기반 연속 스크롤 110px/s, 호버 정지)
+  - [x] **클릭앤드래그 스크럽** / 그냥 클릭 → 상세 이동 (4px 임계로 구분)
+  - [x] 세로 스크롤 시 현재 프로젝트를 **좌측 리스트에서 굵게**(scroll-spy)
+  - [x] 커서 = **채워진 점**(`#dragdot`, `mix-blend-mode:difference` 반전), 드래그 중 **빨강**
+- [x] **상세**: 상단 스와이프 스트립(좌/우 반 클릭으로 페이징, easeOutBack, **끝에서 멈춤·루프X**, 340ms)
+  - [x] 위치기반 좌/우 화살표 커서
+  - [x] 메타 헤더(제목·Type/Date | Client | Category | Field | **Credit**) — Credit 이름 링크(빌더 role/name/url 편집)
+  - [x] 작품설명을 **Client 열과 좌측정렬**(grid `2 / 5`, 우측 끝 4·5열 사이)
+  - [x] 설명 아래 **이미지 순서대로 세로 갤러리** + 호버 캡션, 맨 아래 **`↑ (top)`** 좌측정렬 버튼
+- [x] `(Close)` / `(Back to List)` 버튼 = 오버레이 + **`mix-blend-mode:difference`** 반전
+- [x] 프로젝트 개요 회색 글씨 → 전부 검정
+- [x] 라이트박스(이미지 클릭 팝업) **삭제**
+- [x] 전역 **`word-break:keep-all`** — 단어 안 잘리고 어절 단위 줄바꿈
+- [x] 행간: 국문 1.5 / 영문 1.3 / 메타값 1.5
+
 > ⚠️ **배포 방식**: index.html은 손으로 편집한 뒤 `git commit && git push origin main`으로 직접 배포한다.
 > 빌더의 ⬆ Publish(`/api/publish`)는 index.html을 빌더 데이터로 **재생성**하므로 수동 디자인 편집을 덮어쓴다 — 디자인 변경 후에는 사용하지 말 것.
 
