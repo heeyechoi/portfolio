@@ -154,15 +154,26 @@
     "titleEn": "Seoul Beauty Global Brand Identity Design",
     "format": "Brand Identity",
     "client": "Seoul Beauty Global",
-    "date": "2025",
-    "taglineKo": "네 개의 마음이 하나의 꽃으로 모인다.",
+    "date": "2025. 01",
+    "taglineKo": "",
     "bodyKo": "네 개의 하트를 이어 붙여 클로버 형태의 심볼을 완성하고, 도심의 물빛을 닮은 청록으로 감쌌다. 하나의 선으로 흩어진 마음들이 맞물리며 서로를 향한 애정이 피어나고, 넓은 자간으로 벌린 워드마크가 차분하면서도 열린 인상을 더한다. 이 모든 요소가 서울의 아름다움을 세계로 건네는 다정하면서도 단정한 얼굴로 수렴한다.",
-    "taglineEn": "Four hearts folding into a single bloom.",
+    "taglineEn": "",
     "bodyEn": "Four hearts join along one continuous line to form a clover-shaped mark, wrapped in a teal drawn from the city's clear water. As scattered hearts lock into a single stroke, mutual affection blooms, while the wide-set wordmark lends a calm yet open tone. Every element converges into one face—warm yet composed—that carries the beauty of Seoul to the world.",
-    "type": "",
-    "categories": [],
-    "fields": [],
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Visual directing"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle"
+    ],
     "credits": [
+      {
+        "role": "Design Assist",
+        "name": "Sangah Yoo",
+        "url": ""
+      },
       {
         "role": "",
         "name": "",
@@ -172,7 +183,7 @@
     "imgCount": 3,
     "images": [
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-03.png",
+        "file": "003.jpg",
         "origname": "서울뷰티 웹-03.png",
         "alt": "",
         "ratio": "original",
@@ -182,7 +193,7 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-01.png",
+        "file": "001.jpg",
         "origname": "서울뷰티 웹-01.png",
         "alt": "",
         "ratio": "3:4",
@@ -192,7 +203,7 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-02.png",
+        "file": "002.jpg",
         "origname": "서울뷰티 웹-02.png",
         "alt": "",
         "ratio": "original",
