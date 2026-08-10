@@ -131,8 +131,8 @@
         "file": "001.jpg",
         "origname": "서울뷰티 웹-01.png",
         "alt": "",
-        "ratio": "3:4",
-        "zoom": 2.39,
+        "ratio": "original",
+        "zoom": 1,
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0"
