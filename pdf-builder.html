@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Portfolio Builder</title>
+  <style>
+    @font-face{font-family:'SuisseIntl';src:url('file:///Users/heeye/Downloads/font/SuisseIntlTrial-Regular.otf') format('opentype');font-weight:400;}
+    @font-face{font-family:'SuisseIntl';src:url('file:///Users/heeye/Downloads/font/SuisseIntlTrial-SemiBold.otf') format('opentype');font-weight:600;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--border:#e0e0e0;--text:#1a1a1a;--muted:#999;--light:#f6f6f6;--font:'SuisseIntl','Helvetica Neue',sans-serif;}
+    body{font-family:var(--font);font-size:11px;color:var(--text);background:#fff;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+
+    .topbar{height:40px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex-shrink:0;}
+    .topbar-left{display:flex;align-items:center;gap:14px;}
+    .site-name{font-weight:600;}
+    .dot{width:6px;height:6px;border-radius:50%;background:#ccc;}
+    .dot.ok{background:#5cb85c;}
+    .srv-info{font-size:10px;color:var(--muted);}
+    .btn{font-family:var(--font);font-size:10px;padding:5px 12px;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--text);letter-spacing:.02em;transition:background .12s;}
+    .btn:hover{background:var(--light);}
+    .btn-p{background:var(--text);color:#fff;border-color:var(--text);}
+    .btn-p:hover{background:#333;}
+    .btn-ic{font-family:var(--font);font-size:12px;padding:4px 8px;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--muted);transition:background .12s;line-height:1;}
+    .btn-ic:hover{background:var(--light);}
+
+    #no-server{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
+    #no-server h2{font-size:13px;font-weight:600;}
+    #no-server p{font-size:11px;color:var(--muted);text-align:center;line-height:2;}
+    #no-server code{background:var(--light);padding:8px 16px;font-family:monospace;font-size:12px;display:block;border:1px solid var(--border);}
+
+    #loading{display:none;position:fixed;inset:0;background:rgba(255,255,255,.92);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+    #loading.show{display:flex;}
+    .bar-wrap{width:260px;height:2px;background:#e8e8e8;}
+    .bar{height:100%;background:var(--text);width:0;transition:width .15s;}
+    #load-msg{font-size:10px;color:var(--muted);letter-spacing:.04em;}
+
+    .app{display:grid;grid-template-columns:200px 1fr 1.1fr;flex:1;overflow:hidden;min-height:0;}
+    .panel{border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;min-height:0;}
+    .panel:last-child{border-right:none;}
+    .ph{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;position:sticky;top:0;z-index:2;gap:8px;}
+    .ph-label{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+
+    .proj-list{list-style:none;padding:6px 0;}
+    .pi{display:flex;align-items:center;gap:10px;padding:8px 16px;cursor:pointer;transition:background .1s;}
+    .pi:hover{background:var(--light);}
+    .pi.active{background:#efefef;}
+    .pi-num{color:var(--muted);font-size:10px;flex-shrink:0;min-width:28px;}
+    .pi-name{flex:1;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+    /* ---- composer (middle) ---- */
+    .cb-body{padding:16px;flex:1;}
+    .es{display:flex;align-items:center;justify-content:center;height:140px;color:var(--muted);font-size:10px;letter-spacing:.04em;}
+    .cb-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px;}
+    .chk{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);cursor:pointer;user-select:none;}
+
+    .pgcard{border:1px solid var(--border);margin-bottom:12px;}
+    .pgcard-h{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--light);border-bottom:1px solid var(--border);}
+    .pgcard-t{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;}
+    .pgcard-h .row{display:flex;align-items:center;gap:6px;}
+    .cols-lbl{font-size:9px;color:#bbb;}
+    .cbs{display:flex;gap:3px;}
+    .colb{font-family:var(--font);font-size:10px;width:20px;height:20px;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--muted);}
+    .colb.on{background:var(--text);color:#fff;border-color:var(--text);}
+    .xb{font-family:var(--font);font-size:12px;width:20px;height:20px;border:1px solid var(--border);background:#fff;cursor:pointer;color:#c0392b;line-height:1;}
+    .xb:hover{background:#fff5f5;}
+
+    .slotgrid{display:grid;gap:6px;padding:10px;min-height:70px;}
+    .slot{position:relative;border:1px solid var(--border);background:#fafafa;cursor:grab;user-select:none;overflow:hidden;aspect-ratio:4/3;}
+    .slot:active{cursor:grabbing;}
+    .slot.dragging{opacity:.3;}
+    .slot.drag-over{box-shadow:inset 0 0 0 2px var(--text);}
+    .slot img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;pointer-events:none;}
+    .slot-sp{position:absolute;top:3px;left:3px;display:flex;gap:2px;}
+    .spb{font-family:var(--font);font-size:8px;min-width:14px;height:14px;padding:0 2px;border:1px solid var(--border);background:rgba(255,255,255,.9);cursor:pointer;color:var(--muted);line-height:12px;}
+    .spb.on{background:var(--text);color:#fff;border-color:var(--text);}
+    .slot-rm{position:absolute;top:3px;right:3px;width:15px;height:15px;border:none;background:rgba(255,255,255,.9);color:#c0392b;font-size:11px;cursor:pointer;line-height:1;}
+    .pg-drop{padding:10px;border-top:1px dashed var(--border);text-align:center;font-size:9px;color:#ccc;}
+    .pg-drop.drag-over{background:var(--light);color:var(--text);}
+
+    .pool{border:1px dashed var(--border);padding:10px;margin-top:8px;}
+    .pool-h{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;}
+    .pool.drag-over{background:var(--light);box-shadow:inset 0 0 0 2px var(--border);}
+    .pool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+    .pool .slot{aspect-ratio:4/3;}
+    .pool-empty{font-size:9px;color:#ccc;padding:8px 0;text-align:center;}
+    .sab{width:100%;padding:7px;font-family:var(--font);font-size:10px;color:var(--muted);background:none;border:1px solid var(--border);cursor:pointer;margin-top:6px;}
+    .sab:hover{background:var(--light);}
+
+    /* ---- preview (right) ---- */
+    .preview{overflow:hidden;}
+    .pv-wrap{flex:1;overflow:auto;min-height:0;background:#e0e0e0;padding:20px;}
+    #pages{display:flex;flex-direction:column;gap:16px;}
+    .pdf-page{background:#fff;width:100%;aspect-ratio:297/167;box-shadow:0 2px 10px rgba(0,0,0,.14);overflow:hidden;}
+    .pdf-grid{display:grid;width:100%;height:100%;grid-template-columns:repeat(var(--cols,1),1fr);gap:1.4%;padding:3%;}
+    .pdf-cell{overflow:hidden;background:#fff;}
+    .pdf-cell img{width:100%;height:100%;object-fit:contain;display:block;}
+    .pdf-title{width:100%;height:100%;padding:8% 9%;display:flex;flex-direction:column;justify-content:center;gap:4%;}
+    .pt-num{font-size:1.1vw;color:var(--muted);letter-spacing:.1em;}
+    .pt-title{font-size:3.4vw;font-weight:600;line-height:1.1;}
+    .pt-titko{font-size:1.7vw;color:#555;}
+    .pt-meta{display:flex;gap:2.4vw;font-size:.9vw;color:var(--muted);margin-top:1vw;}
+    .pt-meta b{color:var(--text);font-weight:600;display:block;margin-bottom:.2vw;font-size:.75vw;letter-spacing:.06em;text-transform:uppercase;}
+    .pt-body{font-size:1vw;line-height:1.8;color:#333;max-width:70%;margin-top:1.4vw;white-space:pre-wrap;}
+    .print-hint{font-size:9px;color:var(--muted);line-height:1.7;padding:0 2px;}
+
+    @media print{
+      @page{ size:297mm 167mm; margin:0; }
+      html,body{ height:auto; overflow:visible; background:#fff; }
+      .topbar,.left,.mid,.preview .ph,.print-hint{ display:none !important; }
+      .app{ display:block !important; overflow:visible !important; }
+      .preview{ border:none !important; overflow:visible !important; display:block !important; }
+      .pv-wrap{ background:#fff !important; overflow:visible !important; padding:0 !important; }
+      #pages{ gap:0 !important; }
+      .pdf-page{ width:297mm; height:167mm; margin:0; box-shadow:none; break-after:page; aspect-ratio:auto; }
+      .pdf-page:last-child{ break-after:auto; }
+      /* vw units → mm-based for print (page width 297mm) */
+      .pt-num{font-size:12pt;} .pt-title{font-size:34pt;} .pt-titko{font-size:17pt;}
+      .pt-meta{font-size:9pt;} .pt-meta b{font-size:7.5pt;} .pt-body{font-size:10pt;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="btn-ic" onclick="window.open('/builder.html','_blank')" title="웹 빌더 열기 (새 탭)">web</button>
+    <span class="site-name">PDF Portfolio Builder</span>
+    <div class="dot" id="dot"></div>
+    <span class="srv-info" id="srv-info">연결 중…</span>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="btn" onclick="loadProjects()">↺ 새로고침</button>
+    <button class="btn btn-p" onclick="window.print()">⎙ PDF로 저장 (Cmd+P)</button>
+  </div>
+</div>
+
+<div id="no-server" style="display:none">
+  <h2>서버를 먼저 실행해주세요</h2>
+  <p>터미널에서:</p>
+  <code>python3 /Users/heeye/projects/portfolio/server.py</code>
+  <button class="btn" style="margin-top:4px" onclick="init()">다시 연결</button>
+</div>
+
+<div id="loading">
+  <div id="load-msg">로딩 중…</div>
+  <div class="bar-wrap"><div class="bar" id="bar"></div></div>
+</div>
+
+<div class="app" id="app" style="display:none">
+  <div class="panel left">
+    <div class="ph"><span class="ph-label">Projects</span></div>
+    <ul class="proj-list" id="pl"></ul>
+  </div>
+  <div class="panel mid">
+    <div class="ph"><span class="ph-label">PDF Layout</span></div>
+    <div class="cb-body" id="cb"><div class="es">← 프로젝트를 선택하세요</div></div>
+  </div>
+  <div class="panel preview">
+    <div class="ph">
+      <span class="ph-label">Print Preview · 16:9</span>
+      <span class="print-hint">인쇄 대화상자: 여백 <b>없음</b> · 방향 <b>가로</b> · <b>배경 그래픽</b> 켜기</span>
+    </div>
+    <div class="pv-wrap"><div id="pages"></div></div>
+  </div>
+</div>
+
+<script>
+const BASE='http://localhost:8765';
+const IMG_DEF={ratio:'original',zoom:1,posX:0,posY:0,bg:'#f0f0f0'};
+const AUTO_LIMIT=15, AUTO_PICK=10;
+
+// ---- shared data helpers (ported from builder.html) ----
+function esc(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function lm(id){try{return JSON.parse(localStorage.getItem('pm-'+id)||'{}')}catch{return{}}}         // web builder metadata (read-only here)
+function lpdf(id){try{return JSON.parse(localStorage.getItem('pdf-'+id)||'null')}catch{return null}}  // PDF layout (independent key)
+function spdf(id,d){localStorage.setItem('pdf-'+id,JSON.stringify(d));}
+
+function showL(msg){document.getElementById('load-msg').textContent=msg||'…';document.getElementById('bar').style.width='0%';document.getElementById('loading').classList.add('show');}
+function setP(p){document.getElementById('bar').style.width=p+'%';}
+function hideL(){document.getElementById('loading').classList.remove('show');}
+
+let projects=[],activeId=null;
+let curImgs=[];       // [{file, src, size}] — included images of active project
+let dims={};          // file -> {w,h,orient}
+let layout=null;      // {titlePage, pages:[{cols, items:[{file,span}]}]}
+let meta={};          // active project pm-{id} metadata (title/copy)
+const ST={};          // cache of loaded image sets
+
+async function init(){
+  try{
+    const r=await fetch(BASE+'/api/projects',{signal:AbortSignal.timeout(3000)});
+    if(!r.ok)throw 0;
+    document.getElementById('dot').classList.add('ok');
+    document.getElementById('srv-info').textContent='localhost:8765';
+    document.getElementById('no-server').style.display='none';
+    document.getElementById('app').style.display='grid';
+    await loadProjects();
+  }catch{
+    document.getElementById('dot').classList.remove('ok');
+    document.getElementById('srv-info').textContent='서버 없음';
+    document.getElementById('no-server').style.display='flex';
+    document.getElementById('app').style.display='none';
+  }
+}
+
+async function loadProjects(){
+  const r=await fetch(BASE+'/api/projects');
+  const names=await r.json();
+  projects=names.map((name,i)=>{
+    const m=lm(name);
+    return{id:name,number:m.number||String(i+1).padStart(3,'0'),
+           title:m.titleEn||m.title||name};
+  });
+  renderList();
+  if(!activeId&&projects.length)await setActive(projects[0].id);
+  else if(activeId)await setActive(activeId);
+}
+
+function renderList(){
+  const ul=document.getElementById('pl');
+  ul.innerHTML=projects.map(p=>
+    `<li class="pi ${p.id===activeId?'active':''}" data-id="${esc(p.id)}" onclick="setActive('${esc(p.id).replace(/'/g,"\\'")}')">
+       <span class="pi-num">${esc(p.number)}</span>
+       <span class="pi-name">${esc(p.title)}</span>
+     </li>`).join('');
+}
+
+// score/select best images — mirrors builder.html loadProjImgs auto-pick + imageOrder reuse
+function score(size,idx,total){let s=Math.log10(size+1)*10;if(idx===0)s+=25;if(idx===total-1)s+=15;s+=(1-idx/total)*15;return s;}
+
+async function loadProjImgs(id){
+  const r=await fetch(`${BASE}/api/images/${encodeURIComponent(id)}`);
+  const files=await r.json();
+  const m=lm(id),ord=m.imageOrder||[];
+  let sel=files;
+  if(files.length>AUTO_LIMIT&&!ord.length){
+    const sc=files.map((f,i)=>({...f,sc:score(f.size,i,files.length),oi:i}));
+    sc.sort((a,b)=>b.sc-a.sc);
+    sel=sc.slice(0,AUTO_PICK).sort((a,b)=>a.oi-b.oi);
+  }
+  if(ord.length){
+    const mp=Object.fromEntries(files.map(f=>[f.name,f]));
+    const re=[];ord.forEach(n=>{if(mp[n])re.push(mp[n]);});
+    files.forEach(f=>{if(!re.find(x=>x.name===f.name))re.push(f);});
+    sel=re;
+  }
+  return sel.map(f=>({file:f.name,size:f.size,
+    src:`${BASE}/img/${encodeURIComponent(id)}/${encodeURIComponent(f.name)}`}));
+}
+
+async function setActive(id){
+  activeId=id;
+  document.querySelectorAll('.pi').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
+  renderList();
+  meta=lm(id);
+  showL(`${id} 이미지 불러오는 중…`);
+  if(!ST[id])ST[id]=await loadProjImgs(id);
+  curImgs=ST[id];
+  await ensureDims(curImgs);
+  hideL();
+  // load saved PDF layout or auto-generate on first open
+  layout=lpdf(id);
+  if(!layout||!Array.isArray(layout.pages)){ layout=autoLayout(); save(); }
+  else pruneLayout();
+  renderComposer();
+  renderPages();
+}
+
+// preload natural dimensions → orientation for auto layout
+function ensureDims(imgs){
+  return Promise.all(imgs.map(im=>new Promise(res=>{
+    if(dims[im.file])return res();
+    const img=new Image();
+    img.onload=()=>{const w=img.naturalWidth,h=img.naturalHeight;
+      dims[im.file]={w,h,orient:w/h>1.15?'land':h/w>1.15?'port':'sq'};res();};
+    img.onerror=()=>{dims[im.file]={w:4,h:3,orient:'land'};res();};
+    img.src=im.src;
+  })));
+}
+
+// ---- auto layout: landscape→full page, portrait/square→pair 2-up ----
+function autoLayout(){
+  const pages=[];
+  const items=curImgs.map(im=>({file:im.file,orient:(dims[im.file]||{}).orient||'land'}));
+  let i=0;
+  while(i<items.length){
+    const it=items[i], next=items[i+1];
+    if(it.orient==='land'){ pages.push({cols:1,items:[{file:it.file,span:1}]}); i++; }
+    else if(next && next.orient!=='land'){
+      pages.push({cols:2,items:[{file:it.file,span:1},{file:next.file,span:1}]}); i+=2;
+    } else { pages.push({cols:1,items:[{file:it.file,span:1}]}); i++; }
+  }
+  return {titlePage:(lpdf(activeId)?.titlePage)??true, pages};
+}
+
+// drop files no longer in the project; clamp spans to cols
+function pruneLayout(){
+  const valid=new Set(curImgs.map(i=>i.file));
+  layout.pages.forEach(pg=>{
+    pg.items=pg.items.filter(it=>valid.has(it.file));
+    pg.items.forEach(it=>{if(it.span>pg.cols)it.span=pg.cols;if(!it.span)it.span=1;});
+  });
+  layout.pages=layout.pages.filter(pg=>pg.items.length);
+}
+
+function placedFiles(){const s=new Set();layout.pages.forEach(p=>p.items.forEach(it=>s.add(it.file)));return s;}
+function unusedImgs(){const pl=placedFiles();return curImgs.filter(i=>!pl.has(i.file));}
+function srcOf(file){const im=curImgs.find(i=>i.file===file);return im?im.src:'';}
+function save(){if(activeId)spdf(activeId,layout);}
+
+// ---- composer (middle panel) ----
+function renderComposer(){
+  const cb=document.getElementById('cb');
+  if(!curImgs.length){cb.innerHTML='<div class="es">이미지가 없습니다</div>';return;}
+  let h=`<div class="cb-tools">
+    <button class="btn" onclick="reAuto()">✦ 자동 배치</button>
+    <button class="sab" style="width:auto;margin:0;padding:5px 12px" onclick="addPage()">+ 페이지</button>
+    <label class="chk"><input type="checkbox" ${layout.titlePage?'checked':''} onchange="toggleTitle(this.checked)"> 타이틀 페이지</label>
+  </div>`;
+
+  layout.pages.forEach((pg,pi)=>{
+    h+=`<div class="pgcard">
+      <div class="pgcard-h">
+        <span class="pgcard-t">Page ${pi+1+(layout.titlePage?1:0)}</span>
+        <div class="row">
+          <span class="cols-lbl">칸</span>
+          <div class="cbs">${[1,2,3,4].map(c=>`<button class="colb ${pg.cols===c?'on':''}" onclick="setCols(${pi},${c})">${c}</button>`).join('')}</div>
+          <button class="xb" title="페이지 삭제" onclick="delPage(${pi})">×</button>
+        </div>
+      </div>
+      <div class="slotgrid" style="grid-template-columns:repeat(${pg.cols},1fr)"
+           ondragover="event.preventDefault()" ondrop="dropOnPage(event,${pi})">
+        ${pg.items.map((it,ii)=>slotHTML(pi,ii,it,pg.cols)).join('')}
+      </div>
+      <div class="pg-drop" ondragover="pgDropOver(event,this)" ondragleave="this.classList.remove('drag-over')" ondrop="dropOnPage(event,${pi},true)">여기로 끌어 추가</div>
+    </div>`;
+  });
+
+  const un=unusedImgs();
+  h+=`<div class="pool" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropOnPool(event)">
+    <div class="pool-h">미배치 이미지 (${un.length})</div>
+    ${un.length?`<div class="pool-grid">${un.map(im=>
+      `<div class="slot" draggable="true" data-file="${esc(im.file)}"
+            ondragstart="dragStart(event,'pool',-1,-1,'${esc(im.file).replace(/'/g,"\\'")}')" ondragend="dragEnd(event)">
+         <img src="${im.src}" loading="lazy">
+       </div>`).join('')}</div>`
+      :`<div class="pool-empty">모든 이미지가 배치됨</div>`}
+  </div>`;
+
+  cb.innerHTML=h;
+}
+
+function slotHTML(pi,ii,it,cols){
+  const spans=[];for(let s=1;s<=cols;s++)spans.push(s);
+  return `<div class="slot" style="grid-column:span ${Math.min(it.span,cols)}" draggable="true"
+       data-file="${esc(it.file)}"
+       ondragstart="dragStart(event,'page',${pi},${ii},'${esc(it.file).replace(/'/g,"\\'")}')" ondragend="dragEnd(event)"
+       ondragover="slotOver(event,this)" ondragleave="this.classList.remove('drag-over')" ondrop="dropOnSlot(event,${pi},${ii})">
+    <img src="${srcOf(it.file)}" loading="lazy">
+    <div class="slot-sp">${spans.map(s=>`<button class="spb ${it.span===s?'on':''}" onclick="setSpan(${pi},${ii},${s})">${s}</button>`).join('')}</div>
+    <button class="slot-rm" title="빼기" onclick="removeItem(${pi},${ii})">×</button>
+  </div>`;
+}
+
+// ---- edits ----
+function reAuto(){ layout={titlePage:layout.titlePage, pages:autoLayout().pages}; save(); renderComposer(); renderPages(); }
+function toggleTitle(v){ layout.titlePage=v; save(); renderComposer(); renderPages(); }
+function addPage(){ layout.pages.push({cols:2,items:[]}); save(); renderComposer(); renderPages(); }
+function delPage(pi){ layout.pages.splice(pi,1); save(); renderComposer(); renderPages(); }
+function setCols(pi,c){ const pg=layout.pages[pi]; pg.cols=c; pg.items.forEach(it=>{if(it.span>c)it.span=c;}); save(); renderComposer(); renderPages(); }
+function setSpan(pi,ii,s){ layout.pages[pi].items[ii].span=s; save(); renderComposer(); renderPages(); }
+function removeItem(pi,ii){ layout.pages[pi].items.splice(ii,1); save(); renderComposer(); renderPages(); }
+
+// ---- drag & drop ----
+let drag=null;
+function dragStart(e,from,pi,ii,file){ drag={from,pi,ii,file}; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; }
+function dragEnd(e){ e.target.classList.remove('dragging'); }
+function slotOver(e,el){ e.preventDefault(); e.stopPropagation(); el.classList.add('drag-over'); }
+function pgDropOver(e,el){ e.preventDefault(); el.classList.add('drag-over'); }
+
+function removeFromSource(){
+  if(!drag)return;
+  if(drag.from==='page'){ layout.pages[drag.pi].items.splice(drag.ii,1); }
+}
+function dropOnSlot(e,pi,ii){
+  e.preventDefault(); e.stopPropagation();
+  if(!drag)return;
+  const item={file:drag.file,span:1};
+  removeFromSource();
+  // recompute target index if same page shifted
+  let idx=ii; if(drag.from==='page'&&drag.pi===pi&&drag.ii<ii)idx--;
+  layout.pages[pi].items.splice(idx,0,item);
+  finishDrop();
+}
+function dropOnPage(e,pi,append){
+  e.preventDefault();
+  if(!drag)return;
+  // if dropped directly on a slot, that handler already ran
+  if(!append && e.target.closest('.slot'))return;
+  const item={file:drag.file,span:1};
+  removeFromSource();
+  layout.pages[pi].items.push(item);
+  finishDrop();
+}
+function dropOnPool(e){
+  e.preventDefault();
+  if(!drag)return;
+  removeFromSource();               // pool = simply unplaced; removing from page is enough
+  finishDrop();
+}
+function finishDrop(){
+  layout.pages.forEach(pg=>pg.items.forEach(it=>{if(it.span>pg.cols)it.span=pg.cols;}));
+  drag=null; save(); renderComposer(); renderPages();
+}
+
+// ---- preview / print pages (right panel) ----
+function renderPages(){
+  const wrap=document.getElementById('pages');
+  let h='';
+  if(layout.titlePage)h+=titlePageHTML();
+  layout.pages.forEach(pg=>{
+    h+=`<div class="pdf-page"><div class="pdf-grid" style="--cols:${pg.cols}">${
+      pg.items.map(it=>`<div class="pdf-cell" style="grid-column:span ${Math.min(it.span,pg.cols)}"><img src="${srcOf(it.file)}"></div>`).join('')
+    }</div></div>`;
+  });
+  wrap.innerHTML=h||'<div class="es" style="color:#999">페이지가 없습니다</div>';
+}
+
+function titlePageHTML(){
+  const m=meta;
+  const p=projects.find(x=>x.id===activeId)||{};
+  const metas=[['Client',m.client],['Format',m.format],['Date',m.date]].filter(x=>x[1]);
+  return `<div class="pdf-page"><div class="pdf-title">
+    <div class="pt-num">${esc(m.number||p.number||'')}</div>
+    <div class="pt-title">${esc(m.titleEn||m.title||p.title||activeId)}</div>
+    ${m.titleKo?`<div class="pt-titko">${esc(m.titleKo)}</div>`:''}
+    ${metas.length?`<div class="pt-meta">${metas.map(x=>`<div><b>${x[0]}</b>${esc(x[1])}</div>`).join('')}</div>`:''}
+    ${(m.bodyEn||m.bodyKo)?`<div class="pt-body">${esc(m.bodyEn||m.bodyKo)}</div>`:''}
+  </div></div>`;
+}
+
+init();
+</script>
+</body>
+</html>

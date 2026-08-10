@@ -1,0 +1,299 @@
+[
+  {
+    "id": "hotel-goyo",
+    "folder": "Hotel GOYO",
+    "titleKo": "호텔 고요",
+    "titleEn": "Hotel GOYO",
+    "format": "Brand Identity",
+    "client": "—",
+    "date": "2024",
+    "taglineKo": "",
+    "bodyKo": "글자들이 서로를 관통하며 겹쳐지는 로고타입은 새벽 안개가 번지듯 부드러우면서도 절제된 형태로 '고요'의 정서를 시각화한다. 낮은 대비의 흑백톤으로 구성된 부처 일러스트는 종교적 무게감 없이 한국 불교 고유의 고즈넉한 아름다움을 담아낸다. 로고타입부터 일러스트, 그래픽 패턴까지 모든 요소가 복잡한 일상에서 벗어나 진정한 쉼을 선사하는 하나의 브랜드 언어로 수렴한다.",
+    "taglineEn": "In stillness, you finally meet yourself.",
+    "bodyEn": "The logotype — letters overlapping and dissolving into one another — renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.",
+    "type": "Personal",
+    "categories": [
+      "Branding",
+      "Graphic",
+      "Photography",
+      "Package",
+      "Identity"
+    ],
+    "fields": [
+      "Lifestyle"
+    ],
+    "imgCount": 12,
+    "images": [
+      {
+        "file": "002.jpg",
+        "origname": "goyo-02.png",
+        "alt": "Logotype",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "001.jpg",
+        "origname": "goyo-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "goyo-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "goyo-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "goyo-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "007.jpg",
+        "origname": "goyo-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "008.jpg",
+        "origname": "goyo-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "009.jpg",
+        "origname": "goyo-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "010.jpg",
+        "origname": "goyo-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "011.jpg",
+        "origname": "goyo-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "012.jpg",
+        "origname": "goyo-12.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "013.jpg",
+        "origname": "goyo-13.png",
+        "alt": "",
+        "ratio": "16:9",
+        "zoom": 1.1,
+        "posX": 0,
+        "posY": 1.2,
+        "bg": "#ffffff"
+      }
+    ]
+  },
+  {
+    "id": "dotdotdot",
+    "folder": "dotdotdot",
+    "titleKo": "점, 점점",
+    "titleEn": "Dot, Dot Dot",
+    "format": "Exhibition Identity / Poster",
+    "client": "서울여자대학교 아트앤디자인스쿨 공예전공",
+    "date": "2025",
+    "taglineKo": "점 하나에서 형태가 비롯된다.",
+    "bodyKo": "수백 개의 점들이 방사형으로 퍼지고 군집하며 유기적 형태를 이루도록 구성하여, 흙을 빚고 가마를 통과하는 도자 제작의 손길을 그래픽 언어로 번역하였다. 크림빛 바탕 위에 번지듯 흩어지는 점들의 밀도는 섬세하면서도 생동하는 감각을 전달하며, '점'이라는 가장 작은 단위가 곧 형태의 출발임을 전시 전체의 논리로 삼는다.",
+    "taglineEn": "Form begins from a single point.",
+    "bodyEn": "Hundreds of dots radiate and cluster into organic forms, translating the ceramicist's gesture — shaping clay, enduring the kiln — into a graphic language. Their scattered density across a warm cream ground carries a sense both delicate and alive, making the dot itself — the smallest unit of ceramic making — the governing logic of the entire exhibition identity.",
+    "type": "Commercial",
+    "categories": [
+      "Graphic",
+      "Identity"
+    ],
+    "fields": [],
+    "imgCount": 11,
+    "images": [
+      {
+        "file": "001.jpg",
+        "origname": "졸전-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "졸전-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "졸전-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "005.jpg",
+        "origname": "졸전-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "졸전-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "007.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "008.jpg",
+        "origname": "졸전-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "009.jpg",
+        "origname": "졸전-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "010.jpg",
+        "origname": "졸전-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "011.jpg",
+        "origname": "졸전-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      }
+    ]
+  },
+  {
+    "id": "ēndline-branding",
+    "folder": "ēndline branding",
+    "titleKo": "",
+    "titleEn": "ēndline branding",
+    "format": "",
+    "client": "—",
+    "date": "",
+    "taglineKo": "",
+    "bodyKo": "",
+    "taglineEn": "",
+    "bodyEn": "",
+    "type": "",
+    "categories": [],
+    "fields": [],
+    "imgCount": 0,
+    "images": []
+  }
+]
