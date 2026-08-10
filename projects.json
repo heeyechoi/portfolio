@@ -132,7 +132,7 @@
         "origname": "서울뷰티 웹-01.png",
         "alt": "",
         "ratio": "3:4",
-        "zoom": 2.41,
+        "zoom": 2.47,
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0"
@@ -183,8 +183,8 @@
         "alt": "",
         "ratio": "16:9",
         "zoom": 1,
-        "posX": 0,
-        "posY": 0,
+        "posX": -0.1,
+        "posY": 13.7,
         "bg": "#eaeaea"
       },
       {
@@ -291,11 +291,21 @@
       "Lifestyle"
     ],
     "credits": [],
-    "imgCount": 34,
+    "imgCount": 33,
     "images": [
       {
         "file": "001.jpg",
         "origname": "goyophoto-01.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "025.jpg",
+        "origname": "goyophoto-25.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -354,8 +364,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "007.jpg",
-        "origname": "goyophoto-07.jpg",
+        "file": "034.jpg",
+        "origname": "goyophoto-34.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -364,8 +374,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "008.jpg",
-        "origname": "goyophoto-08.jpg",
+        "file": "027.jpg",
+        "origname": "goyophoto-27.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -384,8 +394,18 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "034.jpg",
-        "origname": "goyophoto-34.jpg",
+        "file": "007.jpg",
+        "origname": "goyophoto-07.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "008.jpg",
+        "origname": "goyophoto-08.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -444,6 +464,16 @@
         "bg": "#f0f0f0"
       },
       {
+        "file": "016.jpg",
+        "origname": "goyophoto-16.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
         "file": "014.jpg",
         "origname": "goyophoto-14.jpg",
         "alt": "",
@@ -466,16 +496,6 @@
       {
         "file": "015.jpg",
         "origname": "goyophoto-15.jpg",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "016.jpg",
-        "origname": "goyophoto-16.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -544,38 +564,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "027.jpg",
-        "origname": "goyophoto-27.jpg",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
         "file": "024.jpg",
         "origname": "goyophoto-24.jpg",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "025.jpg",
-        "origname": "goyophoto-25.jpg",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "026.jpg",
-        "origname": "goyophoto-26.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
