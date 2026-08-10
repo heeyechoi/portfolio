@@ -32,3 +32,6 @@ __pycache__/
 !_web/**
 !fonts/
 !fonts/**
+
+# 사이트 에셋(파비콘)은 커밋
+!fav.png
