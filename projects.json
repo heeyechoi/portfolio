@@ -29,7 +29,18 @@
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 3
+        "cols": 4
+      },
+      {
+        "file": "006.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2
       },
       {
         "file": "002.jpg",
@@ -40,7 +51,7 @@
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 2
       },
       {
         "file": "003.jpg",
@@ -51,7 +62,7 @@
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 2
       },
       {
         "file": "004.jpg",
@@ -73,18 +84,7 @@
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
-      },
-      {
-        "file": "006.jpg",
-        "origname": "졸전-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 3
       }
     ]
   },
