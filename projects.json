@@ -169,7 +169,7 @@
       {
         "file": "001.jpg",
         "origname": "졸전-01.png",
-        "alt": "",
+        "alt": "구의 전개도를 그래픽 모티프로 사용하였다.",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -207,7 +207,7 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "006.jpg",
+        "file": "005.jpg",
         "origname": "졸전-06.png",
         "alt": "",
         "ratio": "original",
@@ -217,7 +217,7 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "007.jpg",
+        "file": "006.jpg",
         "origname": "졸전-07.png",
         "alt": "",
         "ratio": "original",

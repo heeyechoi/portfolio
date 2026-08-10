@@ -46,8 +46,11 @@
     #dt2 { font-weight:500; width:calc(100vw - 40px); }
     .hidden-ink { color:#ebebeb; }
     #home-menu { font-weight:500; margin-top:0; }
-    #home-menu a { display:block; color:#1a1a1a; text-decoration:none; cursor:var(--cur); }
+    #home-menu a { display:inline-block; color:#1a1a1a; text-decoration:none; cursor:var(--cur); }
     #home-menu a:hover { color:#888; }
+    #home-block .word { display:inline-block; }
+    #home-block .word, #home-menu a { cursor:grab; }
+    #home-block .word:active, #home-menu a:active { cursor:grabbing; }
 
     /* initial hidden for typing anim */
     #home-block { opacity:0; }
@@ -68,8 +71,8 @@
       position:fixed; left:0; right:0; bottom:0;
       height:85vh;
       background:rgba(255,255,255,.65);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
       z-index:100;
       transform:translateY(100%);
       transition:transform .65s cubic-bezier(0.16,1,0.3,1);
@@ -212,7 +215,7 @@
       position:fixed; left:0; right:0; bottom:0;
       height:85vh;
       background:rgba(255,255,255,.65);
-      backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
       z-index:100;
       transform:translateY(100%);
       transition:transform .65s cubic-bezier(0.16,1,0.3,1);
@@ -419,9 +422,11 @@
       <br>
       <div id="home-menu">
         <a class="drawer-link" data-filter="all">Works</a>
+        <br>
         <a id="archive-link">Archive</a>
         <br>
         <a id="email-copy" data-email="choiheeye6@gmail.com">e-mail</a>
+        <br>
         <a href="https://instagram.com/ordernac" target="_blank" rel="noopener">Instagram</a>
         <br>
         <span id="dt3">&#169;Heeye Choi,<br>Based in Seoul, Korea</span>
@@ -681,7 +686,7 @@ var PROJECTS = [
       {
         "file": "001.jpg",
         "origname": "졸전-01.png",
-        "alt": "",
+        "alt": "구의 전개도를 그래픽 모티프로 사용하였다.",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -719,7 +724,7 @@ var PROJECTS = [
         "bg": "#f0f0f0"
       },
       {
-        "file": "006.jpg",
+        "file": "005.jpg",
         "origname": "졸전-06.png",
         "alt": "",
         "ratio": "original",
@@ -729,7 +734,7 @@ var PROJECTS = [
         "bg": "#f0f0f0"
       },
       {
-        "file": "007.jpg",
+        "file": "006.jpg",
         "origname": "졸전-07.png",
         "alt": "",
         "ratio": "original",
@@ -817,22 +822,9 @@ window.addEventListener('resize', function(){ drawH(document.getElementById('svg
   });
 })();
 
-/* ── DRAGGABLE HOME BLOCK ── */
-(function(){
-  var el = document.getElementById('home-block');
-  var sx,sy,ox,oy,down=false;
-  el.addEventListener('mousedown',function(e){
-    if(e.target.tagName==='A') return;
-    down=true; sx=e.clientX; sy=e.clientY;
-    ox=parseInt(el.style.left)||0; oy=parseInt(el.style.top)||0;
-    e.preventDefault(); e.stopPropagation();
-  });
-  window.addEventListener('mousemove',function(e){
-    if(!down)return;
-    el.style.left=(ox+e.clientX-sx)+'px'; el.style.top=(oy+e.clientY-sy)+'px';
-  });
-  window.addEventListener('mouseup',function(){ down=false; });
-})();
+/* ── DRAGGABLE HOME TEXT ──
+   Text is split into per-word spans after typing completes; each word (and each
+   menu link) is dragged individually. See the TYPING ANIMATION block below. */
 
 /* ── DRAWER ── */
 document.querySelectorAll('.drawer-link').forEach(function(a){
