@@ -1,34 +1,26 @@
 [
   {
-    "id": "hotel-goyo",
-    "folder": "Hotel GOYO",
-    "titleKo": "호텔 고요",
-    "titleEn": "Hotel GOYO",
-    "format": "Brand Identity",
+    "id": "hotel-goyo-branding",
+    "folder": "Hotel GOYO Branding",
+    "titleKo": "",
+    "titleEn": "Hotel GOYO Branding",
+    "format": "",
     "client": "—",
-    "date": "2024",
+    "date": "",
     "taglineKo": "",
-    "bodyKo": "글자들이 서로를 관통하며 겹쳐지는 로고타입은 새벽 안개가 번지듯 부드러우면서도 절제된 형태로 '고요'의 정서를 시각화한다. 낮은 대비의 흑백톤으로 구성된 부처 일러스트는 종교적 무게감 없이 한국 불교 고유의 고즈넉한 아름다움을 담아낸다. 로고타입부터 일러스트, 그래픽 패턴까지 모든 요소가 복잡한 일상에서 벗어나 진정한 쉼을 선사하는 하나의 브랜드 언어로 수렴한다.",
-    "taglineEn": "In stillness, you finally meet yourself.",
-    "bodyEn": "The logotype — letters overlapping and dissolving into one another — renders the stillness of dawn fog in a form that is at once soft and restrained. The Buddha illustration, rendered in low-contrast monochrome, carries the quiet beauty of Korean Buddhist aesthetics without the weight of religious solemnity. From the logotype to the graphic patterns, every element converges into a single brand language: a sanctuary where one steps away from the noise of everyday life.",
-    "type": "Personal",
-    "categories": [
-      "Branding",
-      "Graphic",
-      "Photography",
-      "Package",
-      "Identity"
-    ],
-    "fields": [
-      "Lifestyle"
-    ],
+    "bodyKo": "",
+    "taglineEn": "",
+    "bodyEn": "",
+    "type": "",
+    "categories": [],
+    "fields": [],
     "credits": [],
-    "imgCount": 12,
+    "imgCount": 10,
     "images": [
       {
-        "file": "002.jpg",
-        "origname": "goyo-02.png",
-        "alt": "Logotype",
+        "file": "001.jpg",
+        "origname": "goyo-01.png",
+        "alt": "",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -36,8 +28,18 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "001.jpg",
-        "origname": "goyo-01.png",
+        "file": "002.jpg",
+        "origname": "goyo-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "goyo-03.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -56,8 +58,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "003.jpg",
-        "origname": "goyo-03.png",
+        "file": "005.jpg",
+        "origname": "goyo-05.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -107,43 +109,133 @@
       },
       {
         "file": "010.jpg",
-        "origname": "goyo-10.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "011.jpg",
-        "origname": "goyo-11.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "012.jpg",
-        "origname": "goyo-12.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "013.jpg",
         "origname": "goyo-13.png",
         "alt": "",
-        "ratio": "16:9",
-        "zoom": 1.1,
+        "ratio": "original",
+        "zoom": 1,
         "posX": 0,
-        "posY": 1.2,
-        "bg": "#ffffff"
+        "posY": 0,
+        "bg": "#f0f0f0"
+      }
+    ]
+  },
+  {
+    "id": "photography-for-hotel-goyo",
+    "folder": "Photography for Hotel GOYO",
+    "titleKo": "",
+    "titleEn": "Photography for Hotel GOYO",
+    "format": "",
+    "client": "—",
+    "date": "",
+    "taglineKo": "",
+    "bodyKo": "",
+    "taglineEn": "",
+    "bodyEn": "",
+    "type": "",
+    "categories": [],
+    "fields": [],
+    "credits": [],
+    "imgCount": 10,
+    "images": [
+      {
+        "file": "001.jpg",
+        "origname": "goyophoto-01.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "goyophoto-02.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "goyophoto-03.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "goyophoto-04.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "005.jpg",
+        "origname": "goyophoto-05.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "goyophoto-06.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "007.jpg",
+        "origname": "goyophoto-07.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "008.jpg",
+        "origname": "goyophoto-08.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "009.jpg",
+        "origname": "goyophoto-09.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "034.jpg",
+        "origname": "goyophoto-34.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
       }
     ]
   },
@@ -298,10 +390,10 @@
     ]
   },
   {
-    "id": "ēndline-branding",
-    "folder": "ēndline branding",
+    "id": "ēndline-branding",
+    "folder": "ēndline Branding",
     "titleKo": "",
-    "titleEn": "ēndline branding",
+    "titleEn": "ēndline Branding",
     "format": "",
     "client": "—",
     "date": "",
