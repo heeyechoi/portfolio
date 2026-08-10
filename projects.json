@@ -141,7 +141,7 @@
       "Lifestyle"
     ],
     "credits": [],
-    "imgCount": 10,
+    "imgCount": 34,
     "images": [
       {
         "file": "001.jpg",
@@ -236,6 +236,246 @@
       {
         "file": "034.jpg",
         "origname": "goyophoto-34.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "020.jpg",
+        "origname": "goyophoto-20.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "010.jpg",
+        "origname": "goyophoto-10.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "011.jpg",
+        "origname": "goyophoto-11.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "012.jpg",
+        "origname": "goyophoto-12.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "013.jpg",
+        "origname": "goyophoto-13.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "014.jpg",
+        "origname": "goyophoto-14.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "017.jpg",
+        "origname": "goyophoto-17.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "015.jpg",
+        "origname": "goyophoto-15.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "016.jpg",
+        "origname": "goyophoto-16.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "018.jpg",
+        "origname": "goyophoto-18.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "019.jpg",
+        "origname": "goyophoto-19.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "021.jpg",
+        "origname": "goyophoto-21.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "022.jpg",
+        "origname": "goyophoto-22.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "023.jpg",
+        "origname": "goyophoto-23.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "029.jpg",
+        "origname": "goyophoto-29.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "027.jpg",
+        "origname": "goyophoto-27.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "024.jpg",
+        "origname": "goyophoto-24.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "025.jpg",
+        "origname": "goyophoto-25.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "026.jpg",
+        "origname": "goyophoto-26.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "028.jpg",
+        "origname": "goyophoto-28.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "030.jpg",
+        "origname": "goyophoto-30.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "031.jpg",
+        "origname": "goyophoto-31.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "032.jpg",
+        "origname": "goyophoto-32.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "033.jpg",
+        "origname": "goyophoto-33.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
