@@ -25,7 +25,7 @@
       "Lifestyle"
     ],
     "credits": [],
-    "imgCount": 10,
+    "imgCount": 9,
     "images": [
       {
         "file": "001.jpg",
@@ -48,8 +48,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "003.jpg",
-        "origname": "goyo-03.png",
+        "file": "004.jpg",
+        "origname": "goyo-04.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -58,8 +58,8 @@
         "bg": "#f0f0f0"
       },
       {
-        "file": "004.jpg",
-        "origname": "goyo-04.png",
+        "file": "003.jpg",
+        "origname": "goyo-03.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -110,16 +110,6 @@
       {
         "file": "009.jpg",
         "origname": "goyo-09.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "010.jpg",
-        "origname": "goyo-13.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
