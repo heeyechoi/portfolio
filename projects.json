@@ -1,5 +1,88 @@
 [
   {
+    "id": "dotdotdot",
+    "folder": "dotdotdot",
+    "titleKo": "점, 점점",
+    "titleEn": "DOT, Dot dot",
+    "format": "Exhibition Identity",
+    "client": "서울여자대학교 조형예술 졸업전시",
+    "date": "2025. 10",
+    "taglineKo": "",
+    "bodyKo": "낱낱의 점을 방사와 궤도로 배열해 형상이 서서히 맺히도록 그래픽 시스템을 짰다. 멀리서는 한 덩어리의 상으로 읽히고 가까이서는 다시 흩어진 점으로 풀리며, 응집되면서도 흩날리는 긴장을 만든다. 이는 저마다의 작업이 흩어진 점처럼 놓였다가 하나의 전시로 수렴하는 순간을 그대로 옮긴 것이다.",
+    "taglineEn": "",
+    "bodyEn": "I built a graphic system where individual dots are arranged along radiating orbits so a form slowly gathers into view. From afar it reads as one image, up close it dissolves back into scattered points—held together yet drifting apart at once. It mirrors the moment when separate works, laid out like stray dots, converge into a single exhibition.",
+    "type": "Commercial",
+    "categories": [
+      "Graphic",
+      "Identity"
+    ],
+    "fields": [],
+    "credits": [],
+    "imgCount": 6,
+    "images": [
+      {
+        "file": "001.jpg",
+        "origname": "졸전-01.png",
+        "alt": "구의 전개도를 그래픽 모티프로 사용",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "졸전-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "졸전-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "005.jpg",
+        "origname": "졸전-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0"
+      }
+    ]
+  },
+  {
     "id": "seoul-beauty-global-brand-identity-design",
     "folder": "Seoul Beauty Global Brand Identity Design",
     "titleKo": "",
@@ -57,89 +140,6 @@
       {
         "file": "002.jpg",
         "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      }
-    ]
-  },
-  {
-    "id": "dotdotdot",
-    "folder": "dotdotdot",
-    "titleKo": "점, 점점",
-    "titleEn": "DOT, Dot dot",
-    "format": "Exhibition Identity",
-    "client": "서울여자대학교 조형예술 졸업전시",
-    "date": "2025",
-    "taglineKo": "",
-    "bodyKo": "낱낱의 점을 방사와 궤도로 배열해 형상이 서서히 맺히도록 그래픽 시스템을 짰다. 멀리서는 한 덩어리의 상으로 읽히고 가까이서는 다시 흩어진 점으로 풀리며, 응집되면서도 흩날리는 긴장을 만든다. 이는 저마다의 작업이 흩어진 점처럼 놓였다가 하나의 전시로 수렴하는 순간을 그대로 옮긴 것이다.",
-    "taglineEn": "",
-    "bodyEn": "I built a graphic system where individual dots are arranged along radiating orbits so a form slowly gathers into view. From afar it reads as one image, up close it dissolves back into scattered points—held together yet drifting apart at once. It mirrors the moment when separate works, laid out like stray dots, converge into a single exhibition.",
-    "type": "Commercial",
-    "categories": [
-      "Graphic",
-      "Identity"
-    ],
-    "fields": [],
-    "credits": [],
-    "imgCount": 6,
-    "images": [
-      {
-        "file": "001.jpg",
-        "origname": "졸전-01.png",
-        "alt": "구의 전개도를 그래픽 모티프로 사용하였다.",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "졸전-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "003.jpg",
-        "origname": "졸전-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "004.jpg",
-        "origname": "졸전-04.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "005.jpg",
-        "origname": "졸전-06.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0"
-      },
-      {
-        "file": "006.jpg",
-        "origname": "졸전-07.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
