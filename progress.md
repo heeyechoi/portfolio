@@ -75,6 +75,10 @@
 > ⚠️ **배포 방식**: index.html은 손으로 편집한 뒤 `git commit && git push origin main`으로 직접 배포한다.
 > 빌더의 ⬆ Publish(`/api/publish`)는 index.html을 빌더 데이터로 **재생성**하므로 수동 디자인 편집을 덮어쓴다 — 디자인 변경 후에는 사용하지 말 것.
 
+### voice.md (2026-08-11)
+- [x] 신규 inbox 파일 `inbox/피하고 싶은 글.md` 추가 (금지사항 근거 전용, "내가 쓴 글"/"좋아하는 글"과 같은 성격의 3번째 원본)
+- [x] 금지사항에 "~를(을) 짰다" 추가 (이유 없이 행위만 서술하는 어투, 규칙 1 위반 근거)
+
 ### 상세/모바일 다듬기 (2026-08-10~11) — (커밋 378f6dc, 50f53b2)
 
 **상세페이지 개요(`.dv-head`)**
@@ -135,6 +139,7 @@
 /Users/heeye/portfolio wiki/    ← Obsidian 볼트
   voice.md                      ← 문체 룰북 (Generate 프롬프트 삽입)
   inbox/내가 쓴 글.md            ← 톤 예시
+  inbox/피하고 싶은 글.md         ← 금지사항 근거
   portfolio/                    ← 승인 글 (우선 예시로 사용)
 ```
 
