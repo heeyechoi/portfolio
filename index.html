@@ -199,9 +199,9 @@
     /* Description left-aligned with the Client column (same grid as .dv-head, start at col 3) */
     .dv-desc { display:grid; grid-template-columns:1.4fr 0.5fr 1fr 1.3fr 1fr 1.2fr; gap:0 20px; margin-bottom:8px; }
     .dv-desc > * { grid-column:3 / 6; }   /* right edge at the col5/col6 boundary */
-    .dv-body-ko { font-size:14px; line-height:1.5; margin-bottom:16px; }
-    .dv-tagline { font-size:14px; font-style:italic; color:#444; margin-bottom:12px; }
-    .dv-body-en { font-size:14px; line-height:1.3; color:#333; }
+    .dv-body-ko { font-size:14px; line-height:1.5; margin-bottom:16px; white-space:pre-line; }
+    .dv-tagline { font-size:14px; font-style:italic; color:#444; margin-bottom:12px; white-space:pre-line; }
+    .dv-body-en { font-size:14px; line-height:1.3; color:#333; white-space:pre-line; }
     .dv-gallery { margin-top:40px; display:flex; flex-direction:column; gap:6px; }
     .dv-gallery img { display:block; width:100%; height:auto; }
     .dv-top { display:block; margin:28px 0 8px; padding:8px 0; background:none; border:none; cursor:var(--cur); font-family:inherit; font-size:15px; font-weight:500; line-height:1; color:#1a1a1a; text-align:left; }
@@ -552,18 +552,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 4
-      },
-      {
-        "file": "006.jpg",
-        "origname": "졸전-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 4,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "002.jpg",
@@ -574,18 +565,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
-      },
-      {
-        "file": "003.jpg",
-        "origname": "졸전-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 2,
+        "size": 2,
+        "align": "left"
       },
       {
         "file": "004.jpg",
@@ -596,7 +578,35 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 2,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 1,
+        "align": "left"
       }
     ],
     "cats": [
@@ -651,7 +661,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "001.jpg",
@@ -662,7 +674,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "002.jpg",
@@ -673,7 +687,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ],
     "cats": [
@@ -721,7 +737,9 @@ var PROJECTS = [
         "posX": -0.1,
         "posY": 13.7,
         "bg": "#eaeaea",
-        "cols": 3
+        "cols": 3,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "001.jpg",
@@ -732,7 +750,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "004.jpg",
@@ -743,7 +763,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 2,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "003.jpg",
@@ -754,7 +776,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "006.jpg",
@@ -765,7 +789,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "007.jpg",
@@ -776,7 +802,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "005.jpg",
@@ -787,7 +815,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "008.jpg",
@@ -798,7 +828,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "009.jpg",
@@ -809,7 +841,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ],
     "cats": [
@@ -858,7 +892,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "002.jpg",
@@ -869,7 +905,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "003.jpg",
@@ -880,7 +918,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "034.jpg",
@@ -891,7 +931,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 2,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "027.jpg",
@@ -902,7 +944,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "009.jpg",
@@ -913,7 +957,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "007.jpg",
@@ -924,7 +970,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "020.jpg",
@@ -935,7 +983,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "010.jpg",
@@ -946,7 +996,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "016.jpg",
@@ -957,7 +1009,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "014.jpg",
@@ -968,7 +1022,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "019.jpg",
@@ -979,7 +1035,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "021.jpg",
@@ -990,7 +1048,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "022.jpg",
@@ -1001,7 +1061,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "023.jpg",
@@ -1012,7 +1074,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "029.jpg",
@@ -1023,7 +1087,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 2
+        "cols": 2,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "028.jpg",
@@ -1034,7 +1100,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "030.jpg",
@@ -1045,7 +1113,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       },
       {
         "file": "031.jpg",
@@ -1056,7 +1126,9 @@ var PROJECTS = [
         "posX": 0,
         "posY": 0,
         "bg": "#f0f0f0",
-        "cols": 1
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ],
     "cats": [
@@ -1549,25 +1621,25 @@ function loadProject(id) {
   if (p.bodyEn)    { var e = document.createElement('p'); e.className = 'dv-body-en'; e.textContent = p.bodyEn; desc.appendChild(e); }
   det.appendChild(desc);
 
-  // Full image list below the description — stacked in order; hover shows the caption
+  // Full image list below the description — 6-column grid; size+align per image
   if (list.length) {
     var gal = document.createElement('div');
     gal.className = 'dv-gallery';
-    var galCols = p.galleryColumns || 1;
-    var galGap  = p.galleryGap !== false;
-    if (galCols > 1) {
-      gal.style.display = 'grid';
-      gal.style.gridTemplateColumns = 'repeat(' + galCols + ', 1fr)';
-      gal.style.columnGap = galGap ? '6px' : '0';
-      gal.style.rowGap = '6px';
-    }
+    gal.style.display = 'grid';
+    gal.style.gridTemplateColumns = 'repeat(6, 1fr)';
+    gal.style.gap = (p.galleryGap !== false) ? '6px' : '0';
     list.forEach(function(x){
       var s = x.s || {};
+      var sz = s.size || 1;
+      var al = s.align || 'left';
+      var gc;
+      if (sz === 1) gc = '1 / 7';
+      else if (sz === 2) gc = al === 'right' ? '4 / 7' : '1 / 4';
+      else gc = al === 'right' ? '5 / 7' : al === 'center' ? '3 / 5' : '1 / 3';
       var wrap = document.createElement('div');
       wrap.className = 'dr-img-wrap';
+      wrap.style.gridColumn = gc;
       applyImgCell(wrap, s);
-      var span = Math.min(s.cols || 1, galCols);
-      if (galCols > 1 && span > 1) wrap.style.gridColumn = 'span ' + span;
       var img = document.createElement('img');
       img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
       applyImgTransform(img, s);

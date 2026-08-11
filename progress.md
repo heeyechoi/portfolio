@@ -79,6 +79,51 @@
 - [x] 신규 inbox 파일 `inbox/피하고 싶은 글.md` 추가 (금지사항 근거 전용, "내가 쓴 글"/"좋아하는 글"과 같은 성격의 3번째 원본)
 - [x] 금지사항에 "~를(을) 짰다" 추가 (이유 없이 행위만 서술하는 어투, 규칙 1 위반 근거)
 
+### 빌더 기능 확장 (2026-08-11)
+
+**3탭 왼쪽 패널**
+- [x] Projects / Archive / About 3탭으로 재구성
+- [x] Archive 탭: 이미지 업로드(`POST /api/upload-archive`), 이미지별 title·caption·date 편집, 미리보기 실시간 반영
+- [x] About 탭: 6열 그리드 인라인 편집 (기존 모달 폐기), 입력 즉시 미리보기 반영
+- [x] Archive·About 탭 선택 시 미리보기가 해당 오버레이 자동 오픈
+
+**Projects 에디터**
+- [x] 눈 아이콘 토글로 프로젝트 노출/숨김 (숨김 시 Publish에서 제외)
+- [x] 이미지별 눈 아이콘 토글 (숨김 이미지 Publish에서 제외)
+- [x] 날짜 필드 → 연도·월 드롭다운 (연도 최신순, 월 1~12)
+- [x] 프로젝트 목록 날짜 최신순 자동 정렬
+- [x] Gallery Grid: 프로젝트별 1·2·3·4단 그리드 + 여백 유무 설정
+- [x] 이미지별 컬럼 span 설정 (1~galleryColumns)
+- [x] 크레딧 표시: `Role.` + 줄바꿈 + 이름 형식
+- [x] Archive 에디터: 작업연도·월 드롭다운 추가
+
+**이미지 에디터**
+- [x] ratio·zoom·posX·posY·bg 설정값을 사이트(strip·gallery)에 실제 반영 (`applyImgCell` / `applyImgTransform`)
+- [x] 에디터(`rt-box`)와 사이트 모두 `object-fit:contain`으로 통일 → 동일하게 보임
+
+**빌더 레이아웃**
+- [x] 왼쪽 패널 200px → 260px, 에디터 비율 확대, 프리뷰 비율 축소
+
+**사이트 기능**
+- [x] 홈 마우스 트레일 이미지 — PROJECTS + ARCHIVE 데이터에서 자동 생성 (하드코딩 제거)
+- [x] Archive 각 셀: 이미지 → 제목 → 날짜 → 캡션 순 표시
+- [x] About 패널: 6열 그리드 (데스크톱 6열 / 태블릿 3열 / 모바일 2열)
+- [x] 갤러리 이미지 호버 불투명 효과 제거
+
+**버그 수정**
+- [x] `_web/Hotel GOYO branding` 대소문자 불일치(Vercel 이미지 404) → `git mv`로 수정
+- [x] 서버 재시작 없이는 server.py 변경사항 미반영 — 재시작 후 Archive·About Publish 정상화
+
+**코드 정리 (2026-08-11, Codex 리뷰 후)**
+- [x] `index.html`: 라이트박스 전체 삭제(~80줄), `projectImgList` fallback 단순화
+- [x] `builder.html`: `selectImg`·`optCanvas`·`_invalidateArchiveCache`·`renderPrev` 래퍼 등 데드코드 제거, 중복 fetch·slug 로직 통합
+- [x] `server.py`: `IMG_EXT` 모듈 상수화, `_json`/`json` 중복 메서드 통합
+
+### 배포 방식 변경 (2026-08-11)
+> ⚠️ **현재 배포 방식**: index.html 수동 편집 후 `git commit && git push origin main` 직접 배포.
+> 빌더 Publish는 PROJECTS·ARCHIVE·ABOUT 마커 블록만 교체하므로 나머지 수동 편집은 보존됨.
+> **server.py 변경 후에는 서버를 반드시 재시작**해야 변경사항이 반영됨.
+
 ### 상세/모바일 다듬기 (2026-08-10~11) — (커밋 378f6dc, 50f53b2)
 
 **상세페이지 개요(`.dv-head`)**
@@ -106,41 +151,34 @@
 
 ## 진행 중 / 남은 작업
 
-### 🔴 긴급
-- [ ] `_web/Hotel GOYO/`, `_web/dotdotdot/` 구 PNG 파일 삭제
-- [ ] 빌더에서 Publish 눌러 index.html ASCII 경로로 재생성 후 push
-- [ ] Vercel에서 사진 정상 로드 확인
-
 ### 🟡 콘텐츠
-- [ ] dotdotdot 프로젝트 — Generate 실행 (현재 Hotel GOYO 데이터 오염)
+- [ ] dotdotdot 프로젝트 — Generate 실행
 - [ ] endline 프로젝트 — Generate 실행
 - [ ] 볼트 `portfolio/` 폴더에 승인 글 추가 (최종 확정 텍스트)
+- [ ] Archive 이미지 title·caption·date 입력 후 Publish
 
 ### 🟢 선택
-- [ ] ordk.kr DNS 전파 완료 확인 (최대 24h)
-- [ ] Vercel 커스텀 도메인 SSL 인증 확인
+- [ ] ordk.kr 도메인·SSL 최종 확인
 
 ---
 
 ## 파일 구조
 
 ```
-/Users/heeye/portfolio/         ← 빌더 루트 (서버 실행 위치)
-  builder.html                  ← 빌더 UI
-  server.py                     ← Python HTTP 서버
-  start.command                 ← 더블클릭으로 실행
-  index.html                    ← 생성된 포트폴리오 사이트
-  fonts/                        ← SuisseIntl (Vercel 서빙용)
-  _web/                         ← 최적화 이미지 (001.jpg…)
-  Hotel GOYO/                   ← 원본 이미지
-  dotdotdot/
-  endline 25ss Visual Directing/
+/Users/heeye/projects/portfolio/   ← 빌더 루트 (서버 실행 위치)
+  builder.html                     ← 빌더 UI (3탭: Projects / Archive / About)
+  server.py                        ← Python HTTP 서버 (변경 후 재시작 필요)
+  start.command                    ← 더블클릭으로 서버 실행
+  index.html                       ← 포트폴리오 사이트 (PROJECTS·ARCHIVE·ABOUT 마커 블록)
+  _web/                            ← 최적화 이미지 (001.jpg…)
+  Archive/                         ← Archive 원본 이미지
+  works/                           ← 프로젝트별 원본 이미지
 
-/Users/heeye/portfolio wiki/    ← Obsidian 볼트
-  voice.md                      ← 문체 룰북 (Generate 프롬프트 삽입)
-  inbox/내가 쓴 글.md            ← 톤 예시
-  inbox/피하고 싶은 글.md         ← 금지사항 근거
-  portfolio/                    ← 승인 글 (우선 예시로 사용)
+/Users/heeye/projects/portfolio wiki/   ← Obsidian 볼트
+  voice.md                              ← 문체 룰북 (Generate 프롬프트 삽입)
+  inbox/내가 쓴 글.md                   ← 톤 예시
+  inbox/피하고 싶은 글.md               ← 금지사항 근거
+  portfolio/                            ← 승인 글 (우선 예시로 사용)
 ```
 
 ## 사이트
