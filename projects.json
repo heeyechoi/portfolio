@@ -253,8 +253,8 @@
         "posY": 0,
         "bg": "#f0f0f0",
         "cols": 1,
-        "size": 1,
-        "align": "left"
+        "size": 3,
+        "align": "right"
       },
       {
         "file": "006.jpg",
@@ -266,8 +266,8 @@
         "posY": 0,
         "bg": "#f0f0f0",
         "cols": 1,
-        "size": 1,
-        "align": "left"
+        "size": 3,
+        "align": "center"
       },
       {
         "file": "007.jpg",
@@ -279,7 +279,7 @@
         "posY": 0,
         "bg": "#f0f0f0",
         "cols": 1,
-        "size": 1,
+        "size": 3,
         "align": "left"
       },
       {
@@ -305,7 +305,7 @@
         "posY": 0,
         "bg": "#f0f0f0",
         "cols": 1,
-        "size": 1,
+        "size": 2,
         "align": "left"
       },
       {
@@ -318,8 +318,8 @@
         "posY": 0,
         "bg": "#f0f0f0",
         "cols": 1,
-        "size": 1,
-        "align": "left"
+        "size": 2,
+        "align": "right"
       }
     ]
   },
