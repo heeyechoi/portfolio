@@ -238,9 +238,11 @@
     #ar-close {
       position:fixed; top:22px; right:24px; z-index:110;
       font-family:inherit; font-size:15px; font-weight:500; line-height:1;
-      background:none; border:none; cursor:var(--cur); color:#888; padding:8px;
+      background:none; border:none; padding:8px;
+      color:#fff; mix-blend-mode:difference;   /* inverts against whatever is behind */
+      cursor:var(--cur);
     }
-    #ar-close:hover { color:#1a1a1a; }
+    #ar-close:hover { opacity:.7; }
     .archive-intro {
       padding:22px 35px 0;
       font-size:14px; font-weight:500; line-height:1.3; color:#1a1a1a;
@@ -277,9 +279,11 @@
     #ab-close {
       position:fixed; top:22px; right:24px; z-index:110;
       font-family:inherit; font-size:15px; font-weight:500; line-height:1;
-      background:none; border:none; cursor:var(--cur); color:#888; padding:8px;
+      background:none; border:none; padding:8px;
+      color:#fff; mix-blend-mode:difference;   /* inverts against whatever is behind */
+      cursor:var(--cur);
     }
-    #ab-close:hover { color:#1a1a1a; }
+    #ab-close:hover { opacity:.7; }
     #about-body {
       padding:64px 35px 40px;
       display:grid;
@@ -512,14 +516,14 @@
 
 <!-- Archive -->
 <div id="archive">
-  <button id="ar-close" onclick="closeArchive()">close</button>
+  <button id="ar-close" onclick="closeArchive()">(Close)</button>
   <div class="archive-intro">The Archive is a space for works beyond the main projects.<br>Visual studies, experiments, fragments, and side explorations collected along the way.</div>
   <div id="archive-grid"></div>
 </div>
 
 <!-- About -->
 <div id="about">
-  <button id="ab-close" onclick="closeAbout()">close</button>
+  <button id="ab-close" onclick="closeAbout()">(Close)</button>
   <div id="about-body"></div>
 </div>
 
