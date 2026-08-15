@@ -188,6 +188,34 @@
 
 ---
 
+### 버그 수정 · UI 통일 (2026-08-15)
+
+**Archive**
+- [x] GIF가 퍼블리시에서 빠지던 버그 수정 (`IMG_EXT`에 `.gif` 누락 → `PUB_EXT` 분리, GIF는 sips 변환 없이 그대로 복사)
+- [x] Archive 메뉴 설명문 추가 (사진 그리드 위, works 카테고리와 동일 스타일)
+- [x] 캡션 입력 시 사진 크기가 달라지던 버그 수정 (`.ar-cell`에 `min-width:0` 누락 → grid 컬럼이 캡션 길이에 밀림)
+- [x] 텍스트 순서 확정: 타이틀 → 캡션 → 날짜, 행간 1.3
+- [x] "AI-assisted work" 체크박스 추가 (체크 시 날짜 옆 회색 12px 표시)
+- [x] 날짜 최신순 정렬 (`_archive_date_key`, 날짜 없는 항목은 맨 뒤)
+- [x] Archive / Works 새로고침 아이콘 추가 (폴더에 파일 추가 후 리로드 없이 목록 갱신) — 아이콘만 정중앙 기준 회전하도록 별도 span으로 분리
+- [x] `.tif`/`.tiff` 지원 추가 (퍼블리시 시 JPEG로 자동 변환)
+- [x] `_map.json`에서 사라진 원본 파일 매핑이 안 지워져 같은 이미지가 두 번 뜨던 버그 수정 (퍼블리시마다 stale entry 정리)
+- [x] 모바일에서 설명문이 `white-space:nowrap`으로 잘리던 것 → 모바일만 `normal`로 줄바꿈 허용
+
+**닫기 버튼 (Archive / About)**
+- [x] Works 드로어와 동일하게 통일: `(Close)` 텍스트, 흰색 + `mix-blend-mode:difference`, hover 시 opacity
+- [x] 스크롤하면 버튼이 같이 밀리던 버그 수정 (패널 자체의 `transform`이 자식 `position:fixed` 요소의 containing block이 되는데, 그 패널에 스크롤도 같이 걸려있어서 버튼이 콘텐츠와 함께 움직였음 → 스크롤을 내부 wrapper(`#archive-scroll`/`#about-scroll`)로 분리)
+
+**빌더**
+- [x] 이미지 크기(1/2/3) · 정렬 설정이 저장 안 되던 버그 수정 (`persistImg`가 자동숨김(15장 초과)된 이미지를 못 찾아 조용히 실패 → 전체 이미지 목록 기준으로 찾도록 수정)
+- [x] `start.command`가 예전 경로(`/Users/heeye/portfolio`)를 가리켜 항상 실행 실패하던 버그 수정 → `/Users/heeye/projects/portfolio`로 정정
+
+**신규 프로젝트 퍼블리시 버그**
+- [x] 새 프로젝트 첫 퍼블리시 시 이미지 경로가 원본 파일명으로 나가서 실제 최적화 파일명(`001.jpg`…)과 안 맞아 전부 깨지던 버그 수정 — 퍼블리시 시점에 서버가 방금 만든 `_map.json` 기준으로 `PROJECTS[].images[].file`을 다시 맞춰 쓰도록 수정 (Archive와 동일한 방식)
+- [x] 폴더명에 악센트 문자(예: "ēndline")가 있으면 이미지가 전부 404나던 버그 수정 — macOS는 파일명을 분해형(NFD)으로 저장하는데 Vercel은 결합형(NFC)으로 매칭 → 퍼블리시 시 폴더명을 NFC로 정규화하도록 수정
+
+---
+
 ## 진행 중 / 남은 작업
 
 ### 🟡 콘텐츠
@@ -225,6 +253,8 @@
 | | URL |
 |---|---|
 | 빌더 | http://localhost:8765 |
-| Vercel | https://portfolio-five-pearl-89.vercel.app |
-| 도메인 | https://ordk.kr (DNS 전파 후) |
+| 실제 사이트 | https://ordk.kr |
 | GitHub | https://github.com/heeyechoi/portfolio |
+
+> ⚠️ Vercel 배포 URL(`*.vercel.app`)은 배포마다 바뀌고 SSO로 막혀있어 직접 접속 불가 — 항상 `ordk.kr`로 확인할 것.
+> (예전에 적혀있던 `portfolio-five-pearl-89.vercel.app`은 이 프로젝트와 무관한 다른 사이트였음 — 2026-08-15 확인)
