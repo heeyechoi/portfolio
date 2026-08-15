@@ -231,10 +231,13 @@
       z-index:100;
       transform:translateY(100%);
       transition:transform .65s cubic-bezier(0.16,1,0.3,1);
-      overflow-y:auto;
     }
     #archive.open { transform:translateY(0); }
-    #archive::-webkit-scrollbar { display:none; }
+    /* Scroll lives on this inner wrapper (not #archive itself) so the fixed
+       close button — whose containing block becomes #archive once it has a
+       transform — doesn't get dragged along when the content scrolls. */
+    #archive-scroll { height:100%; overflow-y:auto; }
+    #archive-scroll::-webkit-scrollbar { display:none; }
     #ar-close {
       position:fixed; top:22px; right:24px; z-index:110;
       font-family:inherit; font-size:15px; font-weight:500; line-height:1;
@@ -272,10 +275,13 @@
       z-index:100;
       transform:translateY(100%);
       transition:transform .65s cubic-bezier(0.16,1,0.3,1);
-      overflow-y:auto;
     }
     #about.open { transform:translateY(0); }
-    #about::-webkit-scrollbar { display:none; }
+    /* Scroll lives on this inner wrapper (not #about itself) so the fixed
+       close button — whose containing block becomes #about once it has a
+       transform — doesn't get dragged along when the content scrolls. */
+    #about-scroll { height:100%; overflow-y:auto; }
+    #about-scroll::-webkit-scrollbar { display:none; }
     #ab-close {
       position:fixed; top:22px; right:24px; z-index:110;
       font-family:inherit; font-size:15px; font-weight:500; line-height:1;
@@ -517,14 +523,18 @@
 <!-- Archive -->
 <div id="archive">
   <button id="ar-close" onclick="closeArchive()">(Close)</button>
-  <div class="archive-intro">The Archive is a space for works beyond the main projects.<br>Visual studies, experiments, fragments, and side explorations collected along the way.</div>
-  <div id="archive-grid"></div>
+  <div id="archive-scroll">
+    <div class="archive-intro">The Archive is a space for works beyond the main projects.<br>Visual studies, experiments, fragments, and side explorations collected along the way.</div>
+    <div id="archive-grid"></div>
+  </div>
 </div>
 
 <!-- About -->
 <div id="about">
   <button id="ab-close" onclick="closeAbout()">(Close)</button>
-  <div id="about-body"></div>
+  <div id="about-scroll">
+    <div id="about-body"></div>
+  </div>
 </div>
 
 <!-- Lightbox -->
