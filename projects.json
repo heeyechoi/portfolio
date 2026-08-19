@@ -208,7 +208,7 @@
         "url": ""
       }
     ],
-    "imgCount": 7,
+    "imgCount": 8,
     "images": [
       {
         "file": "001.jpg",
@@ -291,6 +291,19 @@
       {
         "file": "007.jpg",
         "origname": "endline 포폴 구성-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC.png",
+        "origname": "endline 포폴 구성.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
