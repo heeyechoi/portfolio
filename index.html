@@ -221,6 +221,7 @@
       opacity:0; transition:opacity .12s; pointer-events:none; z-index:6;
     }
     .dr-img-wrap:hover .dr-cap { opacity:1; }
+    .dr-note { grid-column:3 / 6; font-size:14px; line-height:1.5; color:#1a1a1a; margin:9px 0; white-space:pre-line; }
 
     /* ══ MOBILE GALLERY LIGHTBOX ══ (opened by tapping an image in .dv-gallery, mobile only) */
     #mlb {
@@ -457,15 +458,6 @@
       .dv-imgs-top { margin-bottom:18px; }
       .dv-imgs-rest { margin-top:18px; }
 
-      /* No hover on touch — gallery captions sit statically below each image */
-      .dv-gallery .dr-cap {
-        position:static; transform:none; margin:6px 0 0;
-        display:block; max-width:none;
-        background:none; color:#666;
-        font-size:12px; padding:0;
-        opacity:1; pointer-events:auto;
-      }
-
     }
   </style>
 </head>
@@ -576,13 +568,13 @@ var PROJECTS = [
     "id": "dotdotdot",
     "title": "점, 점점",
     "titleEn": "DOT, Dot dot",
-    "format": "Exhibition Identity",
-    "client": "서울여자대학교 공예전공 도자심화",
-    "date": "2025. 10",
-    "taglineKo": "서울여자대학교 아트앤디자인스쿨 공예전공 도자심화 제58회 졸업작품전",
-    "bodyKo": "점이라는 가장 작고 근본적인 조형 단위로부터 출발하여, 구의 표면을 평면 위에 펼치는 구 전개도를 핵심 그래픽 모티브로 삼았다. 방사형으로 뻗어나가는 점들의 궤적은 수학적이면서도 유기적인 긴장감을 만들어내며, 점이 선이 되고 선이 형태가 되는 확장의 과정 자체를 전시의 언어로 삼는다.",
-    "taglineEn": "",
-    "bodyEn": "Beginning from the dot — the most elemental unit of form — the project adopts the sphere development diagram as its central graphic motif, mapping the surface of a three-dimensional sphere onto a flat plane. The radial trajectories of accumulated dots carry both mathematical precision and organic resonance, making the act of expansion itself the visual language of the exhibition.",
+    "format": "Graphic Design (Exhibition Identity / Poster)",
+    "client": "서울여자대학교 아트앤디자인스쿨 공예전공 도자심화 제58회 졸업작품전",
+    "date": "2025",
+    "taglineKo": "흩어진 입자가 다시 모여, 그릇이 되는 자리를 그린다.",
+    "bodyKo": "서울여자대학교 아트앤디자인스쿨 공예전공 도자심화 제58회 졸업작품전의 그래픽 아이덴티티를 작업하였다. 물레 위에서 흙이 원심력으로 퍼져나가는 순간을 무수한 점으로 환산해, 중심에서 바깥으로 튀어나가는 방사형 점묘 패턴을 만들었다. 점들은 밀도가 높은 중심부에서 점차 옅어지며 흩어지는데, 이 밀도의 변화가 모였다가도 흩어지는 흙의 상태, 형태를 갖추기 이전의 재료 그 자체를 드러낸다. 표지 위에는 청자 상감 문양을 흰 바탕에 흰 선으로 얕게 새겨 넣어, 드러내기보다 표면 아래 겹쳐진 층위로 도자의 전통을 남겨두었다. 픽셀 단위로 거칠게 끊어진 회색 덩어리를 층층이 쌓아, 매끈하게 마감되기 전 유약이 굳어가는 표면의 거친 질감을 그대로 확대해 보여준다.",
+    "taglineEn": "Where scattered particles gather into form.",
+    "bodyEn": "I designed the graphic identity for the 58th graduation exhibition of the Ceramics program at Seoul Women's University School of Art & Design. I translated the moment clay spreads outward under centrifugal force on the wheel into a radial field of countless dots, spraying from a dense center toward a scattered edge. The shifting density — thick at the core, thin toward the rim — records the material's state before it settles into form, gathered and scattered at once. Across the cover, I embossed a traditional celadon inlay pattern in white on white, barely visible, so the craft's history sits as a hidden layer beneath the surface rather than announced on top of it. The grey masses broken into rough pixel blocks, stacked in bands, magnify the moment glaze hardens, leaving the surface's unfinished texture in place instead of smoothing it away.",
     "type": "Commercial",
     "categories": [
       "Graphic",
@@ -661,6 +653,83 @@ var PROJECTS = [
         "align": "right"
       }
     ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "졸전-01.png",
+        "alt": "구의 전개도를 그래픽 모티프로 사용",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 4,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "졸전-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "004.jpg",
+        "origname": "졸전-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "006.jpg",
+        "origname": "졸전-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "text",
+        "textKo": "ㅇㄹㅇㄹㅇㄹㅁㄹㅇ",
+        "textEn": ""
+      }
+    ],
     "cats": [
       "commercial",
       "graphic",
@@ -668,99 +737,16 @@ var PROJECTS = [
     ]
   },
   {
-    "id": "seoul-beauty-global-brand-identity-design",
-    "title": "Seoul Beauty Global Brand Identity Renewal",
-    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
-    "format": "Brand Identity",
-    "client": "Seoul Beauty Global",
-    "date": "2025. 01",
-    "taglineKo": "",
-    "bodyKo": "Connected 언어의 장벽을 넘어 뷰티로 하나되는 순간\nReliable 검증된 뷰티 서비스들과 함께 안전한 여행\nElegant 서울에서만 경험할 수 있는 품격있고 합리적인 서비스\n세 가지 키워드로 브랜드를 정의하고 아이덴티티 디자인을 하였습니다. \nS와 B로 이루어진 두 곡선은 대칭적인 구조를 통해 무한하고 지속적인 커넥션을 나타냅니다. 곡선의 일부를 하트 형태로 나타내어 서울뷰티글로벌의 기존 아이덴티티를 유지하고, 뷰티를 중심으로 하나되는 고유의 가치를 전달합니다. 간결하면서도 기하학적인 타입페이스를 통하여 세련되고 감각적인 도시 이미지를 나타냅니다.",
-    "taglineEn": "",
-    "bodyEn": "Four hearts join along one continuous line to form a clover-shaped mark, wrapped in a teal drawn from the city's clear water. As scattered hearts lock into a single stroke, mutual affection blooms, while the wide-set wordmark lends a calm yet open tone. Every element converges into one face—warm yet composed—that carries the beauty of Seoul to the world.",
-    "type": "Commercial",
-    "categories": [
-      "Identity",
-      "Visual directing"
-    ],
-    "fields": [
-      "Cosmetic",
-      "Lifestyle"
-    ],
-    "credits": [
-      {
-        "role": "Symbol Design Assist",
-        "name": "Sangah Yoo",
-        "url": ""
-      },
-      {
-        "role": "",
-        "name": "",
-        "url": ""
-      }
-    ],
-    "imgCount": 3,
-    "galleryColumns": 1,
-    "galleryGap": true,
-    "folder": "Seoul Beauty Global Brand Identity Design",
-    "images": [
-      {
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      }
-    ],
-    "cats": [
-      "commercial",
-      "identity",
-      "visual-directing"
-    ]
-  },
-  {
     "id": "ēndline-branding",
     "title": "ēndline Branding",
     "titleEn": "ēndline Branding",
-    "format": "",
-    "client": "—",
-    "date": "2024. 09",
-    "taglineKo": "",
-    "bodyKo": "",
-    "taglineEn": "",
-    "bodyEn": "",
+    "format": "Brand Identity",
+    "client": "ēndline",
+    "date": "2025",
+    "taglineKo": "코트 위의 움직임을 하나의 곡선으로 응축한 코트웨어 브랜드 ēndline.",
+    "bodyKo": "ēndline은 배드민턴에서 출발해 다양한 코트 스포츠웨어로 영역을 넓히는 코트웨어 브랜드이다. 워드마크는 소문자 e 위에 매크론 기호를 얹어, 셔틀콕이 라켓을 떠나는 순간의 궤적을 담아냈다. 심볼은 완전히 닫힌 타원이 아니라 한쪽이 열린 곡선으로 그려져, 정지한 형태가 아니라 계속 움직이는 상태를 지시한다. 이 곡선은 로고 단독형과 심볼형, 세로형 조합으로 시스템화되어 행택, 케어라벨, 포장재, 명함에 이르기까지 동일한 리듬으로 반복된다. 코트 안에서 완결되지 않고 일상으로 이어지는 브랜드의 태도를, 하나의 획으로 정리한 결과다.",
+    "taglineEn": "A single curved stroke that condenses movement on the court.",
+    "bodyEn": "ēndline is a court-wear brand that began with badminton and now extends across various court sports. The wordmark carries a macron over the lowercase e, tracing the moment a shuttlecock leaves the racket. The symbol is drawn as an open curve rather than a closed oval, marking a state of motion rather than a fixed form. This curve is systemized across a standalone logotype, symbol mark, and vertical lockup, repeating the same rhythm across hangtags, care labels, packaging, and business cards. It is a single stroke that records the brand's stance of not stopping at the court, but carrying into everyday life.",
     "type": "",
     "categories": [
       "Branding",
@@ -802,7 +788,7 @@ var PROJECTS = [
       {
         "file": "003.jpg",
         "origname": "endline 포폴 구성-01.png",
-        "alt": "",
+        "alt": "symbol grid",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -815,7 +801,7 @@ var PROJECTS = [
       {
         "file": "004.jpg",
         "origname": "endline 포폴 구성-02.png",
-        "alt": "",
+        "alt": "grid system of full logo",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -828,7 +814,7 @@ var PROJECTS = [
       {
         "file": "008.jpg",
         "origname": "endline 포폴 구성-06.png",
-        "alt": "",
+        "alt": "typography",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -841,7 +827,7 @@ var PROJECTS = [
       {
         "file": "007.jpg",
         "origname": "endline 포폴 구성-05.png",
-        "alt": "",
+        "alt": "business card",
         "ratio": "original",
         "zoom": 1,
         "posX": 0,
@@ -878,6 +864,120 @@ var PROJECTS = [
         "align": "left"
       },
       {
+        "file": "009.jpg",
+        "origname": "endline 포폴 구성-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "006.jpg",
+        "origname": "endline 포폴 구성-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "endline 포폴 구성-01.png",
+        "alt": "symbol grid",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#000000",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "004.jpg",
+        "origname": "endline 포폴 구성-02.png",
+        "alt": "grid system of full logo",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "image",
+        "file": "008.jpg",
+        "origname": "endline 포폴 구성-06.png",
+        "alt": "typography",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "007.jpg",
+        "origname": "endline 포폴 구성-05.png",
+        "alt": "business card",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "9.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "011.jpg",
+        "origname": "endline 포폴 구성.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
         "file": "009.jpg",
         "origname": "endline 포폴 구성-07.png",
         "alt": "",
@@ -1035,6 +1135,120 @@ var PROJECTS = [
         "align": "right"
       }
     ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "goyo-02.png",
+        "alt": "",
+        "ratio": "16:9",
+        "zoom": 1,
+        "posX": -0.1,
+        "posY": 13.7,
+        "bg": "#eaeaea",
+        "cols": 3,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "goyo-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "004.jpg",
+        "origname": "goyo-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "007.jpg",
+        "origname": "goyo-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 3,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "006.jpg",
+        "origname": "goyo-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 3,
+        "align": "center"
+      },
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "goyo-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 3,
+        "align": "right"
+      },
+      {
+        "type": "image",
+        "file": "008.jpg",
+        "origname": "goyo-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "009.jpg",
+        "origname": "goyo-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      }
+    ],
     "cats": [
       "personal",
       "branding",
@@ -1043,6 +1257,143 @@ var PROJECTS = [
       "package",
       "photography",
       "website",
+      "visual-directing"
+    ]
+  },
+  {
+    "id": "seoul-beauty-global-brand-identity-design",
+    "title": "Seoul Beauty Global Brand Identity Renewal",
+    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
+    "format": "Brand Identity",
+    "client": "Seoul Beauty Global",
+    "date": "",
+    "taglineKo": "언어의 장벽 너머, 뷰티로 연결되는 순간을 로고 안에 담았다.",
+    "bodyKo": "S와 B, 두 글자의 곡선을 대칭으로 겹쳐 심볼을 만들었다. 곡선의 일부는 하트 형태로 마무리되어, 외국인 이용자에게 낯설 수 있는 이니셜 조합에 익숙한 온기를 더한다. 겹쳐진 곡선은 끊어지지 않고 이어지며, 언어가 다른 두 사람이 뷰티라는 매개로 연결되는 순간을 형태로 옮긴 것이다. 심볼 아래 놓인 워드마크는 간결한 기하학적 타입으로 짜여, 서울이라는 도시가 가진 세련된 인상을 절제된 방식으로 전달한다. 부드러운 곡선과 반듯한 타이포그래피가 나란히 놓이면서, 신뢰할 수 있으면서도 품격 있는 서비스라는 브랜드의 태도가 함께 드러난다.",
+    "taglineEn": "Two curves, one connection beyond language.",
+    "bodyEn": "The symbol overlaps the curves of S and B into a single symmetrical form. Part of each curve resolves into a heart shape, carrying a sense of warmth into an initials mark that could otherwise read as unfamiliar to a foreign eye. The unbroken line traces the moment two people, separated by language, meet through beauty. Beneath it sits a wordmark built from a spare geometric type, delivering the polish of Seoul without excess. Curve and letterform sit side by side, and together they carry the brand's claim to a service that is both trustworthy and refined.",
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Visual directing"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle"
+    ],
+    "credits": [
+      {
+        "role": "Symbol Design Assist",
+        "name": "Sangah Yoo",
+        "url": ""
+      },
+      {
+        "role": "",
+        "name": "",
+        "url": ""
+      }
+    ],
+    "imgCount": 3,
+    "galleryColumns": 1,
+    "galleryGap": true,
+    "folder": "Seoul Beauty Global Brand Identity Design",
+    "images": [
+      {
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "text",
+        "textKo": "심볼은 S와 B, 두 글자의 곡선을 나란히 세운 구조다. 왼쪽 곡선은 열린 형태로 흐르고, 오른쪽 곡선의 윗부분은 하트 모양으로 닫혀 기존 서울뷰티글로벌 심볼이 지녔던 흔적을 남긴다. 대칭을 이루는 두 곡선은 그리드 위에서 반복되는 간격으로 정렬되어, 크기가 달라져도 무너지지 않는 균형을 유지하도록 설계했다.",
+        "textEn": ""
+      },
+      {
+        "type": "text",
+        "textKo": "워드마크는 한 줄과 두 줄, 두 가지 조합으로 정리했다. 대문자 중심의 기하학적 타입은 O와 G, C 등 곡선 글자의 안지름을 일정한 원형 기준으로 맞춰, 심볼의 둥근 곡선과 같은 리듬을 공유한다. 좁은 자간과 균일한 획 굵기는 화려한 장식 없이도 도시적인 인상을 유지하게 한다.",
+        "textEn": ""
+      }
+    ],
+    "cats": [
+      "commercial",
+      "identity",
       "visual-directing"
     ]
   },
@@ -1255,6 +1606,218 @@ var PROJECTS = [
         "align": "left"
       },
       {
+        "file": "031.jpg",
+        "origname": "goyophoto-31.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "025.jpg",
+        "origname": "goyophoto-25.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "goyophoto-02.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "034.jpg",
+        "origname": "goyophoto-34.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "027.jpg",
+        "origname": "goyophoto-27.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "009.jpg",
+        "origname": "goyophoto-09.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "007.jpg",
+        "origname": "goyophoto-07.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "010.jpg",
+        "origname": "goyophoto-10.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "016.jpg",
+        "origname": "goyophoto-16.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "014.jpg",
+        "origname": "goyophoto-14.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "019.jpg",
+        "origname": "goyophoto-19.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "021.jpg",
+        "origname": "goyophoto-21.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "023.jpg",
+        "origname": "goyophoto-23.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "029.jpg",
+        "origname": "goyophoto-29.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "028.jpg",
+        "origname": "goyophoto-28.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
         "file": "031.jpg",
         "origname": "goyophoto-31.jpg",
         "alt": "",
@@ -1605,6 +2168,18 @@ function projectImgList(p) {
   return (p.images || []).map(function(im){ return { src: '_web/' + p.folder + '/' + im.file, s: im }; });
 }
 
+// Ordered image+text blocks for the detail-page gallery. Falls back to an images-only
+// list for projects published before galleryBlocks existed.
+function projectGalleryBlocks(p) {
+  if (Array.isArray(p.galleryBlocks) && p.galleryBlocks.length) {
+    return p.galleryBlocks.map(function(b){
+      if (b.type === 'text') return { type: 'text', s: b };
+      return { type: 'image', src: '_web/' + p.folder + '/' + b.file, s: b };
+    });
+  }
+  return projectImgList(p).map(function(x){ return { type: 'image', src: x.src, s: x.s }; });
+}
+
 /* ── INDEX (image-led 목차) ── */
 function renderList() {
   var wrap = document.getElementById('dr-list');
@@ -1763,15 +2338,28 @@ function loadProject(id) {
   if (p.bodyEn)    { var e = document.createElement('p'); e.className = 'dv-body-en'; e.textContent = p.bodyEn; desc.appendChild(e); }
   det.appendChild(desc);
 
-  // Full image list below the description — 6-column grid; size+align per image
-  if (list.length) {
+  // Full gallery below the description — image blocks in a 6-column grid (size+align per image),
+  // interleaved with text blocks (design-logic paragraphs) styled like the intro description above.
+  var blocks = projectGalleryBlocks(p);
+  if (blocks.length) {
     var gal = document.createElement('div');
     gal.className = 'dv-gallery';
     gal.style.display = 'grid';
     gal.style.gridTemplateColumns = 'repeat(6, 1fr)';
     gal.style.gap = (p.galleryGap !== false) ? '6px' : '0';
-    list.forEach(function(x, i){
-      var s = x.s || {};
+    var galleryImages = blocks.filter(function(b){ return b.type === 'image'; });
+    var imgIdx = 0;
+    blocks.forEach(function(b){
+      var s = b.s || {};
+      if (b.type === 'text') {
+        var txt = s.textKo || s.textEn || '';
+        if (!txt) return;
+        var note = document.createElement('p');
+        note.className = 'dr-note';
+        note.textContent = txt;
+        gal.appendChild(note);
+        return;
+      }
       var sz = s.size || 1;
       var al = s.align || 'left';
       var gc;
@@ -1783,11 +2371,13 @@ function loadProject(id) {
       wrap.style.gridColumn = gc;
       applyImgCell(wrap, s);
       var img = document.createElement('img');
-      img.src = x.src; img.alt = s.alt || ''; img.loading = 'lazy';
+      img.src = b.src; img.alt = s.alt || ''; img.loading = 'lazy';
       applyImgTransform(img, s);
-      img.addEventListener('click', function(){
-        if (isMobile()) openGalleryLightbox(list, i);
-      });
+      (function(idx){
+        img.addEventListener('click', function(){
+          if (isMobile()) openGalleryLightbox(galleryImages, idx);
+        });
+      })(imgIdx);
       wrap.appendChild(img);
       if (s.alt) {
         var cap = document.createElement('span');
@@ -1803,6 +2393,7 @@ function loadProject(id) {
         })(wrap, cap);
       }
       gal.appendChild(wrap);
+      imgIdx++;
     });
     det.appendChild(gal);
 
