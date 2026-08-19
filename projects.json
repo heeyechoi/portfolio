@@ -208,7 +208,7 @@
         "url": ""
       }
     ],
-    "imgCount": 8,
+    "imgCount": 10,
     "images": [
       {
         "file": "001.jpg",
@@ -222,19 +222,6 @@
         "cols": 1,
         "size": 2,
         "align": "left"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "endline 포폴 구성-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
       },
       {
         "file": "003.jpg",
@@ -263,32 +250,6 @@
         "align": "left"
       },
       {
-        "file": "005.jpg",
-        "origname": "endline 포폴 구성-05.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
-      },
-      {
-        "file": "006.jpg",
-        "origname": "endline 포폴 구성-06.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "left"
-      },
-      {
         "file": "007.jpg",
         "origname": "endline 포폴 구성-07.png",
         "alt": "",
@@ -302,7 +263,72 @@
         "align": "left"
       },
       {
-        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC.png",
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC-9-01.png",
+        "origname": "endline 포폴 구성-9-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC-9-03.png",
+        "origname": "endline 포폴 구성-9-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC-9-04.png",
+        "origname": "endline 포폴 구성-9-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC-9-07.png",
+        "origname": "endline 포폴 구성-9-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "endline%20%E1%84%91%E1%85%A9%E1%84%91%E1%85%A9%E1%86%AF%20%E1%84%80%E1%85%AE%E1%84%89%E1%85%A5%E1%86%BC-9-09.png",
+        "origname": "endline 포폴 구성-9-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "008.jpg",
         "origname": "endline 포폴 구성.png",
         "alt": "",
         "ratio": "original",
