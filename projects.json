@@ -185,10 +185,10 @@
     "format": "Brand Identity",
     "client": "ēndline",
     "date": "2025",
-    "taglineKo": "코트 위의 움직임을 하나의 곡선으로 응축한 코트웨어 브랜드 ēndline.",
-    "bodyKo": "ēndline은 배드민턴에서 출발해 다양한 코트 스포츠웨어로 영역을 넓히는 코트웨어 브랜드이다. 워드마크는 소문자 e 위에 매크론 기호를 얹어, 셔틀콕이 라켓을 떠나는 순간의 궤적을 담아냈다. 심볼은 완전히 닫힌 타원이 아니라 한쪽이 열린 곡선으로 그려져, 정지한 형태가 아니라 계속 움직이는 상태를 지시한다. 이 곡선은 로고 단독형과 심볼형, 세로형 조합으로 시스템화되어 행택, 케어라벨, 포장재, 명함에 이르기까지 동일한 리듬으로 반복된다. 코트 안에서 완결되지 않고 일상으로 이어지는 브랜드의 태도를, 하나의 획으로 정리한 결과다.",
-    "taglineEn": "A single curved stroke that condenses movement on the court.",
-    "bodyEn": "ēndline is a court-wear brand that began with badminton and now extends across various court sports. The wordmark carries a macron over the lowercase e, tracing the moment a shuttlecock leaves the racket. The symbol is drawn as an open curve rather than a closed oval, marking a state of motion rather than a fixed form. This curve is systemized across a standalone logotype, symbol mark, and vertical lockup, repeating the same rhythm across hangtags, care labels, packaging, and business cards. It is a single stroke that records the brand's stance of not stopping at the court, but carrying into everyday life.",
+    "taglineKo": "코트와 일상의 경계, endline",
+    "bodyKo": "ēndline은 배드민턴에서 출발해 여러 코트 스포츠로 영역을 넓히는 코트웨어 브랜드다. 코트 안과 밖을 가르던 경계를 지우고, 퍼포먼스와 일상을 하나의 태도로 잇는 것을 브랜드의 방향으로 삼았다. 로고의 e는 완만한 타원 안에 날카로운 꼬리를 겹쳐, 부드러우면서도 날카로운 궤적으로 셔틀콕이 라인 끝에서 꺾이는 순간을 담았다. 영문에는 Neue Haas Grotesk Medium을, 국문에는 Pretendard ExtraBold와 SemiBold를 함께 두어 절제된 리듬과 또렷한 발음을 동시에 지탱했다. 이 체계는 명함과 행택, 케어라벨과 패키지로 이어지며 접힘선과 여백 규정을 통해 어느 접점에서도 같은 태도를 유지하도록 했다.",
+    "taglineEn": "",
+    "bodyEn": "ēndline began in badminton and now extends across a wider range of court sports. The brand set out to dissolve the line that once separated the court from everyday life, treating performance and daily wear as one continuous attitude. Its e mark layers a soft ellipse with a sharp trailing point, tracing both the ease of a rally and the sharp turn a shuttlecock makes at the line's edge. Neue Haas Grotesk Medium carries the English wordmark while Pretendard ExtraBold and SemiBold hold the Korean, keeping a restrained rhythm and a clear voice side by side. The system continues into business cards, hang tags, care labels, and packaging, held together by consistent fold lines and clear-space rules across every touchpoint.",
     "type": "",
     "categories": [
       "Branding",
@@ -427,6 +427,16 @@
         "align": "right"
       },
       {
+        "type": "text",
+        "textKo": "영문 로고와 본문에는 Neue Haas Grotesk Medium을 사용해 코트 위 동작처럼 군더더기 없는 인상을 유지했다. 국문에는 Pretendard ExtraBold와 SemiBold를 함께 배치하고 자간을 좁혀, 굵기가 다른 두 웨이트가 위계를 나누면서도 같은 리듬 안에서 읽히도록 했다. 두 언어 체계는 각자의 문법을 따르되, 하나의 태도를 공유하도록 조정했다.",
+        "textEn": ""
+      },
+      {
+        "type": "text",
+        "textKo": "로고의 e는 완만하게 감기는 타원 곡선과 한 점으로 모이는 날카로운 꼬리를 하나의 획 안에 겹쳐 그렸다. 곡선은 랠리가 이어지는 유연한 흐름을, 꼬리의 예각은 셔틀콕이 라인 끝에서 방향을 꺾는 순간을 나타낸다. 격자 위에서 각 접점의 각도와 곡률을 고정해, 확대와 축소에도 형태의 긴장감이 흐트러지지 않도록 했다.",
+        "textEn": ""
+      },
+      {
         "type": "image",
         "file": "001.jpg",
         "origname": "9.jpg",
@@ -453,6 +463,11 @@
         "cols": 1,
         "size": 1,
         "align": "left"
+      },
+      {
+        "type": "text",
+        "textKo": "케어라벨은 넌코트웨어, 코트웨어(단일·복합 원단), 이벤트웨어 세 카테고리로 나누어, 각 제품군의 소재 구성과 세탁 정보가 같은 격자 안에서 정리되도록 규정했다. 접이형과 평판형 두 가지 제작 방식에 맞춰 재단선과 스티칭 영역의 여백을 따로 지정해, 라벨이 실제 봉제 공정에서도 오차 없이 부착되도록 했다. 이렇게 정리된 규칙은 품목이 늘어나도 같은 톤으로 확장될 수 있는 여지를 남긴다.",
+        "textEn": ""
       },
       {
         "type": "image",
@@ -728,136 +743,6 @@
         "cols": 1,
         "size": 2,
         "align": "right"
-      }
-    ]
-  },
-  {
-    "id": "seoul-beauty-global-brand-identity-design",
-    "folder": "Seoul Beauty Global Brand Identity Design",
-    "titleKo": "",
-    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
-    "format": "Brand Identity",
-    "client": "Seoul Beauty Global",
-    "date": "",
-    "taglineKo": "언어의 장벽 너머, 뷰티로 연결되는 순간을 로고 안에 담았다.",
-    "bodyKo": "S와 B, 두 글자의 곡선을 대칭으로 겹쳐 심볼을 만들었다. 곡선의 일부는 하트 형태로 마무리되어, 외국인 이용자에게 낯설 수 있는 이니셜 조합에 익숙한 온기를 더한다. 겹쳐진 곡선은 끊어지지 않고 이어지며, 언어가 다른 두 사람이 뷰티라는 매개로 연결되는 순간을 형태로 옮긴 것이다. 심볼 아래 놓인 워드마크는 간결한 기하학적 타입으로 짜여, 서울이라는 도시가 가진 세련된 인상을 절제된 방식으로 전달한다. 부드러운 곡선과 반듯한 타이포그래피가 나란히 놓이면서, 신뢰할 수 있으면서도 품격 있는 서비스라는 브랜드의 태도가 함께 드러난다.",
-    "taglineEn": "Two curves, one connection beyond language.",
-    "bodyEn": "The symbol overlaps the curves of S and B into a single symmetrical form. Part of each curve resolves into a heart shape, carrying a sense of warmth into an initials mark that could otherwise read as unfamiliar to a foreign eye. The unbroken line traces the moment two people, separated by language, meet through beauty. Beneath it sits a wordmark built from a spare geometric type, delivering the polish of Seoul without excess. Curve and letterform sit side by side, and together they carry the brand's claim to a service that is both trustworthy and refined.",
-    "type": "Commercial",
-    "categories": [
-      "Identity",
-      "Visual directing"
-    ],
-    "fields": [
-      "Cosmetic",
-      "Lifestyle"
-    ],
-    "credits": [
-      {
-        "role": "Symbol Design Assist",
-        "name": "Sangah Yoo",
-        "url": ""
-      },
-      {
-        "role": "",
-        "name": "",
-        "url": ""
-      }
-    ],
-    "imgCount": 3,
-    "images": [
-      {
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "left"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
-      }
-    ],
-    "galleryBlocks": [
-      {
-        "type": "image",
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
-      },
-      {
-        "type": "text",
-        "textKo": "심볼은 S와 B, 두 글자의 곡선을 나란히 세운 구조다. 왼쪽 곡선은 열린 형태로 흐르고, 오른쪽 곡선의 윗부분은 하트 모양으로 닫혀 기존 서울뷰티글로벌 심볼이 지녔던 흔적을 남긴다. 대칭을 이루는 두 곡선은 그리드 위에서 반복되는 간격으로 정렬되어, 크기가 달라져도 무너지지 않는 균형을 유지하도록 설계했다.",
-        "textEn": ""
-      },
-      {
-        "type": "text",
-        "textKo": "워드마크는 한 줄과 두 줄, 두 가지 조합으로 정리했다. 대문자 중심의 기하학적 타입은 O와 G, C 등 곡선 글자의 안지름을 일정한 원형 기준으로 맞춰, 심볼의 둥근 곡선과 같은 리듬을 공유한다. 좁은 자간과 균일한 획 굵기는 화려한 장식 없이도 도시적인 인상을 유지하게 한다.",
-        "textEn": ""
       }
     ]
   },
@@ -1525,6 +1410,136 @@
         "cols": 1,
         "size": 1,
         "align": "left"
+      }
+    ]
+  },
+  {
+    "id": "seoul-beauty-global-brand-identity-design",
+    "folder": "Seoul Beauty Global Brand Identity Design",
+    "titleKo": "",
+    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
+    "format": "Brand Identity",
+    "client": "Seoul Beauty Global",
+    "date": "",
+    "taglineKo": "언어의 장벽 너머, 뷰티로 연결되는 순간을 로고 안에 담았다.",
+    "bodyKo": "S와 B, 두 글자의 곡선을 대칭으로 겹쳐 심볼을 만들었다. 곡선의 일부는 하트 형태로 마무리되어, 외국인 이용자에게 낯설 수 있는 이니셜 조합에 익숙한 온기를 더한다. 겹쳐진 곡선은 끊어지지 않고 이어지며, 언어가 다른 두 사람이 뷰티라는 매개로 연결되는 순간을 형태로 옮긴 것이다. 심볼 아래 놓인 워드마크는 간결한 기하학적 타입으로 짜여, 서울이라는 도시가 가진 세련된 인상을 절제된 방식으로 전달한다. 부드러운 곡선과 반듯한 타이포그래피가 나란히 놓이면서, 신뢰할 수 있으면서도 품격 있는 서비스라는 브랜드의 태도가 함께 드러난다.",
+    "taglineEn": "Two curves, one connection beyond language.",
+    "bodyEn": "The symbol overlaps the curves of S and B into a single symmetrical form. Part of each curve resolves into a heart shape, carrying a sense of warmth into an initials mark that could otherwise read as unfamiliar to a foreign eye. The unbroken line traces the moment two people, separated by language, meet through beauty. Beneath it sits a wordmark built from a spare geometric type, delivering the polish of Seoul without excess. Curve and letterform sit side by side, and together they carry the brand's claim to a service that is both trustworthy and refined.",
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Visual directing"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle"
+    ],
+    "credits": [
+      {
+        "role": "Symbol Design Assist",
+        "name": "Sangah Yoo",
+        "url": ""
+      },
+      {
+        "role": "",
+        "name": "",
+        "url": ""
+      }
+    ],
+    "imgCount": 3,
+    "images": [
+      {
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "text",
+        "textKo": "심볼은 S와 B, 두 글자의 곡선을 나란히 세운 구조다. 왼쪽 곡선은 열린 형태로 흐르고, 오른쪽 곡선의 윗부분은 하트 모양으로 닫혀 기존 서울뷰티글로벌 심볼이 지녔던 흔적을 남긴다. 대칭을 이루는 두 곡선은 그리드 위에서 반복되는 간격으로 정렬되어, 크기가 달라져도 무너지지 않는 균형을 유지하도록 설계했다.",
+        "textEn": ""
+      },
+      {
+        "type": "text",
+        "textKo": "워드마크는 한 줄과 두 줄, 두 가지 조합으로 정리했다. 대문자 중심의 기하학적 타입은 O와 G, C 등 곡선 글자의 안지름을 일정한 원형 기준으로 맞춰, 심볼의 둥근 곡선과 같은 리듬을 공유한다. 좁은 자간과 균일한 획 굵기는 화려한 장식 없이도 도시적인 인상을 유지하게 한다.",
+        "textEn": ""
       }
     ]
   }
