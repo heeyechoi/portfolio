@@ -14,7 +14,8 @@
     "type": "Commercial",
     "categories": [
       "Identity",
-      "Visual directing"
+      "Visual directing",
+      "Package"
     ],
     "fields": [
       "Cosmetic",
@@ -32,7 +33,7 @@
         "url": ""
       }
     ],
-    "imgCount": 3,
+    "imgCount": 12,
     "images": [
       {
         "file": "003.jpg",
@@ -58,7 +59,7 @@
         "bg": "#f0f0f0",
         "cols": 1,
         "size": 2,
-        "align": "left"
+        "align": "right"
       },
       {
         "file": "002.jpg",
@@ -71,7 +72,124 @@
         "bg": "#f0f0f0",
         "cols": 1,
         "size": 2,
-        "align": "right"
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-04.png",
+        "origname": "서울뷰티 웹-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-05.png",
+        "origname": "서울뷰티 웹-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-06.png",
+        "origname": "서울뷰티 웹-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-07.png",
+        "origname": "서울뷰티 웹-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-08.png",
+        "origname": "서울뷰티 웹-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-09.png",
+        "origname": "서울뷰티 웹-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-10.png",
+        "origname": "서울뷰티 웹-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-11.png",
+        "origname": "서울뷰티 웹-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-12.png",
+        "origname": "서울뷰티 웹-12.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ],
     "galleryBlocks": [
@@ -91,8 +209,22 @@
       },
       {
         "type": "image",
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-05.png",
+        "origname": "서울뷰티 웹-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -105,8 +237,8 @@
       },
       {
         "type": "image",
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -126,6 +258,48 @@
         "type": "text",
         "textKo": "로고타입은 간결한 기하학적 산세리프로 구성하여 심볼의 절제된 곡선과 균형을 이루도록 하였습니다. 그리드 위에서 자간과 비례를 세밀하게 조정해, 다양한 크기에서도 일관된 인상을 유지하도록 설계하였습니다.",
         "textEn": ""
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-04.png",
+        "origname": "서울뷰티 웹-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-06.png",
+        "origname": "서울뷰티 웹-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-07.png",
+        "origname": "서울뷰티 웹-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ]
   },
@@ -170,7 +344,7 @@
     "imgCount": 10,
     "images": [
       {
-        "file": "1.gif",
+        "file": "001.gif",
         "origname": "1.gif",
         "alt": "",
         "ratio": "original",
@@ -183,7 +357,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-01.png",
+        "file": "002.jpg",
         "origname": "그래픽-01.png",
         "alt": "",
         "ratio": "original",
@@ -196,7 +370,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-02.png",
+        "file": "003.jpg",
         "origname": "그래픽-02.png",
         "alt": "",
         "ratio": "original",
@@ -209,7 +383,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-03.png",
+        "file": "004.jpg",
         "origname": "그래픽-03.png",
         "alt": "",
         "ratio": "original",
@@ -222,7 +396,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-04.png",
+        "file": "005.jpg",
         "origname": "그래픽-04.png",
         "alt": "",
         "ratio": "original",
@@ -235,7 +409,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-06.png",
+        "file": "007.jpg",
         "origname": "그래픽-06.png",
         "alt": "",
         "ratio": "original",
@@ -248,7 +422,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-07.png",
+        "file": "008.jpg",
         "origname": "그래픽-07.png",
         "alt": "",
         "ratio": "original",
@@ -261,7 +435,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-12.png",
+        "file": "013.jpg",
         "origname": "그래픽-12.png",
         "alt": "",
         "ratio": "original",
@@ -274,7 +448,7 @@
         "align": "right"
       },
       {
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-13.png",
+        "file": "014.jpg",
         "origname": "그래픽-13.png",
         "alt": "",
         "ratio": "original",
@@ -287,7 +461,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%92%E1%85%B3%E1%86%B7opy.jpg",
+        "file": "016.jpg",
         "origname": "흠opy.jpg",
         "alt": "",
         "ratio": "original",
@@ -303,7 +477,7 @@
     "galleryBlocks": [
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-01.png",
+        "file": "002.jpg",
         "origname": "그래픽-01.png",
         "alt": "",
         "ratio": "original",
@@ -317,7 +491,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-02.png",
+        "file": "003.jpg",
         "origname": "그래픽-02.png",
         "alt": "",
         "ratio": "original",
@@ -331,7 +505,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-03.png",
+        "file": "004.jpg",
         "origname": "그래픽-03.png",
         "alt": "",
         "ratio": "original",
@@ -345,7 +519,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-04.png",
+        "file": "005.jpg",
         "origname": "그래픽-04.png",
         "alt": "",
         "ratio": "original",
@@ -359,7 +533,7 @@
       },
       {
         "type": "image",
-        "file": "1.gif",
+        "file": "001.gif",
         "origname": "1.gif",
         "alt": "",
         "ratio": "original",
@@ -373,7 +547,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-05.png",
+        "file": "006.jpg",
         "origname": "그래픽-05.png",
         "alt": "",
         "ratio": "original",
@@ -387,7 +561,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-07.png",
+        "file": "008.jpg",
         "origname": "그래픽-07.png",
         "alt": "",
         "ratio": "original",
@@ -401,7 +575,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-12.png",
+        "file": "013.jpg",
         "origname": "그래픽-12.png",
         "alt": "",
         "ratio": "original",
@@ -415,7 +589,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8-13.png",
+        "file": "014.jpg",
         "origname": "그래픽-13.png",
         "alt": "",
         "ratio": "original",
