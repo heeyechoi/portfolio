@@ -1,244 +1,5 @@
 [
   {
-    "id": "seoul-beauty-global-brand-identity-design",
-    "folder": "Seoul Beauty Global Brand Identity Design",
-    "titleKo": "",
-    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
-    "format": "Brand Identity",
-    "client": "Seoul Beauty Global",
-    "date": "2026",
-    "taglineKo": "두 개의 곡선이 하나의 연결로 완성됩니다.",
-    "bodyKo": "서울뷰티글로벌은 언어와 국경을 넘어 해외 여행자에게 검증된 뷰티 서비스를 연결하는 플랫폼입니다. 이번 작업에서는 기존에 사용해온 브랜드 자산을 유지하면서, 글로벌 서비스로 확장된 방향성을 심볼에 담고자 하였습니다. S와 B, 두 글자에서 출발한 곡선을 좌우 대칭 구조로 배치하고, 한쪽 곡선의 끝을 하트 형태로 다듬어 뷰티를 매개로 사람과 사람이 연결되는 이미지를 표현하였습니다. 로고타입은 간결하고 기하학적인 산세리프로 구성해 심볼의 절제된 곡선과 균형을 이루도록 하였으며, 그리드 위에서 자간과 비례를 세밀하게 조정하여 다양한 크기에서도 일관된 인상을 유지하도록 설계하였습니다. 민트 톤의 컬러는 이 심볼과 결합해 세련되고 신뢰감 있는 도시적 이미지를 전달합니다.",
-    "taglineEn": "Two curves complete one connection.",
-    "bodyEn": "Seoul Beauty Global is a platform that connects travelers with verified beauty services across language and borders. In this project, I retained the brand's existing assets while translating its expanded, global direction into a new symbol. Starting from the letters S and B, I arranged two curves in a symmetrical structure and shaped one end into a heart, expressing a connection between people through beauty. The logotype uses a clean, geometric sans-serif to balance the symbol's restrained curves, with letter-spacing and proportion refined on a grid so the mark stays consistent across sizes. The mint tone paired with the symbol conveys a polished, trustworthy, urban impression.",
-    "type": "Commercial",
-    "categories": [
-      "Identity",
-      "Visual directing",
-      "Package"
-    ],
-    "fields": [
-      "Cosmetic",
-      "Lifestyle"
-    ],
-    "credits": [
-      {
-        "role": "Symbol Design Assist",
-        "name": "Sangah Yoo",
-        "url": ""
-      },
-      {
-        "role": "",
-        "name": "",
-        "url": ""
-      }
-    ],
-    "imgCount": 7,
-    "images": [
-      {
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
-      },
-      {
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "left"
-      },
-      {
-        "file": "004.jpg",
-        "origname": "서울뷰티 웹-04.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "005.jpg",
-        "origname": "서울뷰티 웹-05.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "006.jpg",
-        "origname": "서울뷰티 웹-06.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "007.jpg",
-        "origname": "서울뷰티 웹-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      }
-    ],
-    "galleryBlocks": [
-      {
-        "type": "image",
-        "file": "003.jpg",
-        "origname": "서울뷰티 웹-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "005.jpg",
-        "origname": "서울뷰티 웹-05.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "002.jpg",
-        "origname": "서울뷰티 웹-02.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "001.jpg",
-        "origname": "서울뷰티 웹-01.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 2,
-        "align": "right"
-      },
-      {
-        "type": "text",
-        "textKo": "심볼은 S와 B, 두 글자의 곡선을 좌우 대칭으로 배치하여 완성하였습니다. 한쪽 곡선의 끝을 하트 형태로 다듬어, 뷰티를 매개로 사람과 사람이 이어지는 순간을 담았습니다.",
-        "textEn": ""
-      },
-      {
-        "type": "text",
-        "textKo": "로고타입은 간결한 기하학적 산세리프로 구성하여 심볼의 절제된 곡선과 균형을 이루도록 하였습니다. 그리드 위에서 자간과 비례를 세밀하게 조정해, 다양한 크기에서도 일관된 인상을 유지하도록 설계하였습니다.",
-        "textEn": ""
-      },
-      {
-        "type": "image",
-        "file": "004.jpg",
-        "origname": "서울뷰티 웹-04.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "006.jpg",
-        "origname": "서울뷰티 웹-06.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "007.jpg",
-        "origname": "서울뷰티 웹-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      }
-    ]
-  },
-  {
     "id": "endline-graphic",
     "folder": "endline graphic",
     "titleKo": "",
@@ -690,6 +451,245 @@
         "type": "image",
         "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-12.png",
         "origname": "서울뷰티 웹-12.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      }
+    ]
+  },
+  {
+    "id": "seoul-beauty-global-brand-identity-design",
+    "folder": "Seoul Beauty Global Brand Identity Design",
+    "titleKo": "",
+    "titleEn": "Seoul Beauty Global Brand Identity Renewal",
+    "format": "Brand Identity",
+    "client": "Seoul Beauty Global",
+    "date": "2025. 03",
+    "taglineKo": "두 개의 곡선이 하나의 연결로 완성됩니다.",
+    "bodyKo": "서울뷰티글로벌은 언어와 국경을 넘어 해외 여행자에게 검증된 뷰티 서비스를 연결하는 플랫폼입니다. 이번 작업에서는 기존에 사용해온 브랜드 자산을 유지하면서, 글로벌 서비스로 확장된 방향성을 심볼에 담고자 하였습니다. S와 B, 두 글자에서 출발한 곡선을 좌우 대칭 구조로 배치하고, 한쪽 곡선의 끝을 하트 형태로 다듬어 뷰티를 매개로 사람과 사람이 연결되는 이미지를 표현하였습니다. 로고타입은 간결하고 기하학적인 산세리프로 구성해 심볼의 절제된 곡선과 균형을 이루도록 하였으며, 그리드 위에서 자간과 비례를 세밀하게 조정하여 다양한 크기에서도 일관된 인상을 유지하도록 설계하였습니다. 민트 톤의 컬러는 이 심볼과 결합해 세련되고 신뢰감 있는 도시적 이미지를 전달합니다.",
+    "taglineEn": "Two curves complete one connection.",
+    "bodyEn": "Seoul Beauty Global is a platform that connects travelers with verified beauty services across language and borders. In this project, I retained the brand's existing assets while translating its expanded, global direction into a new symbol. Starting from the letters S and B, I arranged two curves in a symmetrical structure and shaped one end into a heart, expressing a connection between people through beauty. The logotype uses a clean, geometric sans-serif to balance the symbol's restrained curves, with letter-spacing and proportion refined on a grid so the mark stays consistent across sizes. The mint tone paired with the symbol conveys a polished, trustworthy, urban impression.",
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Visual directing",
+      "Package"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle"
+    ],
+    "credits": [
+      {
+        "role": "Symbol Design Assist",
+        "name": "Sangah Yoo",
+        "url": ""
+      },
+      {
+        "role": "",
+        "name": "",
+        "url": ""
+      }
+    ],
+    "imgCount": 7,
+    "images": [
+      {
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "file": "004.jpg",
+        "origname": "서울뷰티 웹-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "005.jpg",
+        "origname": "서울뷰티 웹-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "006.jpg",
+        "origname": "서울뷰티 웹-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "007.jpg",
+        "origname": "서울뷰티 웹-07.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "서울뷰티 웹-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "005.jpg",
+        "origname": "서울뷰티 웹-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "서울뷰티 웹-02.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "001.jpg",
+        "origname": "서울뷰티 웹-01.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "text",
+        "textKo": "심볼은 S와 B, 두 글자의 곡선을 좌우 대칭으로 배치하여 완성하였습니다. 한쪽 곡선의 끝을 하트 형태로 다듬어, 뷰티를 매개로 사람과 사람이 이어지는 순간을 담았습니다.",
+        "textEn": ""
+      },
+      {
+        "type": "text",
+        "textKo": "로고타입은 간결한 기하학적 산세리프로 구성하여 심볼의 절제된 곡선과 균형을 이루도록 하였습니다. 그리드 위에서 자간과 비례를 세밀하게 조정해, 다양한 크기에서도 일관된 인상을 유지하도록 설계하였습니다.",
+        "textEn": ""
+      },
+      {
+        "type": "image",
+        "file": "004.jpg",
+        "origname": "서울뷰티 웹-04.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "006.jpg",
+        "origname": "서울뷰티 웹-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "007.jpg",
+        "origname": "서울뷰티 웹-07.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
