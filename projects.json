@@ -33,7 +33,7 @@
         "url": ""
       }
     ],
-    "imgCount": 12,
+    "imgCount": 7,
     "images": [
       {
         "file": "003.jpg",
@@ -75,7 +75,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-04.png",
+        "file": "004.jpg",
         "origname": "서울뷰티 웹-04.png",
         "alt": "",
         "ratio": "original",
@@ -88,7 +88,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-05.png",
+        "file": "005.jpg",
         "origname": "서울뷰티 웹-05.png",
         "alt": "",
         "ratio": "original",
@@ -101,7 +101,7 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-06.png",
+        "file": "006.jpg",
         "origname": "서울뷰티 웹-06.png",
         "alt": "",
         "ratio": "original",
@@ -114,73 +114,8 @@
         "align": "left"
       },
       {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-07.png",
+        "file": "007.jpg",
         "origname": "서울뷰티 웹-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-08.png",
-        "origname": "서울뷰티 웹-08.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-09.png",
-        "origname": "서울뷰티 웹-09.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-10.png",
-        "origname": "서울뷰티 웹-10.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-11.png",
-        "origname": "서울뷰티 웹-11.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-12.png",
-        "origname": "서울뷰티 웹-12.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -209,7 +144,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-05.png",
+        "file": "005.jpg",
         "origname": "서울뷰티 웹-05.png",
         "alt": "",
         "ratio": "original",
@@ -261,7 +196,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-04.png",
+        "file": "004.jpg",
         "origname": "서울뷰티 웹-04.png",
         "alt": "",
         "ratio": "original",
@@ -275,7 +210,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-06.png",
+        "file": "006.jpg",
         "origname": "서울뷰티 웹-06.png",
         "alt": "",
         "ratio": "original",
@@ -289,7 +224,7 @@
       },
       {
         "type": "image",
-        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-07.png",
+        "file": "007.jpg",
         "origname": "서울뷰티 웹-07.png",
         "alt": "",
         "ratio": "original",
@@ -591,6 +526,170 @@
         "type": "image",
         "file": "014.jpg",
         "origname": "그래픽-13.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      }
+    ]
+  },
+  {
+    "id": "dr.-newcell-derma",
+    "folder": "DR. NEWCELL DERMA ",
+    "titleKo": "",
+    "titleEn": "DR. NEWCELL DERMA GLOW RX Package Design",
+    "format": "",
+    "client": "Seoul Beauty Global, Dr.Newcell ",
+    "date": "2025. 04",
+    "taglineKo": "",
+    "bodyKo": "",
+    "taglineEn": "",
+    "bodyEn": "",
+    "type": "Commercial",
+    "categories": [
+      "Identity",
+      "Package"
+    ],
+    "fields": [
+      "Cosmetic",
+      "Lifestyle",
+      "Hospitality"
+    ],
+    "credits": [],
+    "imgCount": 5,
+    "images": [
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-08.png",
+        "origname": "서울뷰티 웹-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-09.png",
+        "origname": "서울뷰티 웹-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-10.png",
+        "origname": "서울뷰티 웹-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-11.png",
+        "origname": "서울뷰티 웹-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-12.png",
+        "origname": "서울뷰티 웹-12.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      }
+    ],
+    "galleryBlocks": [
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-08.png",
+        "origname": "서울뷰티 웹-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-09.png",
+        "origname": "서울뷰티 웹-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-10.png",
+        "origname": "서울뷰티 웹-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-11.png",
+        "origname": "서울뷰티 웹-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 2,
+        "align": "right"
+      },
+      {
+        "type": "image",
+        "file": "%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%87%E1%85%B2%E1%84%90%E1%85%B5%20%E1%84%8B%E1%85%B0%E1%86%B8-12.png",
+        "origname": "서울뷰티 웹-12.png",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
