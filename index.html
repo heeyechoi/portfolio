@@ -270,7 +270,7 @@
        panel and scrolls internally (each column independently — see .ar-col). */
     #archive-scroll { height:100%; display:flex; flex-direction:column; overflow:hidden; }
     #ar-close {
-      position:fixed; top:22px; right:24px; z-index:110;
+      position:fixed; top:32px; right:15px; z-index:110;
       font-family:inherit; font-size:var(--fs); font-weight:400; line-height:var(--lh);
       background:none; border:none; padding:8px;
       color:#fff; mix-blend-mode:difference;   /* inverts against whatever is behind */
@@ -323,7 +323,7 @@
     #about-scroll { height:100%; overflow-y:auto; }
     #about-scroll::-webkit-scrollbar { display:none; }
     #ab-close {
-      position:fixed; top:22px; right:24px; z-index:110;
+      position:fixed; top:32px; right:15px; z-index:110;
       font-family:inherit; font-size:var(--fs); font-weight:400; line-height:var(--lh);
       background:none; border:none; padding:8px;
       color:#fff; mix-blend-mode:difference;   /* inverts against whatever is behind */
@@ -355,6 +355,7 @@
 
       /* Top button (Close / Back to List) */
       #dr-topbtn { top:10px; right:15px; }
+      #ar-close, #ab-close { top:10px; right:15px; }
 
       /* Category — horizontal scroll row at top (equal top/bottom spacing) */
       #dr-cat {
@@ -404,7 +405,11 @@
       /* Description starts at the Category column (col2 of the tablet 3-col dv-head) instead of the desktop's Client column */
       .dv-desc { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0 16px; padding:0 20px; }
       .dv-desc > * { grid-column:2 / 4; }
-      .dr-note { grid-column:1 / 7; padding:0 20px; }
+      /* Gallery notes further down the page: same left inset as the Category column above, computed
+         from dv-head's own grid math (3 equal cols, 16px gap, 20px side padding) since .dr-note lives
+         in a different (6-col) grid and can't just reuse a grid-column index to line up. */
+      .dr-note { grid-column:1 / 7; padding-left:calc(12px + 33.333%); padding-right:20px; }
+      .dv-top { padding-left:20px; }
     }
 
 
@@ -461,13 +466,14 @@
         overflow-x:hidden; overflow-y:auto;
         border-bottom:1px solid rgba(0,0,0,.06);
       }
-      #dr-plist ul { display:flex; flex-direction:column; gap:4px; }
+      #dr-plist ul { display:flex; flex-direction:column; gap:0; }
       #dr-plist li { margin:0; }
       #dr-plist a { white-space:normal; }
 
       /* Main + panels */
       #dr-main { flex:1; min-height:0; }
       #dr-topbtn { top:8px; right:15px; font-size:var(--fs); padding:6px 8px; }
+      #ar-close, #ab-close { top:8px; right:15px; font-size:var(--fs); padding:6px 8px; }
       #dr-list, #dr-detail { padding:44px 0 40px 0; }
 
       /* Index cards */
@@ -482,6 +488,7 @@
       .dv-spacer { display:none; }
       .dv-desc { display:block; padding:0 15px; }
       .dr-note { grid-column:1 / 7; padding:0 15px; }
+      .dv-top { padding-left:15px; }
       /* Detail: no horizontal swipe strip — images stack vertically (gallery below) */
       .dv-strip { display:none; }
       .dv-imgs-top { margin-bottom:18px; }
@@ -2578,7 +2585,8 @@ function closeDrawer() {
 
 /* ── DRAWER MODES: image-led index (list) ⇄ project detail ── */
 function showList() {
-  document.getElementById('drawer').classList.remove('expanded');
+  // Deliberately NOT resetting 'expanded' — switching back to the list keeps whatever
+  // fullscreen/desktop-height state was already showing.
   var main = document.getElementById('dr-main');
   main.classList.add('mode-list');
   main.classList.remove('mode-detail');
@@ -2592,6 +2600,8 @@ function showDetail() {
   main.classList.remove('mode-list');
   var btn = document.getElementById('dr-topbtn');
   if (btn) btn.textContent = '(Back to List)';
+  // Mobile detail is always fullscreen — no scroll-driven collapse (that's list-only on mobile).
+  if (isMobile()) document.getElementById('drawer').classList.add('expanded');
 }
 function drawerTopAction() {
   var main = document.getElementById('dr-main');
@@ -2900,19 +2910,43 @@ function updateListSpy() {
   if (wrap) wrap.addEventListener('scroll', updateListSpy, {passive:true});
 })();
 
-/* Detail (all breakpoints, including mobile): expand the drawer to full screen once the
-   image gallery below the description comes into view; collapse when scrolled back up. */
+/* Detail (desktop/tablet): expand the drawer to full screen once the image gallery below the
+   description comes into view; collapse when scrolled back up. Mobile detail is always
+   fullscreen instead (see showDetail) — only the list/목차 collapses on mobile. */
 (function(){
   var det = document.getElementById('dr-detail');
   var drawer = document.getElementById('drawer');
   if (!det || !drawer) return;
   det.addEventListener('scroll', function(){
+    if (isMobile()) return;
+    // Ignore scroll events fired while this panel is hidden (mode-list) — switching modes via
+    // display:none can reset/clamp scrollTop and fire a spurious event with a meaningless rect.
+    if (det.offsetParent === null) return;
     var gal = det.querySelector('.dv-gallery');
-    if (!gal) { drawer.classList.remove('expanded'); return; }
+    // No gallery yet — either this project has none, or det is mid-rebuild (the scrollTop=0
+    // reset in loadProject fires a spurious scroll event before content is appended). Either
+    // way, leave 'expanded' untouched rather than forcing it off.
+    if (!gal) return;
     var rel = gal.getBoundingClientRect().top - det.getBoundingClientRect().top;
     var h = det.clientHeight;
     if (rel <= h * 0.5) drawer.classList.add('expanded');
     else if (rel > h * 0.7) drawer.classList.remove('expanded');
+  }, {passive:true});
+})();
+
+/* List / 목차 (mobile only): same idea, but there's no gallery landmark to watch for — just
+   expand once scrolled away from the top, collapse back once scrolled back to the top. */
+(function(){
+  var list = document.getElementById('dr-list');
+  var drawer = document.getElementById('drawer');
+  if (!list || !drawer) return;
+  list.addEventListener('scroll', function(){
+    if (!isMobile()) return;
+    // Ignore scroll events fired while this panel is hidden (mode-detail) — same spurious-event
+    // issue as the detail listener above.
+    if (list.offsetParent === null) return;
+    if (list.scrollTop > 40) drawer.classList.add('expanded');
+    else if (list.scrollTop <= 0) drawer.classList.remove('expanded');
   }, {passive:true});
 })();
 
@@ -2933,7 +2967,8 @@ function loadProject(id) {
   var det = document.getElementById('dr-detail');
   det.innerHTML = '';
   det.scrollTop = 0;
-  document.getElementById('drawer').classList.remove('expanded');
+  // Deliberately NOT resetting 'expanded' here — if the list view was already fullscreen,
+  // opening a project should stay fullscreen instead of dropping back down.
 
   var list = projectImgList(p);
 
