@@ -2464,16 +2464,16 @@ var ARCHIVE = [
   },
   {
     "file": "002.jpg",
-    "title": "Unused Graphic for DOT, Dot dot",
+    "title": "",
     "caption": "",
-    "date": "2025. 05",
+    "date": "",
     "ai": false
   },
   {
     "file": "003.jpg",
-    "title": "endline",
+    "title": "",
     "caption": "",
-    "date": "2024. 09",
+    "date": "",
     "ai": false
   }
 ];
@@ -2591,6 +2591,14 @@ if (archiveLink) {
     openArchive();
   });
 }
+var ARCHIVE_MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+// "2025. 04" (stored, used for sorting) -> "APR 2025" for display. "2025" alone -> "2025" unchanged.
+function formatArchiveDate(d) {
+  var m = /^(\d{4})(?:\.\s*(\d{1,2}))?$/.exec((d || '').trim());
+  if (!m) return d;
+  var year = m[1], month = m[2] ? ARCHIVE_MONTHS[parseInt(m[2], 10) - 1] : null;
+  return month ? (month + ' ' + year) : year;
+}
 function renderArchive() {
   var grid = document.getElementById('archive-grid');
   if (!grid) return;
@@ -2605,12 +2613,15 @@ function renderArchive() {
     grid.appendChild(col);
     cols.push(col);
   }
+  var autoIdx = 0;
   (typeof ARCHIVE !== 'undefined' ? ARCHIVE : []).forEach(function(a, i){
     var file    = (a && typeof a === 'object') ? a.file : a;
     var title   = (a && a.title)   || '';
     var caption = (a && a.caption) || '';
     var date    = (a && a.date)    || '';
     var ai      = !!(a && a.ai);
+    // Manually pinned to a column (1-indexed, from the builder) — otherwise round-robin.
+    var pinned  = (a && a.column) ? parseInt(a.column, 10) : 0;
     var cell = document.createElement('div');
     cell.className = 'ar-cell';
     if (title) {
@@ -2630,7 +2641,7 @@ function renderArchive() {
       d.className = 'ar-date';
       if (date) {
         var ds = document.createElement('span');
-        ds.textContent = date;
+        ds.textContent = formatArchiveDate(date);
         d.appendChild(ds);
       }
       if (ai) {
@@ -2646,7 +2657,10 @@ function renderArchive() {
     img.alt = title || '';
     img.loading = 'lazy';
     cell.appendChild(img);
-    cols[i % numCols].appendChild(cell);
+    var colIdx;
+    if (pinned >= 1 && pinned <= numCols) { colIdx = pinned - 1; }
+    else { colIdx = autoIdx % numCols; autoIdx++; }
+    cols[colIdx].appendChild(cell);
   });
   // Desktop: each column scrolls independently, so each gets its own observer rooted on itself.
   // Mobile: the whole panel (#archive-scroll) scrolls together instead — root on that.
