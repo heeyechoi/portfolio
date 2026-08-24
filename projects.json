@@ -714,7 +714,7 @@
     "bodyKo": "서울여자대학교 아트앤디자인스쿨 공예전공 도자심화 제58회 졸업작품전의 그래픽 아이덴티티를 작업하였다. 물레 위에서 흙이 원심력으로 퍼져나가는 순간을 무수한 점으로 환산해, 중심에서 바깥으로 튀어나가는 방사형 점묘 패턴을 만들었다. 점들은 밀도가 높은 중심부에서 점차 옅어지며 흩어지는데, 이 밀도의 변화가 모였다가도 흩어지는 흙의 상태, 형태를 갖추기 이전의 재료 그 자체를 드러낸다. 표지 위에는 청자 상감 문양을 흰 바탕에 흰 선으로 얕게 새겨 넣어, 드러내기보다 표면 아래 겹쳐진 층위로 도자의 전통을 남겨두었다. 픽셀 단위로 거칠게 끊어진 회색 덩어리를 층층이 쌓아, 매끈하게 마감되기 전 유약이 굳어가는 표면의 거친 질감을 그대로 확대해 보여준다.",
     "taglineEn": "Where scattered particles gather into form.",
     "bodyEn": "I designed the graphic identity for the 58th graduation exhibition of the Ceramics program at Seoul Women's University School of Art & Design. I translated the moment clay spreads outward under centrifugal force on the wheel into a radial field of countless dots, spraying from a dense center toward a scattered edge. The shifting density — thick at the core, thin toward the rim — records the material's state before it settles into form, gathered and scattered at once. Across the cover, I embossed a traditional celadon inlay pattern in white on white, barely visible, so the craft's history sits as a hidden layer beneath the surface rather than announced on top of it. The grey masses broken into rough pixel blocks, stacked in bands, magnify the moment glaze hardens, leaving the surface's unfinished texture in place instead of smoothing it away.",
-    "type": "Commercial",
+    "type": "",
     "categories": [
       "Graphic",
       "Identity"
@@ -873,7 +873,7 @@
     "bodyKo": "ēndline은 배드민턴에서 출발해 여러 코트 스포츠로 영역을 넓히는 코트웨어 브랜드다. 코트 안과 밖을 가르던 경계를 지우고, 퍼포먼스와 일상을 하나의 태도로 잇는 것을 브랜드의 방향으로 삼았다. 로고의 e는 완만한 타원 안에 날카로운 꼬리를 겹쳐, 부드러우면서도 날카로운 궤적으로 셔틀콕이 라인 끝에서 꺾이는 순간을 담았다. 영문에는 Neue Haas Grotesk Medium을, 국문에는 Pretendard ExtraBold와 SemiBold를 함께 두어 절제된 리듬과 또렷한 발음을 동시에 지탱했다. 이 체계는 명함과 행택, 케어라벨과 패키지로 이어지며 접힘선과 여백 규정을 통해 어느 접점에서도 같은 태도를 유지하도록 했다.",
     "taglineEn": "",
     "bodyEn": "ēndline began in badminton and now extends across a wider range of court sports. The brand set out to dissolve the line that once separated the court from everyday life, treating performance and daily wear as one continuous attitude. Its e mark layers a soft ellipse with a sharp trailing point, tracing both the ease of a rally and the sharp turn a shuttlecock makes at the line's edge. Neue Haas Grotesk Medium carries the English wordmark while Pretendard ExtraBold and SemiBold hold the Korean, keeping a restrained rhythm and a clear voice side by side. The system continues into business cards, hang tags, care labels, and packaging, held together by consistent fold lines and clear-space rules across every touchpoint.",
-    "type": "",
+    "type": "Commercial",
     "categories": [
       "Branding",
       "Identity",
@@ -1442,7 +1442,7 @@
     "bodyKo": "",
     "taglineEn": "",
     "bodyEn": "",
-    "type": "",
+    "type": "Personal",
     "categories": [
       "Visual directing",
       "Photography",
