@@ -306,6 +306,11 @@
         "align": "left"
       },
       {
+        "type": "text",
+        "textKo": "흩어진 점의 궤적은 스프레이의 거친 입자와 만나 셔틀콕이 지나간 방향을 암시합니다. 그 위에 반복되는 흘림체 타이포그래피가 겹쳐지며, 코트의 엔드라인이라는 브랜드명을 하나의 그래픽 리듬으로 바꾸어 놓습니다.",
+        "textEn": ""
+      },
+      {
         "type": "image",
         "file": "001.gif",
         "origname": "1.gif",
@@ -365,6 +370,104 @@
         "type": "image",
         "file": "014.jpg",
         "origname": "그래픽-13.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "007.jpg",
+        "origname": "그래픽-06.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "016.jpg",
+        "origname": "흠opy.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "009.jpg",
+        "origname": "그래픽-08.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "010.jpg",
+        "origname": "그래픽-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "011.jpg",
+        "origname": "그래픽-10.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "012.jpg",
+        "origname": "그래픽-11.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "015.jpg",
+        "origname": "흠2 copy.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
@@ -763,20 +866,6 @@
         "cols": 1,
         "size": 1,
         "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "007.jpg",
-        "origname": "서울뷰티 웹-07.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
       }
     ]
   },
@@ -936,6 +1025,25 @@
         "cols": 2,
         "size": 2,
         "align": "right"
+      },
+      {
+        "type": "text",
+        "textKo": "ㅇㄹㅇㄹㅇㄹㅁㄹㅇ",
+        "textEn": ""
+      },
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "졸전-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 2,
+        "size": 2,
+        "align": "left"
       }
     ]
   },
@@ -1244,6 +1352,48 @@
         "cols": 1,
         "size": 1,
         "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "002.jpg",
+        "origname": "9.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "005.jpg",
+        "origname": "endline 포폴 구성-03.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "010.jpg",
+        "origname": "endline 포폴 구성-9-09.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ]
   },
@@ -1505,6 +1655,20 @@
         "cols": 1,
         "size": 2,
         "align": "right"
+      },
+      {
+        "type": "image",
+        "file": "005.jpg",
+        "origname": "goyo-05.png",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
       }
     ]
   },
@@ -2163,6 +2327,62 @@
         "type": "image",
         "file": "031.jpg",
         "origname": "goyophoto-31.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "003.jpg",
+        "origname": "goyophoto-03.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "020.jpg",
+        "origname": "goyophoto-20.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "022.jpg",
+        "origname": "goyophoto-22.jpg",
+        "alt": "",
+        "ratio": "original",
+        "zoom": 1,
+        "posX": 0,
+        "posY": 0,
+        "bg": "#f0f0f0",
+        "cols": 1,
+        "size": 1,
+        "align": "left"
+      },
+      {
+        "type": "image",
+        "file": "030.jpg",
+        "origname": "goyophoto-30.jpg",
         "alt": "",
         "ratio": "original",
         "zoom": 1,
