@@ -1324,48 +1324,6 @@
         "cols": 1,
         "size": 1,
         "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "002.jpg",
-        "origname": "9.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "005.jpg",
-        "origname": "endline 포폴 구성-03.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
-      },
-      {
-        "type": "image",
-        "file": "010.jpg",
-        "origname": "endline 포폴 구성-9-09.png",
-        "alt": "",
-        "ratio": "original",
-        "zoom": 1,
-        "posX": 0,
-        "posY": 0,
-        "bg": "#f0f0f0",
-        "cols": 1,
-        "size": 1,
-        "align": "left"
       }
     ]
   },
