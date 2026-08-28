@@ -414,8 +414,8 @@
 
 
     @media (max-width:768px) {
-      /* Mobile-only type scale: everything +1px (font-size and line-height) */
-      :root { --fs:14px; --lh:17px; --lh-ko:19px; }
+      /* Mobile-only type scale */
+      :root { --fs:13px; --lh:16px; --lh-ko:18px; }
       /* Korean body text: font-size only, 1px smaller than the mobile bump above (line-height unaffected) */
       .dv-body-ko, .dr-note-ko { font-size:calc(var(--fs) - 1px); }
 
@@ -580,7 +580,7 @@
 
 <!-- Archive -->
 <div id="archive">
-  <button id="ar-close" onclick="closeArchive()">(Close)</button>
+  <button id="ar-close" onclick="history.back()">(Close)</button>
   <div id="archive-scroll">
     <div class="archive-intro">The Archive is a space for works beyond the main projects.<br>Visual studies, experiments, fragments, and side explorations collected along the way.</div>
     <div id="archive-grid"></div>
@@ -589,7 +589,7 @@
 
 <!-- About -->
 <div id="about">
-  <button id="ab-close" onclick="closeAbout()">(Close)</button>
+  <button id="ab-close" onclick="history.back()">(Close)</button>
   <div id="about-scroll">
     <div id="about-body"></div>
   </div>
@@ -2575,6 +2575,7 @@ function openDrawer(filter) {
   showList();            // Works opens to the image-led index first
   document.getElementById('drawer').classList.add('open');
   document.body.classList.add('drawer-open');
+  pushPanelState();
 }
 
 function closeDrawer() {
@@ -2586,8 +2587,10 @@ function closeDrawer() {
 
 /* ── DRAWER MODES: image-led index (list) ⇄ project detail ── */
 function showList() {
-  // Deliberately NOT resetting 'expanded' — switching back to the list keeps whatever
-  // fullscreen/desktop-height state was already showing.
+  // Always collapse back to the normal list height (animated via #drawer's own `height`
+  // transition) — leaving 'expanded' on whenever detail happened to be scrolled fullscreen
+  // made the list<->detail switch land in an inconsistent, jumpy mix of states.
+  document.getElementById('drawer').classList.remove('expanded');
   var main = document.getElementById('dr-main');
   main.classList.add('mode-list');
   main.classList.remove('mode-detail');
@@ -2605,14 +2608,38 @@ function showDetail() {
   if (isMobile()) document.getElementById('drawer').classList.add('expanded');
 }
 function drawerTopAction() {
-  var main = document.getElementById('dr-main');
-  if (main && main.classList.contains('mode-detail')) showList();
-  else closeDrawer();
+  // Detail→list or list→closed — either way it's one level back; popstate below
+  // figures out which (checks mode-detail first) and applies the matching change.
+  history.back();
 }
 document.getElementById('home-view').addEventListener('click', function(){
-  if (document.getElementById('drawer').classList.contains('open')) closeDrawer();
-  if (document.getElementById('archive').classList.contains('open')) closeArchive();
-  if (document.getElementById('about').classList.contains('open')) closeAbout();
+  if (document.getElementById('drawer').classList.contains('open') ||
+      document.getElementById('archive').classList.contains('open') ||
+      document.getElementById('about').classList.contains('open')) {
+    history.back();
+  }
+});
+
+/* ── BACK BUTTON: Work/Archive/About push a history entry when opened, and loading a
+   project from the index pushes one more — so the browser back button steps down one
+   level at a time (detail → list → home) instead of leaving the site. closeDrawer/
+   closeArchive/closeAbout/showList (above) are pure DOM, no history side-effects —
+   popstate is the only thing that actually applies a step in response to Back; every
+   UI control that leaves a level (topbtn, close buttons, home-view click-away, category
+   filter while in detail) calls history.back() instead of changing DOM directly, so the
+   history stack always stays in sync with what's on screen. */
+function pushPanelState() {
+  history.pushState({ panel: true }, '');
+}
+window.addEventListener('popstate', function(){
+  var main = document.getElementById('dr-main');
+  if (document.getElementById('drawer').classList.contains('open') && main.classList.contains('mode-detail')) {
+    showList();
+    return;
+  }
+  if (document.getElementById('drawer').classList.contains('open')) { closeDrawer(); return; }
+  if (document.getElementById('archive').classList.contains('open')) { closeArchive(); return; }
+  if (document.getElementById('about').classList.contains('open')) { closeAbout(); return; }
 });
 
 /* ── ARCHIVE ── */
@@ -2623,6 +2650,41 @@ if (archiveLink) {
     e.stopPropagation();
     openArchive();
   });
+}
+// Reveal `imgs` (adds .in-view, which the CSS fades from opacity 0) as they scroll into
+// `container`'s visible area. Checks on every scroll of `container` plus once immediately
+// (so whatever's already in view at open shows right away without needing a scroll first).
+function attachFadeReveal(container, imgs) {
+  if (!container) return;
+  var pending = Array.prototype.slice.call(imgs);
+  function check() {
+    if (!pending.length) return;
+    var cr = container.getBoundingClientRect();
+    var revealLine = cr.top + cr.height * 0.95;   // ~matches the old rootMargin '-10% bottom'
+    pending = pending.filter(function(img){
+      // Skip until the image has actually finished loading: height:auto + loading=lazy means
+      // its box (and so its .ar-cell's, which shrinks to just the title/caption/date text) is
+      // still collapsed to an unknown/incomplete height before then — checking that collapsed
+      // layout made every image look like it was already past the reveal line on first render.
+      if (!img.complete) return true;
+      var el = img.closest('.ar-cell') || img;
+      var r = el.getBoundingClientRect();
+      // One-directional threshold, not an overlap test: a fast fling/jump can move a cell from
+      // "below the fold" to "scrolled past the top" between two 'scroll' events without ever
+      // landing inside the visible window at the moment we check — it should still count as
+      // revealed once it's reached (or passed) the line, not get stuck waiting forever.
+      if (r.top < revealLine) {
+        img.classList.add('in-view');
+        return false;
+      }
+      return true;
+    });
+  }
+  container.addEventListener('scroll', check, { passive: true });
+  // Re-check as each image actually loads — its cell may grow past the reveal line once its
+  // real (previously unknown) height is known.
+  imgs.forEach(function(img){ img.addEventListener('load', check, { once: true }); });
+  check();
 }
 var ARCHIVE_MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 // "2025. 04" (stored, used for sorting) -> "APR 2025" for display. "2025" alone -> "2025" unchanged.
@@ -2695,20 +2757,18 @@ function renderArchive() {
     else { colIdx = autoIdx % numCols; autoIdx++; }
     cols[colIdx].appendChild(cell);
   });
-  // Desktop: each column scrolls independently, so each gets its own observer rooted on itself.
-  // Mobile: the whole panel (#archive-scroll) scrolls together instead — root on that.
+  // Desktop: each column scrolls independently, so each gets its own reveal check rooted on
+  // itself. Mobile: the whole panel (#archive-scroll) scrolls together instead — root on that.
+  // Plain scroll+getBoundingClientRect instead of IntersectionObserver: the panel's own open
+  // transform (backdrop-filter + transform, animating in on first open) makes an IO's async
+  // first snapshot unreliable — it can report every image as already intersecting the very
+  // first time the panel is opened. A synchronous rect check on 'scroll' doesn't have that
+  // problem (same approach as the detail-panel expand/collapse check below).
   var scrollRoot = numCols > 1 ? null : document.getElementById('archive-scroll');
   cols.forEach(function(col){
     var imgs = col.querySelectorAll('.ar-cell img');
     if (!imgs.length) return;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      });
-    }, { root: numCols > 1 ? col : scrollRoot, rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-    imgs.forEach(function(img){ io.observe(img); });
+    attachFadeReveal(numCols > 1 ? col : scrollRoot, imgs);
   });
 
   archiveRendered = true;
@@ -2716,8 +2776,13 @@ function renderArchive() {
 function openArchive() {
   closeDrawer();
   closeAbout();
-  if (!archiveRendered) renderArchive();
+  // Add 'open' BEFORE rendering: the fade-in IntersectionObserver takes its first read as
+  // soon as it starts observing, and while #archive is still off-screen (pre-'open', slid
+  // away via transform) that first read comes back wrong — every image gets marked
+  // in-view/opaque immediately instead of only the ones actually in the viewport.
   document.getElementById('archive').classList.add('open');
+  if (!archiveRendered) renderArchive();
+  pushPanelState();
 }
 function closeArchive() {
   var a = document.getElementById('archive');
@@ -2740,7 +2805,7 @@ function attachPullToClose(el, closeFn) {
     if (e.touches[0].clientY - sy > 70) { tracking = false; closeFn(); }
   }, { passive: true });
 }
-attachPullToClose(document.getElementById('archive-scroll'), closeArchive);
+attachPullToClose(document.getElementById('archive-scroll'), function(){ history.back(); });
 
 
 /* ── ABOUT ── */
@@ -2770,6 +2835,7 @@ function openAbout() {
   closeArchive();
   renderAbout();
   document.getElementById('about').classList.add('open');
+  pushPanelState();
 }
 function closeAbout() {
   var a = document.getElementById('about');
@@ -2971,6 +3037,11 @@ function loadProject(id) {
   var p = PROJECTS.find(function(x){ return x.id === id; });
   if (!p) return;
 
+  // Only push a new history level when actually entering detail from the index — switching
+  // from one project's detail straight to another's (via the side project list) stays on the
+  // same level, so Back still lands on the index rather than stepping through each project.
+  var wasList = document.getElementById('dr-main').classList.contains('mode-list');
+
   // Left project-list highlight
   document.querySelectorAll('#dr-plist-ul a').forEach(function(a){
     a.classList.toggle('on', a.dataset.id === id);
@@ -3118,6 +3189,10 @@ function loadProject(id) {
 
   observeFadeImages(det);
   showDetail();
+  // Re-assert after becoming visible: scrollTop set while display:none (mode-list) isn't
+  // reliably honored once the panel is shown again, so the old scroll position can stick.
+  det.scrollTop = 0;
+  if (wasList) pushPanelState();
 }
 
 // Gallery images below the description fade in from transparent as they scroll into view.
@@ -3140,7 +3215,11 @@ document.querySelectorAll('.dr-cat-link').forEach(function(a){
     e.preventDefault();
     currentFilter = a.dataset.cat;
     renderCatFilter();   // updates highlight + project list + index cards
-    showList();          // filtering returns to the index
+    // Filtering always lands on the index. If a project detail (its own history level) is
+    // open, step back through history instead of jumping there directly, so the stack stays
+    // in sync with what's on screen — otherwise Back from here would skip a level.
+    if (document.getElementById('dr-main').classList.contains('mode-detail')) history.back();
+    else showList();
   });
 });
 
@@ -3226,13 +3305,12 @@ function makeStripCarousel(strip, auto) {
   if (!cells.length) return;
   if (auto) { makeMarquee(strip, cells.length); return; }
 
-  // Detail: paged carousel (right half → next, left half → prev). Stops at the ends (no loop).
+  // Detail: paged carousel (right half → next, left half → prev). Loops at the ends —
+  // last → first, first → last (mirrors the mobile lightbox's mlbShow).
   var N = cells.length, idx = 0;
   function go(dir){
     if (N < 2) return;
-    var ni = Math.max(0, Math.min(N - 1, idx + dir));
-    if (ni === idx) return;   // already at an end → stop
-    idx = ni;
+    idx = ((idx + dir) % N + N) % N;
     strip.scrollLeft = cells[idx].offsetLeft;
   }
   strip.addEventListener('click', function(e){
